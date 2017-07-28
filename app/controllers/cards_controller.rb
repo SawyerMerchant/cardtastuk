@@ -1,14 +1,13 @@
 class CardsController < ApiController
   # GET /cards
   def index
-    # how to add category and tags here?
-    @cards = Card.select("id, name, small_img_url, medium_img_url, orientation, size").all
-    render json: @cards.to_json
+    @cards = Card.includes(:tags).select("id, name, small_img_url, medium_img_url, orientation, size, category_id").all
+    render json: @cards.to_json(:include => { :category => { :only => [:name] }, :tags => { :only => [:name] }})
   end
 
   # GET /cards/:id
   def show
     @card = Card.find(params[:id])
-    render json: @card.to_json(:include => { :category => { :only => [:name] }})
+    render json: @card.to_json(:include => { :category => { :only => [:name] }, :tags => { :only => [:name] }})
   end
 end
