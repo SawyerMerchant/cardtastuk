@@ -38,6 +38,9 @@ cards = []
   cards << card
 end
 
-# cards.each do |card|
-#   card.tags << Tag.pluck
-# end
+cards.each do |card|
+  tags.shuffle!
+  card.tags << tags[0]
+  card.tags << tags[1]
+  card.tags << tags[2]
+end

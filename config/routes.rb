@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   scope '/api' do
     scope '/v1' do
-      resources :cards
-      
+      resources :cards, only: [:index, :show]
+      resources :categories, only: [:index, :show]
+      resources :tags, only: [:index, :show]
+
     end
   end
 end

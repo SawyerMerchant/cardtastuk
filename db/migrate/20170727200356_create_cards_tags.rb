@@ -8,5 +8,6 @@ class CreateCardsTags < ActiveRecord::Migration[5.0]
       t.timestamps
 
     end
+    drop_table :cards_tags
   end
 end

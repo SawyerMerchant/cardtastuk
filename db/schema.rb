@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727200356) do
+ActiveRecord::Schema.define(version: 20170728173111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,13 +60,10 @@ ActiveRecord::Schema.define(version: 20170727200356) do
     t.index ["category_id"], name: "index_cards_on_category_id", using: :btree
   end
 
-  create_table "cards_tags", force: :cascade do |t|
-    t.integer  "card_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["card_id"], name: "index_cards_tags_on_card_id", using: :btree
-    t.index ["tag_id"], name: "index_cards_tags_on_tag_id", using: :btree
+  create_table "cards_tags", id: false, force: :cascade do |t|
+    t.integer "card_id", null: false
+    t.integer "tag_id",  null: false
+    t.index ["card_id", "tag_id"], name: "index_cards_tags_on_card_id_and_tag_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -82,6 +79,4 @@ ActiveRecord::Schema.define(version: 20170727200356) do
   end
 
   add_foreign_key "cards", "categories"
-  add_foreign_key "cards_tags", "cards"
-  add_foreign_key "cards_tags", "tags"
 end
