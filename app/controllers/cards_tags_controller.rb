@@ -1,0 +1,3 @@
+class CardsTagsController < ApiController
+  
+end

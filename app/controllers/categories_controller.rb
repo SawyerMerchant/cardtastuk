@@ -1,0 +1,2 @@
+class CategoriesController < ApiController
+end
