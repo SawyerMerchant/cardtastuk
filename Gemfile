@@ -49,3 +49,9 @@ gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resour
 
 # Demo
 gem 'faker'
+
+# Authorization
+gem 'devise_token_auth'
+gem 'omniauth', '~> 1.0'
+# Allow multiple domains
+gem 'rack-cors', :require => 'rack/cors'
