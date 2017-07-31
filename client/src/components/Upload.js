@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
+import { Grid, Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const Upload = ({ card, cardMessage }) => {
@@ -20,7 +20,7 @@ const Upload = ({ card, cardMessage }) => {
           <h2 className="card-title">2. Upload a list of users</h2>
 
           <p>
-            If you've already uploaded a list of users, go ahead and select one of those now.
+            If you've already uploaded a list of users, go ahead and choose a list now.
           </p>
           <p>
             Otherwise, upload users here.

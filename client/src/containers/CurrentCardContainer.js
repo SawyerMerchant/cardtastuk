@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CurrentCard from "../components/CurrentCard";
-import { getCurrentCard } from "../actions/currentCard";
+import { getCurrentCardInit } from "../actions/currentCard";
 
 class CurrentCardContainer extends Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getCurrentCard: () => {
-      dispatch(getCurrentCard(ownProps.match.params.id));
+      dispatch(getCurrentCardInit(ownProps.match.params.id));
     }
   };
 };

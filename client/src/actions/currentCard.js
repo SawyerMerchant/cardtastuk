@@ -24,7 +24,7 @@ export function getCurrentCardFailure(error) {
   };
 }
 
-export function getCurrentCard(id) {
+export function getCurrentCardInit(id) {
   return dispatch => {
     dispatch(getCurrentCardRequest());
 
@@ -39,6 +39,27 @@ export function getCurrentCard(id) {
       .then(json => {
         dispatch(getCurrentCardSuccess(json));
         dispatch(changeCardMessage(json.default_greeting));
+      })
+      .catch(error => {
+        dispatch(getCurrentCardFailure(error));
+      });
+  };
+}
+
+export function getCurrentCard(id) {
+  return dispatch => {
+    dispatch(getCurrentCardRequest());
+
+    fetch(`/api/v1/cards/${id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+
+        return response.json();
+      })
+      .then(json => {
+        dispatch(getCurrentCardSuccess(json));
       })
       .catch(error => {
         dispatch(getCurrentCardFailure(error));
