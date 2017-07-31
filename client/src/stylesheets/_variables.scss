@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light|Dancing+Script|Playfair+Display|Raleway');
+
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: 'Raleway', sans-serif;
+$font-family-serif: 'Playfair Display', serif;
+$font-family-brand: 'Shadows Into Light', cursive;
+$headings-font-family: $font-family-serif;
+
+$brand-primary: #C8A2C8;
+$brand-success: adjust-hue($brand-primary, 30deg);
+$brand-info: adjust-hue($brand-primary, -45deg);
+$brand-inverse: adjust-hue($brand-primary, 180deg);
+
+$btn-info-bg: $brand-inverse;
+
+$navbar-default-brand-hover-color: white;
+$navbar-height: 70px;
+
+$text-color: #555;
+$navbar-default-link-hover-color: white;

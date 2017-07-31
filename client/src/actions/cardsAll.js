@@ -35,7 +35,6 @@ export function getAllCards() {
         return response.json();
       })
       .then(json => {
-        console.log(json);
         dispatch(getAllCardsSuccess(json));
       })
       .catch(error => {

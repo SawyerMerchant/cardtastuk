@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CurrentCardEdit from "../components/CurrentCardEdit";
 import { getCurrentCard } from "../actions/currentCard";
+import { changeCardMessage } from "../actions/cardMessage";
 
 class CurrentCardEditContainer extends Component {
   componentDidMount() {
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getCurrentCard: () => {
       dispatch(getCurrentCard(ownProps.match.params.id));
+    },
+    onChangeMessage: e => {
+      dispatch(changeCardMessage(e.target.value));
     }
   };
 };
