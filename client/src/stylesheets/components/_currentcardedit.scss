@@ -1,16 +1,9 @@
-.card-edit-container {
-  position: relative;
-}
-
-.card-edit-bg {
-  width: 100%;
-  position: absolute;
-  z-index: -1;
-}
-
 .card-edit-message {
-  padding-top: .5em;
-  margin: 0 .5em;
+  background-image:  url("/edit-bg.png");
+  background-size: cover;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  padding: .5em;
+  margin: 0 .5em 3.5em .5em;
   font-size: 2em;
   font-family: 'Dancing Script', cursive;
 
@@ -20,6 +13,7 @@
       background: none;
       border: none;
       color: $text-color;
+      resize: vertical;
     }
     textarea::placeholder {
       color: $text-color;

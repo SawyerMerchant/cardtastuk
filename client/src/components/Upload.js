@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-const CurrentCardEdit = ({ card, onChangeMessage }) => {
+const Upload = ({ card, cardMessage }) => {
   return (
     <Grid>
       <Row>
@@ -11,22 +11,13 @@ const CurrentCardEdit = ({ card, onChangeMessage }) => {
           <div className="card-edit-container">
             <div className="card-edit-message">
               <p>Dear &lt;First Name&gt;,</p>
-              <form>
-                <FormControl
-                  componentClass="textarea"
-                  defaultValue={card.default_greeting}
-                  placeholder={card.default_greeting}
-                  rows={8}
-                  autoFocus
-                  onChange={onChangeMessage}
-                />
-              </form>
+              <p>{cardMessage}</p>
               <p>Sincerely, &lt;User&gt;</p>
             </div>
           </div>
         </Col>
         <Col md={6} xs={12} className="card-details">
-          <h2 className="card-title">1. Add a message</h2>
+          <h2 className="card-title">2. Upload a list of users</h2>
 
           <p>
             Type a message and sign your name on the site and we'll mail them
@@ -47,4 +38,4 @@ const CurrentCardEdit = ({ card, onChangeMessage }) => {
   );
 };
 
-export default CurrentCardEdit;
+export default Upload;

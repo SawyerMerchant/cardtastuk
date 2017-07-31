@@ -1,7 +1,11 @@
 import * as Actions from "../actions/currentCard";
 
 const initialState = {
-  data: []
+  data: {
+    price: {
+      x25: ""
+    }
+  }
 };
 
 export const currentCard = (state = initialState, action) => {
