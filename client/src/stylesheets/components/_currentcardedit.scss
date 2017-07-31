@@ -1,3 +1,14 @@
+.current-card-edit {
+  h1 {
+    text-align: center;
+    margin: 1em 0;
+  }
+
+  h2 {
+    margin-bottom: 1em;
+  }
+}
+
 .card-edit-message {
   background-image:  url("/edit-bg.png");
   background-size: cover;
@@ -18,11 +29,5 @@
     textarea::placeholder {
       color: $text-color;
     }
-  }
-}
-
-@media (max-width: 992px) { 
-  .card-edit-bg {
-    max-height: 600px;
   }
 }

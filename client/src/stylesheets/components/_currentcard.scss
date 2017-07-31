@@ -1,3 +1,14 @@
+.current-card {
+  h1 {
+    text-align: center;
+    margin: 1em 0;
+  }
+  
+  h2 {
+    margin-bottom: 1em;
+  }
+}
+
 .card-details {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   border: 1px solid #ecf0f1;
@@ -21,4 +32,10 @@
   display: block;
   border-radius: 20px;
   margin: 2em auto 4em auto;
+}
+
+.popover-content {
+  p:first-of-type {
+    margin-top: 1em;
+  }
 }

@@ -22,12 +22,12 @@ const buildPricingPopover = prices => {
   return (
     <Popover id="popover-positioned-top">
       <strong>Send More. Spend Less.</strong>
-      <p>1 - 25 Cards = {price25}</p>
-      <p>26 - 100 Cards = {price100}</p>
-      <p>101 - 250 Cards = {price250}</p>
-      <p>251 - 500 Cards = {price500}</p>
-      <p>501 - 1000 Cards = {price1000}</p>
-      <p>More than 1000 Cards = {price2000}</p>
+      <p>1 - 25 Cards = <strong>{price25}</strong></p>
+      <p>26 - 100 Cards = <strong>{price100}</strong></p>
+      <p>101 - 250 Cards = <strong>{price250}</strong></p>
+      <p>251 - 500 Cards = <strong>{price500}</strong></p>
+      <p>501 - 1000 Cards = <strong>{price1000}</strong></p>
+      <p>More than 1000 Cards = <strong>{price2000}</strong></p>
     </Popover>
   );
 };
@@ -37,7 +37,7 @@ const CurrentCard = ({ card }) => {
   let price25 = moneyFormatter.format("USD", card.price.x25 / 100);
   let price2000 = moneyFormatter.format("USD", card.price.x2000 / 100);
   return (
-    <Grid>
+    <Grid className="current-card">
       <Row>
         <h1 className="card-title">{card.name}</h1>
         <Col md={6} xs={12}>
@@ -45,7 +45,7 @@ const CurrentCard = ({ card }) => {
         </Col>
         <Col md={6} xs={12} className="card-details">
           <h2 className="card-title">{card.name}</h2>
-          
+
           <h4>
             Stamped and mailed
             <br />

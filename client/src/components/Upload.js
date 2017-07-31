@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 const Upload = ({ card, cardMessage }) => {
   return (
-    <Grid>
+    <Grid className="upload">
       <Row>
         <h1 className="card-title">{card.name}</h1>
         <Col md={6} xs={12}>

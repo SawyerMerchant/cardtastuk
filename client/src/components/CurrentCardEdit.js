@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 const CurrentCardEdit = ({ card, onChangeMessage }) => {
   return (
-    <Grid>
+    <Grid className="current-card-edit">
       <Row>
         <h1 className="card-title">{card.name}</h1>
         <Col md={6} xs={12}>
