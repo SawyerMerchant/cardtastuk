@@ -10,6 +10,13 @@ import LandingPage from "./LandingPage";
 
 class App extends Component {
   render() {
+
+    if (!navigator.cookieEnabled) {
+      <Router>
+        <Navigation title={"CardTastuk"} />
+        <h1>You must enable cookies in order to use this website.</h1>
+      </Router>
+    }
     return (
       <Router>
         <ScrollToTop>
