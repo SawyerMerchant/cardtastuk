@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import {Button, Navbar, Jumbotron} from 'react-bootstrap';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
+import Navigation from "./Navigation";
+import LandingPage from "./LandingPage";
 
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-<Navbar fluid>
-<Navbar.Header>
-  <Navbar.Brand>
-    <a>CardTastuk</a>
-  </Navbar.Brand>
-</Navbar.Header>
-</Navbar>
-      </div>
+      <Router>
+        <ScrollToTop>
+          <Navigation title={"CardTastuk"} />
+          <Switch>
+          <Route path="/" component={LandingPage} />
+          </Switch>
+        </ScrollToTop>
+      </Router>
     );
   }
 }

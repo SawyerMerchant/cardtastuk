@@ -10,6 +10,7 @@ $brand-success: adjust-hue($brand-primary, 30deg);
 $brand-info: adjust-hue($brand-primary, -45deg);
 
 $navbar-default-brand-hover-color: white;
+$navbar-height: 70px;
 
 $text-color: #555;
 
@@ -26,7 +27,8 @@ body {
 }
 
 .navbar {
-  padding: 10px 0;
+  border-radius: 0px;
+  margin-bottom: 0px;
 }
 
 .navbar-brand {
@@ -37,4 +39,15 @@ body {
 
 .navbar-brand:hover {
   cursor: default;
+}
+
+.jumbotron.landing-page {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .8) ), url("/cover.jpeg");
+  background-size: cover;
+  min-height: 600px;
+
+  h1 {
+    margin-top: 1.5em;
+    color: white;
+  }
 }
