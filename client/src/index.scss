@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light|Playfair+Display|Raleway');
+
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: 'Raleway', sans-serif;
+$font-family-serif: 'Playfair Display', serif;
+$headings-font-family: $font-family-serif;
+
+$brand-primary: #C8A2C8;
+$brand-success: adjust-hue($brand-primary, 30deg);
+$brand-info: adjust-hue($brand-primary, -45deg);
+
+$navbar-default-brand-hover-color: white;
+
+$text-color: #555;
+
+
+@import "~bootswatch/flatly/variables";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootswatch/flatly/bootswatch";
+
+$font-family-brand: 'Shadows Into Light', cursive;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  padding: 10px 0;
+}
+
+.navbar-brand {
+  line-height: .5em;
+  font-family: $font-family-brand;
+  font-size: 3em;
+}
+
+.navbar-brand:hover {
+  cursor: default;
+}
