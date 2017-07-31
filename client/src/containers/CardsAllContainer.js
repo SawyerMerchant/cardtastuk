@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CardsAll from "../components/CardsAll";
-import { getAllCards } from "../actions/cards";
+import { getAllCards } from "../actions/cardsAll";
 
 class CardsAllContainer extends Component {
   componentDidMount() {
@@ -15,7 +15,7 @@ class CardsAllContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    cards: state.cards.data
+    cards: state.cardsAll.data
   };
 };
 

@@ -1,24 +1,24 @@
-import * as Actions from "../actions/cards";
+import * as Actions from "../actions/currentCard";
 
 const initialState = {
   data: []
 };
 
-export const cards = (state = initialState, action) => {
+export const currentCard = (state = initialState, action) => {
   switch (action.type) {
-    case Actions.GET_ALL_CARDS_SUCCESS:
+    case Actions.GET_CURRENT_CARD_SUCCESS:
       return {
         ...state,
         data: action.data,
         isFetching: false
       };
-    case Actions.GET_ALL_CARDS_REQUEST:
+    case Actions.GET_CURRENT_CARD_REQUEST:
       return {
         ...state,
         isFetching: true,
         error: null
       };
-    case Actions.GET_ALL_CARDS_FAILURE:
+    case Actions.GET_CURRENT_CARD_FAILURE:
       return {
         ...state,
         isFetching: false,
