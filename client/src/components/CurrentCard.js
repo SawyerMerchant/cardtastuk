@@ -45,7 +45,7 @@ const CurrentCard = ({ card }) => {
         </Col>
         <Col md={6} xs={12} className="card-details">
           <h2 className="card-title">{card.name}</h2>
-
+          
           <h4>
             Stamped and mailed
             <br />

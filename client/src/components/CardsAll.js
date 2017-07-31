@@ -32,10 +32,15 @@ const buildCardPanels = cards => {
 const CardsAll = ({ cards }) => {
   let cardPanels = buildCardPanels(cards);
   return (
-    <div>
+    <div className="cards-all">
       <Jumbotron>
         <Grid>
-          <h1>Find the perfect card for your loved ones today.</h1>
+          <Col md={6}>
+            <Image src="/table-hands.png" responsive rounded/>
+          </Col>
+          <Col md={6}>
+            <h1>Find the perfect card for your loved ones today.</h1>
+          </Col>
         </Grid>
       </Jumbotron>
       <Grid>

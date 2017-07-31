@@ -1,9 +1,29 @@
-.panel {
-  cursor: pointer;
-  transition: box-shadow .3s ease;
-}
+.cards-all {
 
-.panel:hover {
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
-  transition: box-shadow .3s ease;
+  .row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .panel {
+    cursor: pointer;
+    transition: box-shadow .3s ease;
+  }
+  
+  .panel:hover {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow .3s ease;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto 1.5em auto;
+  }
 }
