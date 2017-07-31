@@ -13,6 +13,14 @@ COUNT.times do
   categories << Category.create(name: Faker::Hipster.word)
 end
 
+puts "making prices"
+Price.create(x25: 300,
+            x100: 290,
+            x250: 281,
+            x500: 234,
+           x1000: 202,
+           x2000: 185)
+
 puts "making tags"
 tags = []
 COUNT.times do
@@ -33,7 +41,8 @@ cards = []
     small_img_url:  "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/thumb/christmas_decoration_on_tree_187371.jpg",
     default_greeting: Faker::Hipster.paragraph,
     orientation: orientation,
-    size: "5x7"
+    size: "5x7",
+    price_id: Price.last.id
   )
   cards << card
 end
