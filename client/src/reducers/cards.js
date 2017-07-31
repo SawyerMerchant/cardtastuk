@@ -24,7 +24,7 @@ export const cards = (state = initialState, action) => {
         isFetching: false,
         error: true
       };
-    default: 
+    default:
       return state;
   }
-}
+};
