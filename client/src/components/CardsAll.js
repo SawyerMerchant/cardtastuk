@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Grid, Row, Col, Panel, Image, Button } from "react-bootstrap";
+import { Jumbotron, Grid, Row, Col, Panel, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 
@@ -18,9 +18,9 @@ const buildTagsString = tags => {
 
 const buildCardPanels = cards => {
   return cards.map(card =>
-    <Col md={4} xs={12} key={card.id}>
+    <Col md={4} xs={12} key={card.id} className="card-panel">
         <LinkContainer to={`/cards/${card.id}`}>
-      <Panel header={<h2>{card.name}</h2>}>
+      <Panel header={<h2 className="card-title">{card.name}</h2>}>
         <Image src={card.medium_img_url} responsive thumbnail />
         <p>Category: {card.category.name}</p>
         <p>Tags: {buildTagsString(card.tags)}</p>

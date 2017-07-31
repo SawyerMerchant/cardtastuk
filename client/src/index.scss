@@ -8,6 +8,9 @@ $headings-font-family: $font-family-serif;
 $brand-primary: #C8A2C8;
 $brand-success: adjust-hue($brand-primary, 30deg);
 $brand-info: adjust-hue($brand-primary, -45deg);
+$brand-inverse: adjust-hue($brand-primary, 180deg);
+
+$btn-info-bg: $brand-inverse;
 
 $navbar-default-brand-hover-color: white;
 $navbar-height: 70px;
@@ -61,4 +64,18 @@ body {
 .panel:hover {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
   transition: box-shadow .3s ease;
+}
+
+.card-title {
+  text-transform: capitalize;
+}
+
+.card-details {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ecf0f1;
+}
+
+.card-details-button {
+  display: block;
+  margin: 2em auto;
 }
