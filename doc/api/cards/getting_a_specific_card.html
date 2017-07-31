@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cards API</title>
+    <meta charset="utf-8">
+    <style>
+      
+body {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+
+.container {
+  width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  zoom: 1;
+}
+
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 8.5px;
+  margin: 0 0 18px;
+  line-height: 18px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+td.required .name:after {
+  float: right;
+  content: "required";
+  font-weight: normal;
+  color: #F08080;
+}
+
+a{
+  color: #0069d6;
+  text-decoration: none;
+  line-height: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #404040;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+h3{
+  font-size: 18px;
+  line-height: 36px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 36px;
+}
+
+table{
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-collapse: separate;
+  font-size: 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+table th+th, table td+td {
+  border-left: 1px solid #ddd;
+}
+table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cards API</h1>
+
+      <div class="article">
+        <h2>Getting a specific card</h2>
+        <h3>GET api/v1/cards/282</h3>
+
+
+
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET api/v1/cards/282</pre>
+
+
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+ETag: W/&quot;166eaf5ceb41cce616fc356da08e39d6&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 723e7507-2e0c-4512-b757-daaa4942cd27
+X-Runtime: 0.012115
+Content-Length: 274</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;id&quot;: 282,
+  &quot;name&quot;: null,
+  &quot;large_img_url&quot;: null,
+  &quot;medium_img_url&quot;: null,
+  &quot;small_img_url&quot;: null,
+  &quot;default_greeting&quot;: null,
+  &quot;orientation&quot;: null,
+  &quot;size&quot;: null,
+  &quot;category_id&quot;: 288,
+  &quot;created_at&quot;: &quot;2017-07-31T15:09:30.234Z&quot;,
+  &quot;updated_at&quot;: &quot;2017-07-31T15:09:30.234Z&quot;,
+  &quot;category&quot;: {
+    &quot;name&quot;: null
+  },
+  &quot;tags&quot;: [
+
+  ]
+}</pre>
+          <h3>Request</h3>
+
+            <h4>Headers</h4>
+            <pre class="request headers">Host: example.org
+Cookie: </pre>
+
+          <h4>Route</h4>
+          <pre class="request route highlight">GET api/v1/cards/282</pre>
+
+
+
+
+            <h3>Response</h3>
+              <h4>Headers</h4>
+              <pre class="response headers">Content-Type: application/json; charset=utf-8
+ETag: W/&quot;166eaf5ceb41cce616fc356da08e39d6&quot;
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: 6f64ec39-1cc5-4514-ad43-553076256f2d
+X-Runtime: 0.004154
+Content-Length: 274</pre>
+            <h4>Status</h4>
+            <pre class="response status">200 OK</pre>
+              <h4>Body</h4>
+              <pre class="response body">{
+  &quot;id&quot;: 282,
+  &quot;name&quot;: null,
+  &quot;large_img_url&quot;: null,
+  &quot;medium_img_url&quot;: null,
+  &quot;small_img_url&quot;: null,
+  &quot;default_greeting&quot;: null,
+  &quot;orientation&quot;: null,
+  &quot;size&quot;: null,
+  &quot;category_id&quot;: 288,
+  &quot;created_at&quot;: &quot;2017-07-31T15:09:30.234Z&quot;,
+  &quot;updated_at&quot;: &quot;2017-07-31T15:09:30.234Z&quot;,
+  &quot;category&quot;: {
+    &quot;name&quot;: null
+  },
+  &quot;tags&quot;: [
+
+  ]
+}</pre>
+      </div>
+    </div>
+  </body>
+</html>

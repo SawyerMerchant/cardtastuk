@@ -34,6 +34,7 @@ group :development, :test do
   gem 'rack-test', require: 'rack/test'
   gem 'factory_girl_rails'
   gem 'shoulda'
+  gem 'rspec_api_documentation'
 end
 
 group :development do

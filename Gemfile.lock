@@ -157,6 +157,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
+    mustache (1.0.5)
     nenv (0.3.0)
     nio4r (2.1.0)
     nokogiri (1.8.0)
@@ -237,6 +238,10 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
+    rspec_api_documentation (5.0.0)
+      activesupport (>= 3.0.0)
+      mustache (~> 1.0, >= 0.99.4)
+      rspec (~> 3.0)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -293,6 +298,7 @@ DEPENDENCIES
   rack-test
   rails (~> 5.0.4)
   rspec-rails (~> 3.5)
+  rspec_api_documentation
   shoulda
   spring
   spring-watcher-listen (~> 2.0.0)
