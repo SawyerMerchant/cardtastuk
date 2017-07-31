@@ -1,0 +1,10 @@
+.jumbotron.landing-page {
+  background-image: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .8) ), url("/cover.jpeg");
+  background-size: cover;
+  min-height: 600px;
+
+  h1 {
+    margin-top: 1.5em;
+    color: white;
+  }
+}

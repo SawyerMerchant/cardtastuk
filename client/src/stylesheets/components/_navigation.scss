@@ -1,0 +1,14 @@
+.navbar {
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.navbar-brand {
+  line-height: .5em;
+  font-family: $font-family-brand;
+  font-size: 3em;
+}
+
+.navbar-brand:hover {
+  cursor: default;
+}

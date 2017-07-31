@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CurrentCard from "../components/CurrentCard";
+import CurrentCardEdit from "../components/CurrentCardEdit";
 import { getCurrentCard } from "../actions/currentCard";
+import { changeCardMessage } from "../actions/cardMessage";
 
-class CurrentCardContainer extends Component {
+class CurrentCardEditContainer extends Component {
   componentDidMount() {
     this.props.getCurrentCard();
   }
 
   render() {
-    return <CurrentCard {...this.props} />;
+    return <CurrentCardEdit {...this.props} />;
   }
 }
 
@@ -23,10 +24,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getCurrentCard: () => {
       dispatch(getCurrentCard(ownProps.match.params.id));
+    },
+    onChangeMessage: e => {
+      dispatch(changeCardMessage(e.target.value));
     }
   };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  CurrentCardContainer
+  CurrentCardEditContainer
 );

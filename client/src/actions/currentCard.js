@@ -1,3 +1,5 @@
+import { changeCardMessage } from "../actions/cardMessage";
+
 export const GET_CURRENT_CARD_REQUEST = "GET_CURRENT_CARD_REQUEST";
 export const GET_CURRENT_CARD_SUCCESS = "GET_CURRENT_CARD_SUCCESS";
 export const GET_CURRENT_CARD_FAILURE = "GET_CURRENT_CARD_FAILURE";
@@ -35,8 +37,8 @@ export function getCurrentCard(id) {
         return response.json();
       })
       .then(json => {
-        console.log(json);
         dispatch(getCurrentCardSuccess(json));
+        dispatch(changeCardMessage(json.default_greeting));
       })
       .catch(error => {
         dispatch(getCurrentCardFailure(error));
