@@ -19,13 +19,13 @@ const buildTagsString = tags => {
 const buildCardPanels = cards => {
   return cards.map(card =>
     <Col md={4} xs={12} key={card.id} className="card-panel">
-        <LinkContainer to={`/cards/${card.id}`}>
-      <Panel header={<h2 className="card-title">{card.name}</h2>}>
-        <Image src={card.medium_img_url} responsive thumbnail />
-        <p>Category: {card.category.name}</p>
-        <p>Tags: {buildTagsString(card.tags)}</p>
-      </Panel>
-        </LinkContainer>
+      <LinkContainer to={`/cards/${card.id}`}>
+        <Panel header={<h2 className="card-title">{card.name}</h2>}>
+          <Image src={card.medium_img_url} responsive thumbnail />
+          <p>Category: {card.category.name}</p>
+          <p>Tags: {buildTagsString(card.tags)}</p>
+        </Panel>
+      </LinkContainer>
     </Col>
   );
 };
