@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
 import Navigation from "./Navigation";
+import CardsAll from "./CardsAll";
 import LandingPage from "./LandingPage";
-
 
 class App extends Component {
   render() {
@@ -12,7 +12,8 @@ class App extends Component {
         <ScrollToTop>
           <Navigation title={"CardTastuk"} />
           <Switch>
-          <Route path="/" component={LandingPage} />
+            <Route path="/cards" component={CardsAll} />
+            <Route exact path="/" component={LandingPage} />
           </Switch>
         </ScrollToTop>
       </Router>

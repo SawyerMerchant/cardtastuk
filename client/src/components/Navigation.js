@@ -2,16 +2,15 @@ import React from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-
 const NavLinks = () => {
   return (
     <Navbar.Collapse>
       <Nav pullRight>
-        <LinkContainer activeClassName="active" to="/">
-          <NavItem eventKey={1}>Home</NavItem>
+        <LinkContainer activeClassName="active" exact to="/">
+          <NavItem>Home</NavItem>
         </LinkContainer>{" "}
         <LinkContainer activeClassName="active" to="/cards">
-          <NavItem eventKey={2}>Cards</NavItem>
+          <NavItem>Cards</NavItem>
         </LinkContainer>
       </Nav>
     </Navbar.Collapse>

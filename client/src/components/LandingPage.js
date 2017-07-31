@@ -1,5 +1,5 @@
-import React from 'react';
-import { Jumbotron, Grid, Row, Col } from 'react-bootstrap';
+import React from "react";
+import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
 
 const LandingPage = () => {
   return (
@@ -12,7 +12,7 @@ const LandingPage = () => {
         </Row>
       </Grid>
     </Jumbotron>
-  )
+  );
 };
 
 export default LandingPage;
