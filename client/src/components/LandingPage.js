@@ -1,6 +1,6 @@
 import React from "react";
 import { Jumbotron, Grid, Row, Col } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   return (
@@ -18,7 +18,8 @@ const LandingPage = () => {
         <Row>
           <h2>
             View our selection of cards
-            {" "}<Link to="/cards">
+            {" "}
+            <Link to="/cards">
               here.
             </Link>
           </h2>

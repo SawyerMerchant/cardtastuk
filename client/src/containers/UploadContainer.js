@@ -9,8 +9,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-  }
+  return {};
 };
 
 const UploadContainer = connect(mapStateToProps, mapDispatchToProps)(Upload);

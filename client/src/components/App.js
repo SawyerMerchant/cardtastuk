@@ -15,10 +15,7 @@ class App extends Component {
         <ScrollToTop>
           <Navigation title={"CardTastuk"} />
           <Switch>
-            <Route
-              path="/cards/:id/upload"
-              component={UploadContainer}
-            />
+            <Route path="/cards/:id/upload" component={UploadContainer} />
             <Route
               path="/cards/:id/edit"
               component={CurrentCardEditContainer}

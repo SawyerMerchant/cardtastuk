@@ -20,10 +20,11 @@ const Upload = ({ card, cardMessage }) => {
           <h2 className="card-title">2. Upload a list of users</h2>
 
           <p>
-            Type a message and sign your name on the site and we'll mail them
-            for you.
+            If you've already uploaded a list of users, go ahead and select one of those now.
           </p>
-
+          <p>
+            Otherwise, upload users here.
+          </p>
           <LinkContainer
             to={`/cards/${card.id}/upload`}
             className="card-details-button"

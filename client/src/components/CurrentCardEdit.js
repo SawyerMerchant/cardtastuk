@@ -29,8 +29,8 @@ const CurrentCardEdit = ({ card, onChangeMessage }) => {
           <h2 className="card-title">1. Add a message</h2>
 
           <p>
-            Type a message and sign your name on the site and we'll mail them
-            for you.
+            Write the message you would like to send to all your recipients in
+            the card to the left.
           </p>
 
           <LinkContainer
@@ -38,7 +38,7 @@ const CurrentCardEdit = ({ card, onChangeMessage }) => {
             className="card-details-button"
           >
             <Button bsStyle="info">
-              Upload a list of users
+              Next: Upload a list of users
             </Button>
           </LinkContainer>
         </Col>

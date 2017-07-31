@@ -1,6 +1,12 @@
 .card-details {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   border: 1px solid #ecf0f1;
+
+  h4 {
+    margin-top: 2em;
+    text-align: center;
+  }
+
   p {
     font-size: 1.4em;
   }
@@ -13,5 +19,6 @@
 
 .popover-button {
   display: block;
-  margin: 2em auto;
+  border-radius: 20px;
+  margin: 2em auto 4em auto;
 }
