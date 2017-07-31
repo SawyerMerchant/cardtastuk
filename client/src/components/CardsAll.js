@@ -2,7 +2,6 @@ import React from "react";
 import { Jumbotron, Grid, Row, Col, Panel, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-
 const buildTagsString = tags => {
   let tagString = "";
   tags.forEach((tag, index) => {

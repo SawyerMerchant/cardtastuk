@@ -15,7 +15,7 @@ class CurrentCardContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    card: state.currentCard.data,
+    card: state.currentCard.data
   };
 };
 
@@ -27,4 +27,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CurrentCardContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  CurrentCardContainer
+);

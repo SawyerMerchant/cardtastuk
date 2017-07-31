@@ -79,3 +79,37 @@ body {
   display: block;
   margin: 2em auto;
 }
+
+.card-edit-container {
+  position: relative;
+}
+
+.card-edit-bg {
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.card-edit-message {
+  padding-top: .5em;
+  margin: 0 .5em;
+  font-size: 2em;
+
+  form {
+    textarea {
+      font-size: inherit;
+      background: none;
+      border: none;
+      color: $text-color;
+    }
+    textarea::placeholder {
+      color: $text-color;
+    }
+  }
+}
+
+@media (max-width: 992px) { 
+  .card-edit-bg {
+    max-height: 600px;
+  }
+}

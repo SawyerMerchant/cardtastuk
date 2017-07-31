@@ -35,7 +35,6 @@ export function getCurrentCard(id) {
         return response.json();
       })
       .then(json => {
-        console.log(json);
         dispatch(getCurrentCardSuccess(json));
       })
       .catch(error => {
