@@ -57,7 +57,7 @@ end
 puts "Making Users"
 users = []
 COUNT.times do
-  user = User.new(email: Faker::Internet.email, password: "password", password_confirmation: "password")
+  user = User.new(email: Faker::Internet.email, password: "password", password_confirmation: "password", confirmed_at: DateTime.now)
   user.save!
   users << user
 end

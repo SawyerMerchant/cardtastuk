@@ -14,7 +14,7 @@ class Upload extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      price: 0
+      price: "$0.00"
     };
   }
 
@@ -84,7 +84,7 @@ class Upload extends Component {
             <form id="add-to-cart" onSubmit={(e) => onAddToCart(e, card, currentList)} onChange={(e) => this.onQuantityChange(e, card.price)}>
               <FormGroup controlId="quantity">
                 <ControlLabel>Quantity</ControlLabel>
-                <FormControl type="number" name="quantity" defaultValue={0} required />
+                <FormControl type="number" name="quantity" defaultValue={0} min={1} step={1} required />
               </FormGroup>
               <Button bsStyle="info" bsSize="large" type="submit" block>
                 <Glyphicon glyph="shopping-cart" />{" "}
