@@ -11,3 +11,7 @@ export const getParams = query => {
       return params;
     }, {});
 };
+
+export const calculatePrice = (quantity, prices) => {
+  
+};

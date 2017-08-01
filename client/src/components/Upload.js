@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import serialize from "form-serialize";
 import { Grid, Row, Col, Button, Glyphicon, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
+import { calculatePrice } from "../helpers";
 
 const buildListOptions = lists => {
   return lists.map(list => (
@@ -9,14 +11,28 @@ const buildListOptions = lists => {
 
 
 class Upload extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      price: 0
+    };
+  }
+
   componentWillMount() {
     if (!this.props.isAuthenticated) {
       this.props.history.push("/auth?error=unauthenticated");
     }
   }
 
+  onQuantityChange = (e, prices) => {
+    const form = e.target.parentNode.parentNode;
+    const quantity = serialize(form, {hash: true}).quantity || 0;
+    let price = calculatePrice(quantity, prices);
+    console.log(quantity, prices);
+  }
+
   render() {
-    const { card, cardMessage, lists, currentList, user, setCurrentList, onAddToCart } = this.props;
+    const { card, cardMessage, lists, currentList, user, setCurrentList, onAddToCart, onQuantityChange } = this.props;
     const listOptions = buildListOptions(lists);
 
     return (
@@ -61,12 +77,12 @@ class Upload extends Component {
               </Button>
             </form>
 
-            <h3>Total:</h3>
+            <h3>Total: {this.state.price}</h3>
 
-            <form id="add-to-cart" onSubmit={(e) => onAddToCart(e, card, currentList)}>
+            <form id="add-to-cart" onSubmit={(e) => onAddToCart(e, card, currentList)} onChange={(e) => this.onQuantityChange(e, card.price)}>
               <FormGroup controlId="quantity">
                 <ControlLabel>Quantity</ControlLabel>
-                <FormControl type="number" name="quantity" required />
+                <FormControl type="number" name="quantity" defaultValue={0} required />
               </FormGroup>
               <Button bsStyle="info" bsSize="large" type="submit" block>
                 <Glyphicon glyph="shopping-cart" />{" "}
