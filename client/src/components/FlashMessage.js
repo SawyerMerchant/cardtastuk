@@ -17,7 +17,7 @@ class FlashMessage extends Component {
     const { type, message } = this.props;
     if (this.state.visible) {
       return (
-        <Alert bsStyle={ type } onDismiss={this.handleAlertDismiss}>
+        <Alert bsStyle={type} onDismiss={this.handleAlertDismiss}>
           <Grid>
             <h4>{message}</h4>
           </Grid>

@@ -1,7 +1,7 @@
 import * as Actions from "../actions/user";
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   error: null,
   isFetching: false,
   data: {}

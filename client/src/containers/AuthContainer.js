@@ -10,14 +10,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       e.preventDefault();
       const form = e.target;
       const data = serialize(form);
-      dispatch(loginUser(data));
+      dispatch(loginUser(data, ownProps.history));
     },
     onRegister: e => {
       e.preventDefault();
       const form = e.target;
       const data = serialize(form);
-      console.log(data);
-      dispatch(registerUser(data));
+      dispatch(registerUser(data, ownProps.history));
     }
   };
 };

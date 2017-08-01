@@ -22,7 +22,7 @@ export function getUserLoginFailure(error) {
   };
 }
 
-export function registerUser(form) {
+export function registerUser(form, history) {
   let config = {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -42,6 +42,7 @@ export function registerUser(form) {
       })
       .then(json => {
         dispatch(getUserLoginSuccess(json));
+        history.goBack(); // redirect user to previous page before login was requested
       })
       .catch(error => {
         dispatch(getUserLoginFailure(error));
@@ -49,7 +50,7 @@ export function registerUser(form) {
   };
 }
 
-export function loginUser(form) {
+export function loginUser(form, history) {
   let config = {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -69,6 +70,7 @@ export function loginUser(form) {
       })
       .then(json => {
         dispatch(getUserLoginSuccess(json));
+        history.goBack(); // redirect user to previous page before login was requested
       })
       .catch(error => {
         dispatch(getUserLoginFailure(error));

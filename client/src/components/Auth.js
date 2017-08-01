@@ -18,7 +18,12 @@ const Auth = ({ onLogin, onRegister, location }) => {
   let query = getParams(location.search);
   let flash = null;
   if (query.error === "unauthenticated") {
-    flash = <FlashMessage type="warning" message="Please login first before continuing." />
+    flash = (
+      <FlashMessage
+        type="warning"
+        message="Please login first before continuing."
+      />
+    );
   }
   return (
     <div>
