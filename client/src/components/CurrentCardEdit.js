@@ -21,7 +21,7 @@ const CurrentCardEdit = ({ card, onChangeMessage }) => {
                   onChange={onChangeMessage}
                 />
               </form>
-              <p>Sincerely, &lt;User&gt;</p>
+              <p className="signature">Sincerely, &lt;User&gt;</p>
             </div>
           </div>
         </Col>

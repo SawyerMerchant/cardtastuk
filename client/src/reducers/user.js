@@ -4,7 +4,9 @@ const initialState = {
   isAuthenticated: true,
   error: null,
   isFetching: false,
-  data: {}
+  data: {
+    name: "George"
+  }
 };
 
 export const user = (state = initialState, action) => {

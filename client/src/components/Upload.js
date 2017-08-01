@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Button, Glyphicon, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
 
 const buildListOptions = lists => {
   return lists.map(list => (
@@ -17,7 +16,7 @@ class Upload extends Component {
   }
 
   render() {
-    const { card, cardMessage, lists } = this.props;
+    const { card, cardMessage, lists, currentList, user, setCurrentList } = this.props;
     const listOptions = buildListOptions(lists);
 
     return (
@@ -27,9 +26,9 @@ class Upload extends Component {
           <Col md={6} xs={12}>
             <div className="card-edit-container">
               <div className="card-edit-message">
-                <p>Dear &lt;First Name&gt;,</p>
+                <p>Dear {currentList.first_person.fname}</p>
                 <p>{cardMessage}</p>
-                <p>Sincerely, &lt;User&gt;</p>
+                <p className="signature">Sincerely, {user.name}</p>
               </div>
             </div>
           </Col>
@@ -40,22 +39,19 @@ class Upload extends Component {
               If you've already uploaded a list of users, go ahead and choose a
               list now.
             </p>
-            <form>
-              <FormGroup controlId="list_upload">
+            <form id="choose-list">
+              <FormGroup controlId="list" onChange={(e) => setCurrentList(e, lists)}>
                 <ControlLabel>Choose a group to receive your cards:</ControlLabel>
-                <FormControl componentClass="select" name="list">
+                <FormControl componentClass="select" name="list_id">
                   {listOptions}
                 </FormControl>
               </FormGroup>
             </form>
 
-            <br />
-            <br />
-
             <p>
               Otherwise, upload a group of users here.
             </p>
-            <form>
+            <form id="list-upload">
               <FormGroup controlId="list_upload">
                 <ControlLabel>Select a CSV</ControlLabel>
                 <FormControl type="file" name="list_upload" required />
@@ -65,10 +61,9 @@ class Upload extends Component {
               </Button>
             </form>
 
-            <br />
-            <br />
+            <h3>Total:</h3>
 
-            <form>
+            <form id="add-to-cart">
               <FormGroup controlId="quantity">
                 <ControlLabel>Quantity</ControlLabel>
                 <FormControl type="number" name="quantity" required />
@@ -78,7 +73,6 @@ class Upload extends Component {
                 Add To Cart
               </Button>
             </form>
-            <br />
           </Col>
         </Row>
       </Grid>

@@ -1,10 +1,32 @@
-import * as Actions from "../actions/lists";
+import * as Actions from "../actions/listsAll";
 
 const initialState = {
-  data: []
+  data: [
+    {
+      id: 1,
+      name: "Family",
+      first_person: {
+        fname: "Todd"
+      }
+    },
+    {
+      id: 2,
+      name: "Friends",
+      first_person: {
+        fname: "Martha"
+      }
+    },
+    {
+      id: 3,
+      name: "Co-workers",
+      first_person: {
+        fname: "Janice"
+      }
+    }
+  ]
 };
 
-export const lists = (state = initialState, action) => {
+export const listsAll = (state = initialState, action) => {
   switch (action.type) {
     case Actions.GET_USER_LISTS_SUCCESS:
       return {
