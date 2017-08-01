@@ -29,7 +29,8 @@ export function registerUser(form, history) {
     body: JSON.stringify({
       email: form.email,
       password: form.password,
-      password_confirmation: form.password_confirmation
+      password_confirmation: form.password_confirmation,
+      confirm_success_url: "/"
     })
   };
 

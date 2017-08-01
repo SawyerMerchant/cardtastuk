@@ -53,7 +53,7 @@ const CurrentCard = ({ card }) => {
           </h4>
           <OverlayTrigger
             trigger="click"
-            placement="left"
+            placement="top"
             overlay={pricingPopover}
           >
             <Button bsStyle="success" className="popover-button">

@@ -34,7 +34,7 @@ class Upload extends Component {
   }
 
   render() {
-    const { card, cardMessage, lists, currentList, user, setCurrentList, onAddToCart, onQuantityChange } = this.props;
+    const { card, cardMessage, lists, currentList, user, setCurrentList, onAddToCart } = this.props;
     const listOptions = buildListOptions(lists);
 
     return (

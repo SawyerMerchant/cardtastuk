@@ -24,6 +24,13 @@ const Auth = ({ onLogin, onRegister, location }) => {
         message="Please login first before continuing."
       />
     );
+  } else if (query.error === "bad_password") {
+    flash = (
+      <FlashMessage
+        type="danger"
+        message="Your passwords did not match. Please try again."
+      />
+    );
   }
   return (
     <div>

@@ -16,7 +16,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       e.preventDefault();
       const form = e.target;
       const data = serialize(form, {hash: true});
-      dispatch(registerUser(data, ownProps.history));
+      if (data.password === data.password_confirmation) {
+        dispatch(registerUser(data, ownProps.history));
+      } else {
+        ownProps.history.push('/auth?error=bad_password');
+      }
     }
   };
 };
