@@ -18,7 +18,8 @@ const mapStateToProps = state => {
   return {
     card: state.currentCard.data,
     cardMessage: state.cardMessage || state.currentCard.data.default_greeting,
-    isAuthenticated: state.user.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated,
+    lists: state.lists.data
   };
 };
 
