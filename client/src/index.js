@@ -9,11 +9,23 @@ import cardTastukApp from "./reducers";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const persistedState = localStorage.getItem("cardTastukState")
+  ? JSON.parse(localStorage.getItem("cardTastukState"))
+  : {};
+
 const store = createStore(
   cardTastukApp,
-  {},
+  {
+    user: persistedState.user,
+    listsAll: persistedState.listsAll,
+    shoppingCart: persistedState.shoppingCart
+  },
   composeEnhancers(applyMiddleware(thunk))
 );
+
+store.subscribe(() => {
+  localStorage.setItem("cardTastukState", JSON.stringify(store.getState()));
+});
 
 ReactDOM.render(
   <Provider store={store}>

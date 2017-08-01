@@ -49,13 +49,19 @@ const Auth = ({ onLogin, onRegister, location }) => {
                     </FormGroup>
                     <FormGroup controlId="password">
                       <ControlLabel>Password</ControlLabel>
-                      <FormControl type="password" name="password" required />
+                      <FormControl
+                        type="password"
+                        name="password"
+                        minLength={6}
+                        required
+                      />
                     </FormGroup>
                     <FormGroup controlId="password_confirmation">
                       <ControlLabel>Confirm your password</ControlLabel>
                       <FormControl
                         type="password"
                         name="password_confirmation"
+                        minLength={6}
                         required
                       />
                     </FormGroup>

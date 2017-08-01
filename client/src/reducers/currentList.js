@@ -15,7 +15,7 @@ export const currentList = (state = initialState, action) => {
     case Actions.SET_CURRENT_LIST:
       return {
         ...state,
-        data: action.data,
+        data: action.data
       };
     default:
       return state;

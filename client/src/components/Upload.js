@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 import serialize from "form-serialize";
-import { Grid, Row, Col, Button, Glyphicon, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
+import {
+  Grid,
+  Row,
+  Col,
+  Button,
+  Glyphicon,
+  FormGroup,
+  ControlLabel,
+  FormControl
+} from "react-bootstrap";
 import { calculatePrice } from "../helpers";
 
 const buildListOptions = lists => {
-  return lists.map(list => (
+  return lists.map(list =>
     <option key={list.id} value={list.id}>{list.name}</option>
-  ));
+  );
 };
-
 
 class Upload extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       price: "$0.00"
     };
@@ -26,15 +34,23 @@ class Upload extends Component {
 
   onQuantityChange = (e, prices) => {
     const form = e.target.parentNode.parentNode;
-    const quantity = serialize(form, {hash: true}).quantity || 0;
+    const quantity = serialize(form, { hash: true }).quantity || 0;
     let price = calculatePrice(+quantity, prices);
     this.setState({
       price
     });
-  }
+  };
 
   render() {
-    const { card, cardMessage, lists, currentList, user, setCurrentList, onAddToCart } = this.props;
+    const {
+      card,
+      cardMessage,
+      lists,
+      currentList,
+      user,
+      setCurrentList,
+      onAddToCart
+    } = this.props;
     const listOptions = buildListOptions(lists);
 
     return (
@@ -58,8 +74,13 @@ class Upload extends Component {
               list now.
             </p>
             <form id="choose-list">
-              <FormGroup controlId="list" onChange={(e) => setCurrentList(e, lists)}>
-                <ControlLabel>Choose a group to receive your cards:</ControlLabel>
+              <FormGroup
+                controlId="list"
+                onChange={e => setCurrentList(e, lists)}
+              >
+                <ControlLabel>
+                  Choose a group to receive your cards:
+                </ControlLabel>
                 <FormControl componentClass="select" name="list_id">
                   {listOptions}
                 </FormControl>
@@ -81,10 +102,21 @@ class Upload extends Component {
 
             <h3>Total: {this.state.price}</h3>
 
-            <form id="add-to-cart" onSubmit={(e) => onAddToCart(e, card, currentList)} onChange={(e) => this.onQuantityChange(e, card.price)}>
+            <form
+              id="add-to-cart"
+              onSubmit={e => onAddToCart(e, card, currentList)}
+              onChange={e => this.onQuantityChange(e, card.price)}
+            >
               <FormGroup controlId="quantity">
                 <ControlLabel>Quantity</ControlLabel>
-                <FormControl type="number" name="quantity" defaultValue={0} min={1} step={1} required />
+                <FormControl
+                  type="number"
+                  name="quantity"
+                  defaultValue={0}
+                  min={1}
+                  step={1}
+                  required
+                />
               </FormGroup>
               <Button bsStyle="info" bsSize="large" type="submit" block>
                 <Glyphicon glyph="shopping-cart" />{" "}
