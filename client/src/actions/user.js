@@ -25,8 +25,12 @@ export function getUserLoginFailure(error) {
 export function registerUser(form, history) {
   let config = {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `email=${form.email}&password=${form.password}&password_confirmation=${form.password_confirmation}`
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: form.email,
+      password: form.password,
+      password_confirmation: form.password_confirmation
+    })
   };
 
   return dispatch => {
@@ -41,7 +45,7 @@ export function registerUser(form, history) {
         return response.json();
       })
       .then(json => {
-        dispatch(getUserLoginSuccess(json));
+        dispatch(getUserLoginSuccess(json.data));
         history.goBack(); // redirect user to previous page before login was requested
       })
       .catch(error => {
@@ -53,8 +57,11 @@ export function registerUser(form, history) {
 export function loginUser(form, history) {
   let config = {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `email=${form.email}&password=${form.password}`
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: form.email,
+      password: form.password
+    })
   };
 
   return dispatch => {
@@ -69,7 +76,7 @@ export function loginUser(form, history) {
         return response.json();
       })
       .then(json => {
-        dispatch(getUserLoginSuccess(json));
+        dispatch(getUserLoginSuccess(json.data));
         history.goBack(); // redirect user to previous page before login was requested
       })
       .catch(error => {
