@@ -3668,6 +3668,10 @@ js-tokens@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
 
+js-uuid@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/js-uuid/-/js-uuid-0.0.6.tgz#bb16f682478e9efac262b45ccc2a9adf5332a5be"
+
 js-yaml@^3.4.3, js-yaml@^3.5.1, js-yaml@^3.7.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.9.0.tgz#4ffbbf25c2ac963b8299dc74da7e3740de1c18ce"

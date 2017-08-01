@@ -16,7 +16,7 @@ class Upload extends Component {
   }
 
   render() {
-    const { card, cardMessage, lists, currentList, user, setCurrentList } = this.props;
+    const { card, cardMessage, lists, currentList, user, setCurrentList, onAddToCart } = this.props;
     const listOptions = buildListOptions(lists);
 
     return (
@@ -63,7 +63,7 @@ class Upload extends Component {
 
             <h3>Total:</h3>
 
-            <form id="add-to-cart">
+            <form id="add-to-cart" onSubmit={(e) => onAddToCart(e, card, currentList)}>
               <FormGroup controlId="quantity">
                 <ControlLabel>Quantity</ControlLabel>
                 <FormControl type="number" name="quantity" required />

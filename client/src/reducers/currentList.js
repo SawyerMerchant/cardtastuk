@@ -2,9 +2,10 @@ import * as Actions from "../actions/currentList";
 
 const initialState = {
   data: {
+    id: 1,
+    name: "Family",
     first_person: {
-      fname: "John",
-      lname: "Doe"
+      fname: "Todd"
     }
   }
 };
