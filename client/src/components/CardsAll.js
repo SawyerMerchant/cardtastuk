@@ -36,7 +36,7 @@ const CardsAll = ({ cards }) => {
       <Jumbotron>
         <Grid>
           <Col md={6}>
-            <Image src="/table-hands.png" responsive rounded/>
+            <Image src="/table-hands.png" responsive rounded />
           </Col>
           <Col md={6}>
             <h1>Find the perfect card for your loved ones today.</h1>

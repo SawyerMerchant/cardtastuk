@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import Upload from "../components/Upload";
 import { getCurrentCard } from "../actions/currentCard";

@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import Auth from "../components/Auth";
 import serialize from "form-serialize";
 import { registerUser, loginUser } from "../actions/user";
+import { withRouter } from "react-router-dom";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
@@ -21,8 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const AuthContainer = connect(null, mapDispatchToProps)(
-  Auth
-);
+const AuthContainer = connect(null, mapDispatchToProps)(Auth);
 
-export default AuthContainer;
+export default withRouter(AuthContainer);
