@@ -27,8 +27,10 @@ class Upload extends Component {
   onQuantityChange = (e, prices) => {
     const form = e.target.parentNode.parentNode;
     const quantity = serialize(form, {hash: true}).quantity || 0;
-    let price = calculatePrice(quantity, prices);
-    console.log(quantity, prices);
+    let price = calculatePrice(+quantity, prices);
+    this.setState({
+      price
+    });
   }
 
   render() {
