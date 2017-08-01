@@ -53,3 +53,11 @@ cards.each do |card|
   card.tags << tags[1]
   card.tags << tags[2]
 end
+
+puts "Making Users"
+users = []
+COUNT.times do
+  user = User.new(email: Faker::Internet.email, password: "password", password_confirmation: "password")
+  user.save!
+  users << user
+end
