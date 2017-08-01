@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
+  mount_devise_token_auth_for 'User', at: 'auth'#, controllers: {
+                                        #   confirmations:      'auth/confirmations',
+                                        #   passwords:          'auth/passwords',
+                                        #   registrations:      'auth/registrations',
+                                        #   sessions:           'auth/sessions',
+                                        # }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
