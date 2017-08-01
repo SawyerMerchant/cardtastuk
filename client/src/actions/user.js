@@ -22,17 +22,44 @@ export function getUserLoginFailure(error) {
   };
 }
 
-export function getUserLogin(form) {
+export function registerUser(form) {
   let config = {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `email=${form.email}&password=${form.password}&password_confirmation=${form.passwordConfirmation}`
+    body: `email=${form.email}&password=${form.password}&password_confirmation=${form.password_confirmation}`
   };
 
   return dispatch => {
     dispatch(getUserLoginRequest());
 
     fetch("/auth", config)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+
+        return response.json();
+      })
+      .then(json => {
+        dispatch(getUserLoginSuccess(json));
+      })
+      .catch(error => {
+        dispatch(getUserLoginFailure(error));
+      });
+  };
+}
+
+export function loginUser(form) {
+  let config = {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `email=${form.email}&password=${form.password}`
+  };
+
+  return dispatch => {
+    dispatch(getUserLoginRequest());
+
+    fetch("/auth/sign_in", config)
       .then(response => {
         if (!response.ok) {
           throw new Error(`${response.status}: ${response.statusText}`);

@@ -1,10 +1,19 @@
-import React from "react";
+import React, { Component } from 'react';
 import { Grid, Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-const Upload = ({ card, cardMessage }) => {
-  return (
-    <Grid className="upload">
+class Upload extends Component {
+  componentWillMount() {
+    if (!this.props.isAuthenticated) {
+      this.props.history.push('/auth');
+    }
+  }
+
+  render() {
+    const { card, cardMessage } = this.props;
+
+    return (
+      <Grid className="upload">
       <Row>
         <h1 className="card-title">{card.name}</h1>
         <Col md={6} xs={12}>
@@ -35,8 +44,9 @@ const Upload = ({ card, cardMessage }) => {
           </LinkContainer>
         </Col>
       </Row>
-    </Grid>
-  );
-};
+      </Grid>
+    );
+  }
+}
 
 export default Upload;

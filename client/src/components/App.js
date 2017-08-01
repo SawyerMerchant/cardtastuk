@@ -6,16 +6,18 @@ import CardsAllContainer from "../containers/CardsAllContainer";
 import CurrentCardContainer from "../containers/CurrentCardContainer";
 import CurrentCardEditContainer from "../containers/CurrentCardEditContainer";
 import UploadContainer from "../containers/UploadContainer";
+import AuthContainer from "../containers/AuthContainer";
 import LandingPage from "./LandingPage";
 
 class App extends Component {
   render() {
-
     if (!navigator.cookieEnabled) {
-      <Router>
-        <Navigation title={"CardTastuk"} />
-        <h1>You must enable cookies in order to use this website.</h1>
-      </Router>
+      return (
+        <Router>
+          <Navigation title={"CardTastuk"} />
+          <h1>You must enable cookies in order to use this website.</h1>
+        </Router>
+      )
     }
     return (
       <Router>
@@ -29,6 +31,7 @@ class App extends Component {
             />
             <Route path="/cards/:id" component={CurrentCardContainer} />
             <Route path="/cards" component={CardsAllContainer} />
+            <Route path="/auth" component={AuthContainer} />
             <Route exact path="/" component={LandingPage} />
           </Switch>
         </ScrollToTop>

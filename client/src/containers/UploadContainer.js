@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Upload from "../components/Upload";
 import { getCurrentCard } from "../actions/currentCard";
+import { withRouter } from "react-router-dom";
 
 class UploadContainer extends Component {
   componentDidMount() {
@@ -16,7 +17,8 @@ class UploadContainer extends Component {
 const mapStateToProps = state => {
   return {
     card: state.currentCard.data,
-    cardMessage: state.cardMessage || state.currentCard.data.default_greeting
+    cardMessage: state.cardMessage || state.currentCard.data.default_greeting,
+    isAuthenticated: state.user.isAuthenticated
   };
 };
 
@@ -29,5 +31,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  UploadContainer
+  withRouter(UploadContainer)
 );
