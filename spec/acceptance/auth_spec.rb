@@ -10,23 +10,23 @@ resource "Authorizations" do
     # params = {
     #   :email => "sawyermerchant@gmail.com",
     #   :password => "password",
-    #   :password_confirmation => "password",
+    #   :password_verrification => "password",
     #   :confirm_success_url => "tastuk.com"
     # }.to_json
     # let(:raw_post) {params}
     parameter :email, "sawyermerchant@gmail.com", :required => true#, :scope => ""
     parameter :password, "password", :required => true#, :scope => ""
-    parameter :password_confirmation, "password", :required => true#, :scope => ""
+    parameter :password_verrification, "password", :required => true#, :scope => ""
     parameter :confirm_success_url, "http://tastuk.com", :required => true#, :scope => ""
 
     response_field :email, "sawyermerchant@gmail.com", :scope => :user, "Type" => "String"
     response_field :password, "password", :scope => :user, "Type" => "String"
-    response_field :password_confirmation, :scope => :user, "Type" => "String"
+    response_field :password_verrification, :scope => :user, "Type" => "String"
     response_field :confirm_success_url, "http://tastuk.com", :scope => :user, "Type" => "String"
 
     let(:email) { "sawyermerchant@gmail.com" }
     let(:password) { "password" }
-    let(:password_confirmation) { "password" }
+    let(:password_verrification) { "password" }
     let(:confirm_success_url) { "http://tastuk.com" }
 
     let(:raw_post) {params.to_json}
