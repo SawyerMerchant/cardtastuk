@@ -11,31 +11,23 @@ export function uploadList(file, name, user) {
   return dispatch => {
     let config = {
       method: "POST",
-      headers: { "Content-Type": "multipart/form-data" },
-      body: {
+      headers: { "Content-Type": "application/json" },
+      mode: "no-cors",
+      body: JSON.stringify({
         file: file,
         list_name: name,
         user_id: user.id
-      }
+      })
     };
 
-    console.log("CONFIG :");
-    console.log(config);
-    console.log("####################");
-
-    // fetch("https://requestb.in/1nmacum1", config)
-    //   .then(response => {
-    //     if (!response.ok) {
-    //       throw new Error(`${response.status}: ${response.statusText}`);
-    //     }
-
-    //     return response.json();
-    //   })
-    //   .then(json => {
-    //     console.log(json);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    fetch("https://requestb.in/16kwzo61", config)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 }

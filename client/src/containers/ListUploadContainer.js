@@ -5,12 +5,10 @@ import { uploadList } from "../actions/currentList";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onUpload: (e, user) => {
-      e.preventDefault();
-      console.log(e.currentTarget.result);
+    onUpload: (e, file, user) => {
       const form = e.target;
       const data = serialize(form, { hash: true });
-      dispatch(uploadList(e.currentTarget.result, data.list_name, user));
+      dispatch(uploadList(file, data.list_name, user));
     }
   };
 };
