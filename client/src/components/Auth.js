@@ -38,7 +38,7 @@ const Auth = ({ onLogin, onRegister, location }) => {
       <Grid className="auth-container">
         <Row>
           <Col md={8} mdOffset={2} xs={10} xsOffset={1}>
-            <h1>Registration and Sign In</h1>
+            <h1>Registration and Log In</h1>
             <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
               <Tab eventKey={1} title="Register">
                 <Panel header={"Register for an account today."}>

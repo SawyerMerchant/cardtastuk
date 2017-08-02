@@ -15,9 +15,13 @@ const NavLinks = ({ cart, user, onLogout }) => {
         <LinkContainer activeClassName="active" to="/cart">
           <NavItem>Your Cart ({cart.length})</NavItem>
         </LinkContainer>
-        <NavItem onClick={onLogout}>
-          {user.email ? user.email + " (Logout)" : null}
-        </NavItem>
+        {user.email
+          ? <NavItem onClick={onLogout}>
+              {user.email} (Logout)
+            </NavItem>
+          : <LinkContainer activeClassName="active" to="/auth">
+              <NavItem>Log In</NavItem>
+            </LinkContainer>}
       </Nav>
     </Navbar.Collapse>
   );
