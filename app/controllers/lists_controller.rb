@@ -2,7 +2,9 @@ class ListsController < ApiController
   def create
     puts "params"
     p params
-    list = List.new(list_params)
+    puts "request.body.read"
+    p request.body.read
+    list = List.new(url: Base64.decode64(params[:url]), name: params[:name], user_id: params[:user_id])
     if list.save
       render json: list, status: :created, location: list
     else
