@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :cards, only: [:index, :show]
       resources :categories, only: [:index, :show]
       resources :tags, only: [:index, :show]
+      resources :lists, only: [:create, :show]
 
     end
   end

@@ -63,3 +63,6 @@ gem 'devise_token_auth'
 gem 'omniauth', '~> 1.0'
 # Allow multiple domains
 gem 'rack-cors', :require => 'rack/cors'
+
+# csv upload
+gem "paperclip", "~> 5.0.0"
