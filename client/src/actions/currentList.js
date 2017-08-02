@@ -10,7 +10,7 @@ export function setCurrentList(data) {
 export function uploadList(file, name, user) {
   let formData  = new FormData();
 
-  formData.append("ulr", file);
+  formData.append("url", file);
   formData.append("name", name);
   formData.append("user_id", user.id);
 

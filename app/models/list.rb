@@ -1,6 +1,7 @@
 class List < ApplicationRecord
   belongs_to :user
   has_attached_file :url
-  validates_attachment :url, content_type: { content_type: ["application/vnd.ms-excel"] }
-  #TODO add "application/vnd.ms-excel"
+  do_not_validate_attachment_file_type :url
+  # before_validation :parse_csv
+  # validates_attachment_content_type :data, :content_type => ['text/csv','text/comma-separated-values','text/csv','application/csv','application/excel','application/vnd.ms-excel','application/vnd.msexcel','text/anytext','text/plain']
 end
