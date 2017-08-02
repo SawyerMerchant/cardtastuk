@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-const NavLinks = () => {
+const NavLinks = ({cart}) => {
   return (
     <Navbar.Collapse>
       <Nav pullRight>
@@ -12,12 +12,15 @@ const NavLinks = () => {
         <LinkContainer activeClassName="active" to="/cards">
           <NavItem>Cards</NavItem>
         </LinkContainer>
+        <LinkContainer activeClassName="active" to="/cart">
+          <NavItem>Your Cart ({cart.length})</NavItem>
+        </LinkContainer>
       </Nav>
     </Navbar.Collapse>
   );
 };
 
-const Navigation = ({ title }) => {
+const Navigation = ({ title, cart }) => {
   return (
     <Navbar fluid>
       <Navbar.Header>
@@ -26,7 +29,7 @@ const Navigation = ({ title }) => {
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
-      <NavLinks />
+      <NavLinks cart={cart} />
     </Navbar>
   );
 };

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
-import Navigation from "./Navigation";
+import NavigationContainer from "../containers/NavigationContainer";
 import CardsAllContainer from "../containers/CardsAllContainer";
 import CurrentCardContainer from "../containers/CurrentCardContainer";
 import CurrentCardEditContainer from "../containers/CurrentCardEditContainer";
@@ -15,7 +15,7 @@ class App extends Component {
     if (!navigator.cookieEnabled) {
       return (
         <Router>
-          <Navigation title={"CardTastuk"} />
+          <NavigationContainer title={"CardTastuk"} />
           <h1>You must enable cookies in order to use this website.</h1>
         </Router>
       );
@@ -23,9 +23,8 @@ class App extends Component {
     return (
       <Router>
         <ScrollToTop>
-          <Navigation title={"CardTastuk"} />
+          <NavigationContainer title={"CardTastuk"} />
           <Switch>
-            <Route path="/cart" component={ShoppingCartContainer} />
             <Route path="/cards/:id/upload" component={ListResolverContainer} />
             <Route
               path="/cards/:id/edit"
@@ -33,6 +32,7 @@ class App extends Component {
             />
             <Route path="/cards/:id" component={CurrentCardContainer} />
             <Route path="/cards" component={CardsAllContainer} />
+            <Route path="/cart" component={ShoppingCartContainer} />
             <Route path="/auth" component={AuthContainer} />
             <Route exact path="/" component={LandingPage} />
           </Switch>

@@ -1,16 +1,17 @@
 import { connect } from "react-redux";
+import { removeFromShoppingCart } from "../actions/shoppingCart";
 import ShoppingCart from "../components/ShoppingCart";
-// import { uploadList } from "../actions/currentList";
 
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   return {
-//     onUpload: (e, file, user) => {
-//       const form = e.target;
-//       const data = serialize(form, { hash: true });
-//       dispatch(uploadList(file, data.list_name, user));
-//     }
-//   };
-// };
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onRemoveFromCart: (e, itemId) => {
+      e.preventDefault();
+      if (window.confirm("Are you sure you want to remove this item from the cart?")) {
+        dispatch(removeFromShoppingCart(itemId));
+      }
+    },
+  };
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,6 +19,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const ShoppingCartContainer = connect(mapStateToProps, null)(ShoppingCart);
+const ShoppingCartContainer = connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);
 
 export default ShoppingCartContainer;

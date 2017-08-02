@@ -1,20 +1,25 @@
 import React from "react";
-import { Grid, Row, Col, Table } from "react-bootstrap";
+import { Grid, Row, Col, Table, Button } from "react-bootstrap";
 import { calculatePrice } from "../helpers";
 
-const buildCartCells = cart => {
+const buildCartCells = (cart, onRemoveFromCart) => {
   return cart.map(item =>
     <tr key={item.id}>
       <td>{item.card.name}</td>
       <td>{item.list.name}</td>
       <td>{item.quantity}</td>
       <td>{calculatePrice(item.quantity, item.card.price)}</td>
+      <td>
+        <Button onClick={(e) => onRemoveFromCart(e, item.id)} bsStyle="danger">
+          Remove
+        </Button>
+      </td>
     </tr>
   );
 };
 
-const ShoppingCart = ({ cart }) => {
-  const cartCells = buildCartCells(cart);
+const ShoppingCart = ({ cart, onRemoveFromCart }) => {
+  const cartCells = buildCartCells(cart, onRemoveFromCart);
   return (
     <div className="shopping-cart">
       <Grid>
@@ -28,6 +33,7 @@ const ShoppingCart = ({ cart }) => {
                   <th>List Name</th>
                   <th>Quantity</th>
                   <th>Total</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
