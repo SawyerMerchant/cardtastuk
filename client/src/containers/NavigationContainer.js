@@ -3,7 +3,8 @@ import Navigation from "../components/Navigation";
 
 const mapStateToProps = state => {
   return {
-    cart: state.shoppingCart
+    cart: state.shoppingCart,
+    user: state.user.data
   };
 };
 

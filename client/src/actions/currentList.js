@@ -8,16 +8,17 @@ export function setCurrentList(data) {
 }
 
 export function uploadList(file, name, user) {
+  let formData  = new FormData();
+
+  formData.append("file", file);
+  formData.append("list_name", name);
+  formData.append("user_id", user.id);
+
   return dispatch => {
     let config = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       mode: "no-cors",
-      body: JSON.stringify({
-        file: file,
-        list_name: name,
-        user_id: user.id
-      })
+      body: formData
     };
 
     fetch("/api/v1/lists", config)
