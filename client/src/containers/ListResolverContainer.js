@@ -3,19 +3,19 @@ import { connect } from "react-redux";
 import serialize from "form-serialize";
 import uuid from "js-uuid";
 
-import Upload from "../components/Upload";
+import ListResolver from "../components/ListResolver";
 import { getCurrentCard } from "../actions/currentCard";
 import { setCurrentList } from "../actions/currentList";
 import { addToShoppingCart } from "../actions/shoppingCart";
 import { withRouter } from "react-router-dom";
 
-class UploadContainer extends Component {
+class ListResolverContainer extends Component {
   componentDidMount() {
     this.props.getCurrentCard();
   }
 
   render() {
-    return <Upload {...this.props} />;
+    return <ListResolver {...this.props} />;
   }
 }
 
@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       );
       dispatch(setCurrentList(currentList[0]));
     },
-    onAddToCart: (e, currentCard, currentList) => {
+    onAddToCart: (e, currentCard, currentList, cardMessage) => {
       e.preventDefault();
       const form = e.target;
       const data = serialize(form, { hash: true });
@@ -51,7 +51,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         id: uuid.v4(),
         card: currentCard,
         list: currentList,
-        quantity: data.quantity
+        quantity: data.quantity,
+        message: cardMessage
       };
       console.log(ownProps);
       dispatch(addToShoppingCart(cartItem, ownProps.history));
@@ -60,5 +61,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withRouter(UploadContainer)
+  withRouter(ListResolverContainer)
 );
