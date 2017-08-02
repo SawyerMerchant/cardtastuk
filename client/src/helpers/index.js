@@ -15,7 +15,6 @@ export const getParams = query => {
 };
 
 export const calculatePrice = (quantity, prices) => {
-  console.log(quantity, prices);
   let total;
   if (quantity >= 1 && quantity <= 25) {
     total = moneyFormatter.format("USD", prices.x25 / 100 * quantity);

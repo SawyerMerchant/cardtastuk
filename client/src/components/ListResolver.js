@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
 import ListSelect from "./ListSelect";
-import ListUpload from "./ListUpload";
+import ListUploadContainer from "../containers/ListUploadContainer";
 import AddToCartWidget from "./AddToCartWidget";
 
 class Upload extends Component {
@@ -40,7 +40,7 @@ class Upload extends Component {
 
             <ListSelect lists={lists} setCurrentList={setCurrentList} />
 
-            <ListUpload />
+            <ListUploadContainer />
 
             <AddToCartWidget
               card={card}

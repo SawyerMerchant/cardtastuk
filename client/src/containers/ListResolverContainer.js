@@ -54,7 +54,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         quantity: data.quantity,
         message: cardMessage
       };
-      console.log(ownProps);
       dispatch(addToShoppingCart(cartItem, ownProps.history));
     }
   };
