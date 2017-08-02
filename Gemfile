@@ -44,6 +44,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Run Procfiles locally
   gem 'foreman'
+  gem "letter_opener"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
