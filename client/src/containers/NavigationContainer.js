@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { logoutUser } from "../actions/user";
+import { endUserSession } from "../actions/user";
 import Navigation from "../components/Navigation";
 
 const mapStateToProps = state => {
@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onLogout: e => {
       e.preventDefault();
-      dispatch(logoutUser());
+      dispatch(endUserSession());
     }
   };
 };

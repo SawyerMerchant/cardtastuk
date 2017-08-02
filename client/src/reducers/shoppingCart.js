@@ -21,6 +21,8 @@ export const shoppingCart = (state = initialState, action) => {
         return item;
       });
       return [...newState];
+    case Actions.CLEAR_CART:
+      return [];
     default:
       return state;
   }
