@@ -18,8 +18,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const ShoppingCartContainer = connect(mapStateToProps, null)(
-  ShoppingCart
-);
+const ShoppingCartContainer = connect(mapStateToProps, null)(ShoppingCart);
 
 export default ShoppingCartContainer;

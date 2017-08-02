@@ -20,7 +20,7 @@ export function uploadList(file, name, user) {
       })
     };
 
-    fetch("api/v1/lists", config)
+    fetch("/api/v1/lists", config)
       .then(response => {
         console.log(response);
         if (!response.ok) {
