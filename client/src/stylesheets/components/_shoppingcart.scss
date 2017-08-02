@@ -3,4 +3,9 @@
     text-align: center;
     margin: 1em 0;
   }
+  .glyphicon {
+    color: $brand-inverse;
+    cursor: pointer;
+    font-size: 1.5em;
+  }
 }

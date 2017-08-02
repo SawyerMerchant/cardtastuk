@@ -6,10 +6,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onRemoveFromCart: (e, itemId) => {
       e.preventDefault();
-      if (window.confirm("Are you sure you want to remove this item from the cart?")) {
+      if (
+        window.confirm(
+          "Are you sure you want to remove this item from the cart?"
+        )
+      ) {
         dispatch(removeFromShoppingCart(itemId));
       }
-    },
+    }
   };
 };
 
@@ -19,6 +23,8 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const ShoppingCartContainer = connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);
+const ShoppingCartContainer = connect(mapStateToProps, mapDispatchToProps)(
+  ShoppingCart
+);
 
 export default ShoppingCartContainer;

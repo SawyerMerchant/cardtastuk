@@ -1,21 +1,50 @@
 import React from "react";
-import { Grid, Row, Col, Table, Button } from "react-bootstrap";
+import {
+  Grid,
+  Row,
+  Col,
+  Table,
+  Button,
+  Popover,
+  OverlayTrigger,
+  Glyphicon
+} from "react-bootstrap";
 import { calculatePrice } from "../helpers";
 
-const buildCartCells = (cart, onRemoveFromCart) => {
-  return cart.map(item =>
-    <tr key={item.id}>
-      <td>{item.card.name}</td>
-      <td>{item.list.name}</td>
-      <td>{item.quantity}</td>
-      <td>{calculatePrice(item.quantity, item.card.price)}</td>
-      <td>
-        <Button onClick={(e) => onRemoveFromCart(e, item.id)} bsStyle="danger">
-          Remove
-        </Button>
-      </td>
-    </tr>
+const buildMessagePopover = message => {
+  return (
+    <Popover id="popover-positioned-bottom">
+      <p>{message}</p>
+    </Popover>
   );
+};
+
+const buildCartCells = (cart, onRemoveFromCart) => {
+  return cart.map(item => {
+    let messagePopover = buildMessagePopover(item.message);
+    return (
+      <tr key={item.id}>
+        <td>{item.card.name}</td>
+        <td>{item.list.name}</td>
+        <td>
+          <OverlayTrigger
+            trigger="click"
+            placement="bottom"
+            overlay={messagePopover}
+          >
+            <Glyphicon glyph="question-sign" />
+          </OverlayTrigger>
+        </td>
+        <td>{item.quantity}</td>
+        <td>{calculatePrice(item.quantity, item.card.price)}</td>
+        <td>
+          <Button onClick={e => onRemoveFromCart(e, item.id)} bsStyle="danger">
+            Remove
+          </Button>
+        </td>
+      </tr>
+    );
+  });
 };
 
 const ShoppingCart = ({ cart, onRemoveFromCart }) => {
@@ -31,9 +60,10 @@ const ShoppingCart = ({ cart, onRemoveFromCart }) => {
                 <tr>
                   <th>Card Name</th>
                   <th>List Name</th>
+                  <th>Message</th>
                   <th>Quantity</th>
                   <th>Total</th>
-                  <th></th>
+                  <th />
                 </tr>
               </thead>
               <tbody>

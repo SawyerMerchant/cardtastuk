@@ -7,7 +7,8 @@ const mapStateToProps = state => {
   };
 };
 
-
-const NavigationContainer = connect(mapStateToProps, null, null, {pure: false})(Navigation);
+const NavigationContainer = connect(mapStateToProps, null, null, {
+  pure: false
+})(Navigation);
 
 export default NavigationContainer;
