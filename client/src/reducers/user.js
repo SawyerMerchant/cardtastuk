@@ -5,7 +5,7 @@ const initialState = {
   error: null,
   isFetching: false,
   data: {
-    name: "George"
+    name: ""
   }
 };
 
@@ -30,6 +30,13 @@ export const user = (state = initialState, action) => {
         isFetching: false,
         isAuthenticated: false,
         error: true
+      };
+    case Actions.LOGOUT_USER:
+      return {
+        ...state,
+        isAuthenticated: false,
+        error: null,
+        data: {}
       };
     default:
       return state;

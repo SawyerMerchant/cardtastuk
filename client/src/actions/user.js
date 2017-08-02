@@ -1,6 +1,7 @@
 export const GET_USER_LOGIN_REQUEST = "GET_USER_LOGIN_REQUEST";
 export const GET_USER_LOGIN_SUCCESS = "GET_USER_LOGIN_SUCCESS";
 export const GET_USER_LOGIN_FAILURE = "GET_USER_LOGIN_FAILURE";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 export function getUserLoginRequest() {
   return {
@@ -19,6 +20,12 @@ export function getUserLoginFailure(error) {
   return {
     type: GET_USER_LOGIN_FAILURE,
     error
+  };
+}
+
+export function logoutUser() {
+  return {
+    type: LOGOUT_USER
   };
 }
 

@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { logoutUser } from "../actions/user";
 import Navigation from "../components/Navigation";
 
 const mapStateToProps = state => {
@@ -8,7 +9,16 @@ const mapStateToProps = state => {
   };
 };
 
-const NavigationContainer = connect(mapStateToProps, null, null, {
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogout: e => {
+      e.preventDefault();
+      dispatch(logoutUser());
+    }
+  };
+};
+
+const NavigationContainer = connect(mapStateToProps, mapDispatchToProps, null, {
   pure: false
 })(Navigation);
 

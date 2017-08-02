@@ -8,7 +8,7 @@ export function setCurrentList(data) {
 }
 
 export function uploadList(file, name, user) {
-  let formData  = new FormData();
+  let formData = new FormData();
 
   formData.append("file", file);
   formData.append("list_name", name);

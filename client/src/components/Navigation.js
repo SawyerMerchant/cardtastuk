@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-const NavLinks = ({ cart }) => {
+const NavLinks = ({ cart, user, onLogout }) => {
   return (
     <Navbar.Collapse>
       <Nav pullRight>
@@ -15,12 +15,15 @@ const NavLinks = ({ cart }) => {
         <LinkContainer activeClassName="active" to="/cart">
           <NavItem>Your Cart ({cart.length})</NavItem>
         </LinkContainer>
+        <NavItem onClick={onLogout}>
+          {user.email ? user.email + " (Logout)" : null}
+        </NavItem>
       </Nav>
     </Navbar.Collapse>
   );
 };
 
-const Navigation = ({ title, cart }) => {
+const Navigation = ({ title, cart, user, onLogout }) => {
   return (
     <Navbar fluid>
       <Navbar.Header>
@@ -29,7 +32,7 @@ const Navigation = ({ title, cart }) => {
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
-      <NavLinks cart={cart} />
+      <NavLinks cart={cart} user={user} onLogout={onLogout} />
     </Navbar>
   );
 };
