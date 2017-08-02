@@ -6,6 +6,7 @@ import CardsAllContainer from "../containers/CardsAllContainer";
 import CurrentCardContainer from "../containers/CurrentCardContainer";
 import CurrentCardEditContainer from "../containers/CurrentCardEditContainer";
 import ListResolverContainer from "../containers/ListResolverContainer";
+import ShoppingCartContainer from "../containers/ShoppingCartContainer";
 import AuthContainer from "../containers/AuthContainer";
 import LandingPage from "./LandingPage";
 
@@ -24,6 +25,7 @@ class App extends Component {
         <ScrollToTop>
           <Navigation title={"CardTastuk"} />
           <Switch>
+            <Route path="/cart" component={ShoppingCartContainer} />
             <Route path="/cards/:id/upload" component={ListResolverContainer} />
             <Route
               path="/cards/:id/edit"

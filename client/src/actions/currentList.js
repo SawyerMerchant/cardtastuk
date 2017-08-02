@@ -20,8 +20,9 @@ export function uploadList(file, name, user) {
       })
     };
 
-    fetch("https://requestb.in/16kwzo61", config)
+    fetch("api/v1/lists", config)
       .then(response => {
+        console.log(response);
         if (!response.ok) {
           throw new Error(`${response.status}: ${response.statusText}`);
         }
