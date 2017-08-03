@@ -51,6 +51,7 @@ const buildCartCells = (cart, onRemoveFromCart) => {
 const ShoppingCart = ({ cart, onRemoveFromCart }) => {
   const cartCells = buildCartCells(cart, onRemoveFromCart);
   const total = calculateTotal(cart);
+
   return (
     <div className="shopping-cart">
       <Grid>
