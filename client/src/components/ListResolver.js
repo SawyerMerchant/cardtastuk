@@ -18,6 +18,7 @@ class Upload extends Component {
       lists,
       currentList,
       user,
+      isAuthenticated,
       setCurrentList,
       onAddToCart
     } = this.props;
@@ -46,7 +47,7 @@ class Upload extends Component {
               currentList={currentList}
               cardMessage={cardMessage}
               onAddToCart={onAddToCart}
-              user={user}
+              isAuthenticated={isAuthenticated}
             />
           </Col>
         </Row>

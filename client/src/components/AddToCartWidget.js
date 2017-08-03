@@ -7,7 +7,7 @@ const AddToCartWidget = ({
   currentList,
   cardMessage,
   onAddToCart,
-  user
+  isAuthenticated
 }) => {
   return (
     <div>
@@ -16,7 +16,8 @@ const AddToCartWidget = ({
 
       <form
         id="add-to-cart"
-        onSubmit={e => onAddToCart(e, card, currentList, cardMessage, user)}
+        onSubmit={e =>
+          onAddToCart(e, card, currentList, cardMessage, isAuthenticated)}
       >
         <Button bsStyle="info" bsSize="large" type="submit" block>
           <Glyphicon glyph="shopping-cart" />{" "}

@@ -43,9 +43,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       );
       dispatch(setCurrentList(currentList[0]));
     },
-    onAddToCart: (e, currentCard, currentList, cardMessage, user) => {
+    onAddToCart: (
+      e,
+      currentCard,
+      currentList,
+      cardMessage,
+      isAuthenticated
+    ) => {
       e.preventDefault();
-      if (user.isAuthenticated) {
+      if (isAuthenticated) {
         let cartItem = {
           id: uuid.v4(),
           card: currentCard,
