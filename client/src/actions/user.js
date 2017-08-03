@@ -52,6 +52,9 @@ export function registerUser(form, history) {
     })
   };
 
+  let accessToken;
+  let client;
+
   return dispatch => {
     dispatch(getUserLoginRequest());
 
@@ -61,10 +64,12 @@ export function registerUser(form, history) {
           throw new Error(`${response.status}: ${response.statusText}`);
         }
 
+        accessToken = response.headers.get("access-token");
+        client = response.headers.get("client");
         return response.json();
       })
       .then(json => {
-        dispatch(getUserLoginSuccess(json.data));
+        dispatch(getUserLoginSuccess({...json.data, client, accessToken}));
         history.goBack(); // redirect user to previous page before login was requested
       })
       .catch(error => {
@@ -82,6 +87,9 @@ export function loginUser(form, history) {
       password: form.password
     })
   };
+  
+  let accessToken;
+  let client;
 
   return dispatch => {
     dispatch(getUserLoginRequest());
@@ -91,7 +99,8 @@ export function loginUser(form, history) {
         if (!response.ok) {
           throw new Error(`${response.status}: ${response.statusText}`);
         }
-
+        accessToken = response.headers.get("access-token");
+        client = response.headers.get("client");
         return response.json();
       })
       .then(json => {
@@ -103,7 +112,7 @@ export function loginUser(form, history) {
           },
           count: 0
         };
-        dispatch(getUserLoginSuccess(json.data));
+        dispatch(getUserLoginSuccess({...json.data, client, accessToken}));
         dispatch(getUserListsSuccess(json.data.lists));
         dispatch(setCurrentList(firstList));
         history.goBack(); // redirect user to previous page before login was requested
