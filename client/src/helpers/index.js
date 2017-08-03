@@ -34,3 +34,10 @@ export const calculatePrice = (quantity, prices) => {
 
   return total;
 };
+
+export const flashMsgs = {
+  badPass: "Your passwords did not match. Please try again.",
+  badLogin:
+    "Could not login. Please re-enter your email and password and try again.",
+  unauthenticated: "Please login first before continuing."
+};

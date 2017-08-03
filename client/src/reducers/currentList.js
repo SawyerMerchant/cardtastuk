@@ -4,9 +4,7 @@ const initialState = {
   data: {
     id: 1,
     name: "Family",
-    first_person: {
-      fname: "Todd"
-    }
+    first_record: {}
   }
 };
 

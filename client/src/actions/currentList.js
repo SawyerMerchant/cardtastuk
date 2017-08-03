@@ -1,3 +1,4 @@
+import { addNewList } from "./listsAll";
 export const SET_CURRENT_LIST = "SET_CURRENT_LIST";
 
 export function setCurrentList(data) {
@@ -23,10 +24,15 @@ export function uploadList(file, name, user) {
 
     fetch("/api/v1/lists", config)
       .then(response => {
-        console.log(response);
         if (!response.ok) {
           throw new Error(`${response.status}: ${response.statusText}`);
         }
+
+        return response.json();
+      })
+      .then(json => {
+        dispatch(addNewList(json));
+        dispatch(setCurrentList(json));
       })
       .catch(error => {
         console.log(error);
