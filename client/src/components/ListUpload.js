@@ -35,7 +35,11 @@ class ListUpload extends Component {
         <p>
           Otherwise, upload a group of users here.
         </p>
-        <form id="list-upload" onSubmit={this.handleSubmit} encType="multipart/form-data">
+        <form
+          id="list-upload"
+          onSubmit={this.handleSubmit}
+          encType="multipart/form-data"
+        >
           <FormGroup controlId="list_upload">
             <ControlLabel>Select a CSV</ControlLabel>
             <FormControl

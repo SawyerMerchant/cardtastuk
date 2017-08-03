@@ -1,6 +1,7 @@
 export const ADD_TO_SHOPPING_CART = "ADD_TO_SHOPPING_CART";
 export const REMOVE_FROM_SHOPPING_CART = "REMOVE_FROM_SHOPPING_CART";
 export const EDIT_SHOPPING_CART = "EDIT_SHOPPING_CART";
+export const CLEAR_CART = "CLEAR_CART";
 
 export function addToShoppingCart(data, history) {
   history.push("/cart");
@@ -21,5 +22,11 @@ export function editShoppingCart(data) {
   return {
     type: EDIT_SHOPPING_CART,
     data
+  };
+}
+
+export function clearCart(data) {
+  return {
+    type: CLEAR_CART
   };
 }
