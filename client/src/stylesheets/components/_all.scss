@@ -12,3 +12,7 @@
 .card-title {
   text-transform: capitalize;
 }
+
+.btn {
+  transition: background-color .5s ease, border-color .5s ease;
+}
