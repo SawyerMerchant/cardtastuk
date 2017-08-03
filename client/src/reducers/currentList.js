@@ -2,7 +2,7 @@ import * as Actions from "../actions/currentList";
 
 const initialState = {
   data: {
-    id: 1,
+    id: 0,
     name: "",
     first_record: {
       first_name: "<First Name>"

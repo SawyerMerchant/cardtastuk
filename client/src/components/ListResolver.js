@@ -46,6 +46,7 @@ class Upload extends Component {
               currentList={currentList}
               cardMessage={cardMessage}
               onAddToCart={onAddToCart}
+              user={user}
             />
           </Col>
         </Row>

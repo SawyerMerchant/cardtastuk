@@ -1,5 +1,6 @@
 import { clearCart } from "./shoppingCart";
-import { clearLists } from "./listsAll";
+import { setCurrentList } from "./currentList";
+import { clearLists, getUserListsSuccess } from "./listsAll";
 export const GET_USER_LOGIN_REQUEST = "GET_USER_LOGIN_REQUEST";
 export const GET_USER_LOGIN_SUCCESS = "GET_USER_LOGIN_SUCCESS";
 export const GET_USER_LOGIN_FAILURE = "GET_USER_LOGIN_FAILURE";
@@ -94,7 +95,17 @@ export function loginUser(form, history) {
         return response.json();
       })
       .then(json => {
+        let firstList = json.data.lists[0] || {
+          id: 0,
+          name: "",
+          first_record: {
+            first_name: "<First Name>"
+          },
+          count: 0
+        };
         dispatch(getUserLoginSuccess(json.data));
+        dispatch(getUserListsSuccess(json.data.lists));
+        dispatch(setCurrentList(firstList));
         history.goBack(); // redirect user to previous page before login was requested
       })
       .catch(error => {

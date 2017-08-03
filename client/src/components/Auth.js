@@ -110,5 +110,4 @@ class Auth extends Component {
   }
 }
 
-
 export default Auth;

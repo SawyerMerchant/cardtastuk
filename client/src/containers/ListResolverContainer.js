@@ -43,16 +43,18 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       );
       dispatch(setCurrentList(currentList[0]));
     },
-    onAddToCart: (e, currentCard, currentList, cardMessage) => {
+    onAddToCart: (e, currentCard, currentList, cardMessage, user) => {
       e.preventDefault();
-      let cartItem = {
-        id: uuid.v4(),
-        card: currentCard,
-        list: currentList,
-        quantity: currentList.count,
-        message: cardMessage
-      };
-      dispatch(addToShoppingCart(cartItem, ownProps.history));
+      if (user.isAuthenticated) {
+        let cartItem = {
+          id: uuid.v4(),
+          card: currentCard,
+          list: currentList,
+          quantity: currentList.count,
+          message: cardMessage
+        };
+        dispatch(addToShoppingCart(cartItem, ownProps.history));
+      }
     }
   };
 };
