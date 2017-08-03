@@ -45,13 +45,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onAddToCart: (e, currentCard, currentList, cardMessage) => {
       e.preventDefault();
-      const form = e.target;
-      const data = serialize(form, { hash: true });
       let cartItem = {
         id: uuid.v4(),
         card: currentCard,
         list: currentList,
-        quantity: data.quantity,
+        quantity: currentList.count,
         message: cardMessage
       };
       dispatch(addToShoppingCart(cartItem, ownProps.history));

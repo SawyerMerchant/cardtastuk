@@ -43,10 +43,10 @@ class Auth extends Component {
   }
 
   render() {
-    const { onLogin, onRegister, history, location, isAuthenticated } = this.props;
+    const { onLogin, onRegister, location } = this.props;
     let query = getParams(location.search);
     let flash = buildFlash(query.error);
-    
+
     return (
       <div>
         {flash}
