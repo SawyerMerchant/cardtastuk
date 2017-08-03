@@ -25,6 +25,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const AuthContainer = connect(null, mapDispatchToProps)(Auth);
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.user.isAuthenticated
+  };
+};
+
+const AuthContainer = connect(mapStateToProps, mapDispatchToProps)(Auth);
 
 export default withRouter(AuthContainer);

@@ -23,10 +23,14 @@ export function uploadList(file, name, user) {
 
     fetch("/api/v1/lists", config)
       .then(response => {
-        console.log(response);
         if (!response.ok) {
           throw new Error(`${response.status}: ${response.statusText}`);
         }
+
+        return response.json();
+      })
+      .then(json => {
+        console.log(json);
       })
       .catch(error => {
         console.log(error);

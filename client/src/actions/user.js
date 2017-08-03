@@ -97,6 +97,7 @@ export function loginUser(form, history) {
       })
       .catch(error => {
         dispatch(getUserLoginFailure(error));
+        history.push(`${window.location.pathname}?error=bad_login`);
       });
   };
 }

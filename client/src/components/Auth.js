@@ -11,27 +11,35 @@ import {
   ControlLabel,
   Button
 } from "react-bootstrap";
-import { getParams } from "../helpers";
+import { getParams, flashMsgs } from "../helpers";
 import FlashMessage from "./FlashMessage";
 
-const Auth = ({ onLogin, onRegister, location }) => {
-  let query = getParams(location.search);
-  let flash = null;
-  if (query.error === "unauthenticated") {
-    flash = (
-      <FlashMessage
-        type="warning"
-        message="Please login first before continuing."
-      />
-    );
-  } else if (query.error === "bad_password") {
-    flash = (
-      <FlashMessage
-        type="danger"
-        message="Your passwords did not match. Please try again."
-      />
-    );
+const buildFlash = error => {
+  let message;
+  let type;
+  if (error === "unauthenticated") {
+    message = flashMsgs.unauthenticated;
+    type = "warning";
+  } else if (error === "bad_password") {
+    message = flashMsgs.badPass;
+    type = "danger";
+  } else if (error === "bad_login") {
+    message = flashMsgs.badLogin;
+    type = "danger";
   }
+
+  return <FlashMessage type={type} message={message} />;
+};
+
+const Auth = ({ onLogin, onRegister, history, location, isAuthenticated }) => {
+  if (isAuthenticated) {
+    history.goBack();
+    return null;
+  }
+
+  let query = getParams(location.search);
+  let flash = buildFlash(query.error);
+
   return (
     <div>
       {flash}
