@@ -32,11 +32,33 @@ export function logoutUser() {
   };
 }
 
-export function endUserSession() {
+export function endUserSession(user) {
+  let config = {
+    method: "DELETE",
+    headers: {
+      "access-token": user.accessToken,
+      "client": user.client,
+      "uid": user.uid
+    }
+  }
   return dispatch => {
-    dispatch(logoutUser());
-    dispatch(clearCart());
-    dispatch(clearLists());
+    
+    fetch("/auth/sign_out", config)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+
+        return response.json();
+      })
+      .then(json => {
+        dispatch(logoutUser());
+        dispatch(clearCart());
+        dispatch(clearLists());
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 }
 
@@ -66,6 +88,7 @@ export function registerUser(form, history) {
 
         accessToken = response.headers.get("access-token");
         client = response.headers.get("client");
+
         return response.json();
       })
       .then(json => {

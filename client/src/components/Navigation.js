@@ -16,7 +16,7 @@ const NavLinks = ({ cart, user, onLogout }) => {
           <NavItem>Your Cart ({cart.length})</NavItem>
         </LinkContainer>
         {user.email
-          ? <NavItem onClick={onLogout}>
+          ? <NavItem onClick={e => onLogout(e, user)}>
               {user.email} (Logout)
             </NavItem>
           : <LinkContainer activeClassName="active" to="/auth">

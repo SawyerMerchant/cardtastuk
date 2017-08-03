@@ -11,9 +11,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onLogout: e => {
+    onLogout: (e, user) => {
       e.preventDefault();
-      dispatch(endUserSession());
+      dispatch(endUserSession(user));
     }
   };
 };
