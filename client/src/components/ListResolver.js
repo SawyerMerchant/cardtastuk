@@ -23,7 +23,7 @@ class Upload extends Component {
       onAddToCart
     } = this.props;
     return (
-      <Grid className="upload">
+      <Grid className="list-resolver">
         <Row>
           <h1 className="card-title">{card.name}</h1>
           <Col md={6} xs={12}>
