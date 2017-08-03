@@ -1,0 +1,24 @@
+{
+  "resources": [
+    {
+      "name": "Cards",
+      "explanation": null,
+      "examples": [
+        {
+          "description": "Getting a specific card",
+          "link": "cards/getting_a_specific_card.json",
+          "groups": "all",
+          "route": "api/v1/cards/101",
+          "method": "get"
+        },
+        {
+          "description": "Listing cards",
+          "link": "cards/listing_cards.json",
+          "groups": "all",
+          "route": "/api/v1/cards",
+          "method": "get"
+        }
+      ]
+    }
+  ]
+}
