@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           user: user,
           transaction_details: {
             billing_address: data,
-            orders: cart
+            line_items: cart
           }
         })
       };
