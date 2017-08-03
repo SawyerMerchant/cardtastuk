@@ -1,4 +1,5 @@
 import { clearCart } from "./shoppingCart";
+import { clearLists } from "./listsAll";
 export const GET_USER_LOGIN_REQUEST = "GET_USER_LOGIN_REQUEST";
 export const GET_USER_LOGIN_SUCCESS = "GET_USER_LOGIN_SUCCESS";
 export const GET_USER_LOGIN_FAILURE = "GET_USER_LOGIN_FAILURE";
@@ -34,6 +35,7 @@ export function endUserSession() {
   return dispatch => {
     dispatch(logoutUser());
     dispatch(clearCart());
+    dispatch(clearLists());
   };
 }
 

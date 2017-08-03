@@ -21,7 +21,7 @@ class Upload extends Component {
       setCurrentList,
       onAddToCart
     } = this.props;
-
+    console.log(currentList);
     return (
       <Grid className="upload">
         <Row>
@@ -29,7 +29,7 @@ class Upload extends Component {
           <Col md={6} xs={12}>
             <div className="card-edit-container">
               <div className="card-edit-message">
-                <p>Dear {currentList.first_person.fname}</p>
+                <p>Dear {currentList.first_record.first_name}</p>
                 <p>{cardMessage}</p>
                 <p className="signature">Sincerely, {user.name}</p>
               </div>

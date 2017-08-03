@@ -17,6 +17,10 @@ import FlashMessage from "./FlashMessage";
 const buildFlash = error => {
   let message;
   let type;
+  if (!error) {
+    return null;
+  }
+
   if (error === "unauthenticated") {
     message = flashMsgs.unauthenticated;
     type = "warning";

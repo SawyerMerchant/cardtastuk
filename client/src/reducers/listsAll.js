@@ -1,29 +1,7 @@
 import * as Actions from "../actions/listsAll";
 
 const initialState = {
-  data: [
-    {
-      id: 1,
-      name: "Family",
-      first_person: {
-        fname: "Todd"
-      }
-    },
-    {
-      id: 2,
-      name: "Friends",
-      first_person: {
-        fname: "Martha"
-      }
-    },
-    {
-      id: 3,
-      name: "Co-workers",
-      first_person: {
-        fname: "Janice"
-      }
-    }
-  ]
+  data: []
 };
 
 export const listsAll = (state = initialState, action) => {
@@ -47,6 +25,16 @@ export const listsAll = (state = initialState, action) => {
         isFetching: false,
         isAuthenticated: false,
         error: true
+      };
+    case Actions.ADD_NEW_LIST:
+      return {
+        ...state,
+        data: [...state.data, action.data]
+      };
+    case Actions.CLEAR_LISTS:
+      return {
+        ...state,
+        data: []
       };
     default:
       return state;
