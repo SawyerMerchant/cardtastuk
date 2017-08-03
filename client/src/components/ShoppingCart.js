@@ -9,7 +9,8 @@ import {
   OverlayTrigger,
   Glyphicon
 } from "react-bootstrap";
-import { calculatePrice } from "../helpers";
+import { LinkContainer } from "react-router-bootstrap";
+import { calculatePrice, calculateTotal } from "../helpers";
 
 const buildMessagePopover = message => {
   return (
@@ -49,6 +50,8 @@ const buildCartCells = (cart, onRemoveFromCart) => {
 
 const ShoppingCart = ({ cart, onRemoveFromCart }) => {
   const cartCells = buildCartCells(cart, onRemoveFromCart);
+  const total = calculateTotal(cart);
+
   return (
     <div className="shopping-cart">
       <Grid>
@@ -70,6 +73,18 @@ const ShoppingCart = ({ cart, onRemoveFromCart }) => {
                 {cartCells}
               </tbody>
             </Table>
+          </Col>
+        </Row>
+        <Row className="checkout-button">
+          <Col md={4} mdOffset={8}>
+            <h3>Total: {total} </h3>
+            {cart.length > 0 &&
+              <LinkContainer to="/checkout">
+                <Button bsStyle="info" bsSize="large" block>
+                  <Glyphicon glyph="usd" />{" "}
+                  Checkout
+                </Button>
+              </LinkContainer>}
           </Col>
         </Row>
       </Grid>

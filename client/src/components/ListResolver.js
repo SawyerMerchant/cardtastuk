@@ -18,11 +18,12 @@ class Upload extends Component {
       lists,
       currentList,
       user,
+      isAuthenticated,
       setCurrentList,
       onAddToCart
     } = this.props;
     return (
-      <Grid className="upload">
+      <Grid className="list-resolver">
         <Row>
           <h1 className="card-title">{card.name}</h1>
           <Col md={6} xs={12}>
@@ -46,6 +47,7 @@ class Upload extends Component {
               currentList={currentList}
               cardMessage={cardMessage}
               onAddToCart={onAddToCart}
+              isAuthenticated={isAuthenticated}
             />
           </Col>
         </Row>
