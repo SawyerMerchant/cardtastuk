@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   Grid,
   Row,
@@ -35,75 +35,80 @@ const buildFlash = error => {
   return <FlashMessage type={type} message={message} />;
 };
 
-const Auth = ({ onLogin, onRegister, history, location, isAuthenticated }) => {
-  if (isAuthenticated) {
-    history.goBack();
-    return null;
+class Auth extends Component {
+  componentWillMount() {
+    if (this.props.isAuthenticated) {
+      this.props.history.goBack();
+    }
   }
 
-  let query = getParams(location.search);
-  let flash = buildFlash(query.error);
+  render() {
+    const { onLogin, onRegister, history, location, isAuthenticated } = this.props;
+    let query = getParams(location.search);
+    let flash = buildFlash(query.error);
+    
+    return (
+      <div>
+        {flash}
+        <Grid className="auth-container">
+          <Row>
+            <Col md={8} mdOffset={2} xs={10} xsOffset={1}>
+              <h1>Registration and Log In</h1>
+              <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+                <Tab eventKey={1} title="Register">
+                  <Panel header={"Register for an account today."}>
+                    <form onSubmit={onRegister}>
+                      <FormGroup controlId="email">
+                        <ControlLabel>Email</ControlLabel>
+                        <FormControl type="email" name="email" required />
+                      </FormGroup>
+                      <FormGroup controlId="password">
+                        <ControlLabel>Password</ControlLabel>
+                        <FormControl
+                          type="password"
+                          name="password"
+                          minLength={6}
+                          required
+                        />
+                      </FormGroup>
+                      <FormGroup controlId="password_confirmation">
+                        <ControlLabel>Confirm your password</ControlLabel>
+                        <FormControl
+                          type="password"
+                          name="password_confirmation"
+                          minLength={6}
+                          required
+                        />
+                      </FormGroup>
+                      <Button bsStyle="success" type="submit">
+                        Register for an Account
+                      </Button>
+                    </form>
+                  </Panel>
+                </Tab>
+                <Tab eventKey={2} title="Login">
+                  <Panel header={"Login to an existing account."}>
+                    <form onSubmit={onLogin}>
+                      <FormGroup controlId="email">
+                        <ControlLabel>Email</ControlLabel>
+                        <FormControl type="email" name="email" required />
+                      </FormGroup>
+                      <FormGroup controlId="password">
+                        <ControlLabel>Password</ControlLabel>
+                        <FormControl type="password" name="password" required />
+                      </FormGroup>
+                      <Button bsStyle="success" type="submit">Login</Button>
+                    </form>
+                  </Panel>
+                </Tab>
+              </Tabs>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    );
+  }
+}
 
-  return (
-    <div>
-      {flash}
-      <Grid className="auth-container">
-        <Row>
-          <Col md={8} mdOffset={2} xs={10} xsOffset={1}>
-            <h1>Registration and Log In</h1>
-            <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-              <Tab eventKey={1} title="Register">
-                <Panel header={"Register for an account today."}>
-                  <form onSubmit={onRegister}>
-                    <FormGroup controlId="email">
-                      <ControlLabel>Email</ControlLabel>
-                      <FormControl type="email" name="email" required />
-                    </FormGroup>
-                    <FormGroup controlId="password">
-                      <ControlLabel>Password</ControlLabel>
-                      <FormControl
-                        type="password"
-                        name="password"
-                        minLength={6}
-                        required
-                      />
-                    </FormGroup>
-                    <FormGroup controlId="password_confirmation">
-                      <ControlLabel>Confirm your password</ControlLabel>
-                      <FormControl
-                        type="password"
-                        name="password_confirmation"
-                        minLength={6}
-                        required
-                      />
-                    </FormGroup>
-                    <Button bsStyle="success" type="submit">
-                      Register for an Account
-                    </Button>
-                  </form>
-                </Panel>
-              </Tab>
-              <Tab eventKey={2} title="Login">
-                <Panel header={"Login to an existing account."}>
-                  <form onSubmit={onLogin}>
-                    <FormGroup controlId="email">
-                      <ControlLabel>Email</ControlLabel>
-                      <FormControl type="email" name="email" required />
-                    </FormGroup>
-                    <FormGroup controlId="password">
-                      <ControlLabel>Password</ControlLabel>
-                      <FormControl type="password" name="password" required />
-                    </FormGroup>
-                    <Button bsStyle="success" type="submit">Login</Button>
-                  </form>
-                </Panel>
-              </Tab>
-            </Tabs>
-          </Col>
-        </Row>
-      </Grid>
-    </div>
-  );
-};
 
 export default Auth;

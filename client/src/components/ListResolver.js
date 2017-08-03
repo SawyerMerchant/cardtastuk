@@ -21,7 +21,6 @@ class Upload extends Component {
       setCurrentList,
       onAddToCart
     } = this.props;
-    console.log(currentList);
     return (
       <Grid className="upload">
         <Row>

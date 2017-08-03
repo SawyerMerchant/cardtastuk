@@ -32,7 +32,7 @@ export function uploadList(file, name, user) {
       })
       .then(json => {
         dispatch(addNewList(json));
-        console.log(json);
+        dispatch(setCurrentList(json));
       })
       .catch(error => {
         console.log(error);
