@@ -23,6 +23,7 @@ const AddToCartWidget = ({
   const warning = minCardWarning(+currentList.count);
   return (
     <div>
+      <h3>List Chosen: {currentList.name}</h3>
       <h3>Number of Entries in List: {currentList.count}</h3>
       <h3>Total: {calculatePrice(currentList.count, card.price)}</h3>
       {warning}

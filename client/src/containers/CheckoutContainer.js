@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         })
       };
 
-      fetch("https://requestb.in/1j45nzd1", config)
+      fetch("/api/v1/orders", config)
         .then(response => {
           if (!response.ok) {
             throw new Error(`${response.status}: ${response.statusText}`);
