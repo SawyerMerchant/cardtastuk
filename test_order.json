@@ -1,0 +1,191 @@
+{
+	"token": {
+		"id": "tok_1AmkT8LijpjLuJOiueM9ALDg",
+		"object": "token",
+		"card": {
+			"id": "card_1AmkT8LijpjLuJOi40OdqYbX",
+			"object": "card",
+			"address_city": null,
+			"address_country": null,
+			"address_line1": null,
+			"address_line1_check": null,
+			"address_line2": null,
+			"address_state": null,
+			"address_zip": null,
+			"address_zip_check": null,
+			"brand": "Visa",
+			"country": "US",
+			"cvc_check": "pass",
+			"dynamic_last4": null,
+			"exp_month": 1,
+			"exp_year": 2023,
+			"funding": "credit",
+			"last4": "4242",
+			"metadata": {},
+			"name": "foo@bar.com",
+			"tokenization_method": null
+		},
+		"client_ip": "47.20.132.73",
+		"created": 1501771114,
+		"email": "foo@bar.com",
+		"livemode": false,
+		"type": "card",
+		"used": false
+	},
+	"user": {
+		"id": 11,
+		"email": "foo@bar.com",
+		"provider": "email",
+		"uid": "foo@bar.com",
+		"name": null,
+		"nickname": null,
+		"image": null,
+		"lists": [{
+			"id": 1,
+			"name": "first list",
+			"user_id": 11,
+			"created_at": "2017-08-03T12:52:00.548Z",
+			"updated_at": "2017-08-03T12:52:00.548Z",
+			"url_file_name": "data",
+			"url_content_type": "text/plain",
+			"url_file_size": 155,
+			"url_updated_at": "2017-08-03T12:52:00.540Z",
+			"count": 2,
+			"first_record": {
+				"zip": "33603",
+				"city": "Tampa",
+				"state": "FL",
+				"last_name": "Sawyer",
+				"first_name": "John",
+				"address_line1": "101 Example St",
+				"address_line2": "Apt. 2"
+			}
+		}]
+	},
+	"transaction_details": {
+		"billing_address": {
+			"street_address_1": "123 Main Street",
+			"street_address_2": "Under the bridge",
+			"city": "Norwalk",
+			"state": "CT",
+			"zipcode": "06851"
+		},
+		"line_items": [{
+			"id": "fa786063-ca15-4973-9c05-0a1bb5e03451",
+			"card": {
+				"id": 3,
+				"name": "quinoa knausgaard mixtape",
+				"large_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/original/christmas_decoration_on_tree_187371.jpg",
+				"medium_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/medium/christmas_decoration_on_tree_187371.jpg",
+				"small_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/thumb/christmas_decoration_on_tree_187371.jpg",
+				"default_greeting": "Mixtape craft beer vinyl beard. Aesthetic disrupt cray craft beer. Chambray pug pour-over taxidermy direct trade tacos. Flexitarian typewriter drinking brunch leggings chia pinterest.",
+				"orientation": "landscape",
+				"size": "5x7",
+				"category_id": 3,
+				"created_at": "2017-08-03T12:50:42.015Z",
+				"updated_at": "2017-08-03T12:50:42.015Z",
+				"price_id": 1,
+				"category": {
+					"name": "pug"
+				},
+				"tags": [{
+					"name": "cornhole microdosing"
+				}, {
+					"name": "lumbersexual blog"
+				}, {
+					"name": "truffaut Thundercats"
+				}],
+				"price": {
+					"x25": 300,
+					"x100": 290,
+					"x250": 281,
+					"x500": 234,
+					"x1000": 202,
+					"x2000": 185,
+					"updated_at": "2017-08-03T12:50:41.927Z"
+				}
+			},
+			"list": {
+				"id": 1,
+				"name": "first list",
+				"user_id": 11,
+				"created_at": "2017-08-03T12:52:00.548Z",
+				"updated_at": "2017-08-03T12:52:00.548Z",
+				"url_file_name": "data",
+				"url_content_type": "text/plain",
+				"url_file_size": 155,
+				"url_updated_at": "2017-08-03T12:52:00.540Z",
+				"count": 2,
+				"first_record": {
+					"zip": "33603",
+					"city": "Tampa",
+					"state": "FL",
+					"last_name": "Sawyer",
+					"first_name": "John",
+					"address_line1": "101 Example St",
+					"address_line2": "Apt. 2"
+				}
+			},
+			"quantity": 2,
+			"message": "Mixtape craft beer vinyl beard. Aesthetic disrupt cray craft beer. Chambray pug pour-over taxidermy direct trade tacos. Flexitarian typewriter drinking brunch leggings chia pinterest."
+		}, {
+			"id": "4e211e13-51fd-4495-8b85-d31e08fce3fc",
+			"card": {
+				"id": 3,
+				"name": "quinoa knausgaard mixtape",
+				"large_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/original/christmas_decoration_on_tree_187371.jpg",
+				"medium_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/medium/christmas_decoration_on_tree_187371.jpg",
+				"small_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/thumb/christmas_decoration_on_tree_187371.jpg",
+				"default_greeting": "Mixtape craft beer vinyl beard. Aesthetic disrupt cray craft beer. Chambray pug pour-over taxidermy direct trade tacos. Flexitarian typewriter drinking brunch leggings chia pinterest.",
+				"orientation": "landscape",
+				"size": "5x7",
+				"category_id": 3,
+				"created_at": "2017-08-03T12:50:42.015Z",
+				"updated_at": "2017-08-03T12:50:42.015Z",
+				"price_id": 1,
+				"category": {
+					"name": "pug"
+				},
+				"tags": [{
+					"name": "cornhole microdosing"
+				}, {
+					"name": "lumbersexual blog"
+				}, {
+					"name": "truffaut Thundercats"
+				}],
+				"price": {
+					"x25": 300,
+					"x100": 290,
+					"x250": 281,
+					"x500": 234,
+					"x1000": 202,
+					"x2000": 185,
+					"updated_at": "2017-08-03T12:50:41.927Z"
+				}
+			},
+			"list": {
+				"id": 1,
+				"name": "first list",
+				"user_id": 11,
+				"created_at": "2017-08-03T12:52:00.548Z",
+				"updated_at": "2017-08-03T12:52:00.548Z",
+				"url_file_name": "data",
+				"url_content_type": "text/plain",
+				"url_file_size": 155,
+				"url_updated_at": "2017-08-03T12:52:00.540Z",
+				"count": 2,
+				"first_record": {
+					"zip": "33603",
+					"city": "Tampa",
+					"state": "FL",
+					"last_name": "Sawyer",
+					"first_name": "John",
+					"address_line1": "101 Example St",
+					"address_line2": "Apt. 2"
+				}
+			},
+			"quantity": 2,
+			"message": "Mixtape craft beer vinyl beard. Aesthetic disrupt cray craft beer. Chambray pug pour-over taxidermy direct trade tacos. Flexitarian typewriter drinking brunch leggings chia pinterest."
+		}]
+	}
+}

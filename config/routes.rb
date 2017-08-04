@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'#, controllers: {
-                                        #   confirmations:      'auth/confirmations',
-                                        #   passwords:          'auth/passwords',
-                                        #   registrations:      'auth/registrations',
-                                        #   sessions:           'auth/sessions',
-                                        # }
+  get 'orders/create'
+
+  mount_devise_token_auth_for 'User', at: 'auth'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -15,6 +12,7 @@ Rails.application.routes.draw do
       resources :categories, only: [:index, :show]
       resources :tags, only: [:index, :show]
       resources :lists, only: [:create, :show]
+      resources :orders, only: [:create]
 
     end
   end
