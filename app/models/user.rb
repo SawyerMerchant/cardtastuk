@@ -5,9 +5,10 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   has_many :lists
+  has_many :orders
 
   def as_json(options={})
-    super(options).merge({lists: self.lists})
+    super(options).merge({lists: self.lists, orders: self.orders})
   end
 
 end
