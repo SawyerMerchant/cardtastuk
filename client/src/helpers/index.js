@@ -38,7 +38,7 @@ export const calculatePrice = (quantity, prices) => {
   return total;
 };
 
-const _calculatePriceUnformatted = (quantity, prices) => {
+export const calculatePriceUnformatted = (quantity, prices) => {
   let total;
   if (quantity >= 1 && quantity <= 25) {
     total = prices.x25 * 25;
@@ -65,7 +65,7 @@ export const calculateTotal = cart => {
   let total = 0;
 
   cart.forEach(item => {
-    let price = _calculatePriceUnformatted(item.list.count, item.card.price);
+    let price = calculatePriceUnformatted(item.list.count, item.card.price);
     total += price;
   });
   total = moneyFormatter.format("USD", total / 100);

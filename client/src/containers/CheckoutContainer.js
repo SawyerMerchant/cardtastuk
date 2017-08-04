@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import Checkout from "../components/Checkout";
 import serialize from "form-serialize";
 import { withRouter } from "react-router-dom";
+import { calculatePriceUnformatted } from "../helpers";
 
 const mapStateToProps = state => {
   return {
@@ -14,8 +15,16 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onPayment: (form, token, cart, user) => {
-      const data = serialize(form, { hash: true });
+      let total = 0;
 
+      cart.forEach(item => {
+        let price = calculatePriceUnformatted(item.list.count, item.card.price);
+        total += price;
+      });
+
+      total /= 100;
+
+      const data = serialize(form, { hash: true });
       let config = {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -23,6 +32,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         body: JSON.stringify({
           token: token,
           user: user,
+          order_total: total,
           transaction_details: {
             billing_address: data,
             line_items: cart
