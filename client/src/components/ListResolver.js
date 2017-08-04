@@ -5,6 +5,12 @@ import ListSelect from "./ListSelect";
 import ListUploadContainer from "../containers/ListUploadContainer";
 import PendingOrderDetails from "./PendingOrderDetails";
 
+const handleNextPageClick = (e, list) => {
+  if (+list.count < 1) {
+    e.preventDefault();
+  }
+};
+
 class ListResolver extends Component {
   componentWillMount() {
     if (!this.props.isAuthenticated) {
@@ -46,6 +52,7 @@ class ListResolver extends Component {
             <LinkContainer
               to={`/cards/${card.id}/address`}
               className="card-details-button"
+              onClick={e => handleNextPageClick(e, currentList)}
             >
               <Button bsStyle="info">
                 Next: Enter a return address

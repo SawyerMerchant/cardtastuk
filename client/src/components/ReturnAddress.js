@@ -41,11 +41,11 @@ class ReturnAddress extends Component {
             </div>
           </Col>
           <Col md={6} xs={12} className="card-details">
-            <h3>3. Enter a Return Address</h3>
+            <h2>3. Enter a Return Address</h2>
+
+            <p>Let your recipients know where to send a message back.</p>
+
             <br />
-
-            <PendingOrderDetails card={card} currentList={currentList} />
-
             <form
               id="add-to-cart"
               onSubmit={e =>
@@ -76,6 +76,8 @@ class ReturnAddress extends Component {
                   required
                 />
               </FormGroup>
+
+              <PendingOrderDetails card={card} currentList={currentList} />
 
               <Button bsStyle="info" bsSize="large" type="submit" block>
                 <Glyphicon glyph="shopping-cart" />{" "}
