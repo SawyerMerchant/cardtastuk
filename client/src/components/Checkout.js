@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import StripeCheckout from "react-stripe-checkout";
 import { calculateTotal } from "../helpers";
+import CheckoutSummary from "./CheckoutSummary";
 
 class Checkout extends Component {
   componentDidMount() {
@@ -61,6 +62,9 @@ class Checkout extends Component {
               </FormGroup>
             </form>
             <h3>Total: {total}</h3>
+          </Col>
+          <Col md={6}>
+            <CheckoutSummary cart={cart} />
           </Col>
         </Row>
         <Row>
