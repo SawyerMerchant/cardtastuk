@@ -12,9 +12,21 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 import { calculatePrice, calculateTotal } from "../helpers";
 
+const buildReturnAddressPopover = address => {
+  return (
+    <Popover id="popover-address">
+      <p>{address.street_address_1}</p>
+      <p>{address.street_address_2 || ""}</p>
+      <p>{address.city}</p>
+      <p>{address.state}</p>
+      <p>{address.zipcode}</p>
+    </Popover>
+  );
+};
+
 const buildMessagePopover = message => {
   return (
-    <Popover id="popover-positioned-bottom">
+    <Popover id="popover-message">
       <p>{message}</p>
     </Popover>
   );
@@ -23,6 +35,7 @@ const buildMessagePopover = message => {
 const buildCartCells = (cart, onRemoveFromCart) => {
   return cart.map(item => {
     let messagePopover = buildMessagePopover(item.message);
+    let returnAddressPopover = buildReturnAddressPopover(item.return_address);
     return (
       <tr key={item.id}>
         <td>{item.card.name}</td>
@@ -32,6 +45,15 @@ const buildCartCells = (cart, onRemoveFromCart) => {
             trigger="click"
             placement="bottom"
             overlay={messagePopover}
+          >
+            <Glyphicon glyph="question-sign" />
+          </OverlayTrigger>
+        </td>
+        <td>
+          <OverlayTrigger
+            trigger="click"
+            placement="bottom"
+            overlay={returnAddressPopover}
           >
             <Glyphicon glyph="question-sign" />
           </OverlayTrigger>
@@ -64,6 +86,7 @@ const ShoppingCart = ({ cart, onRemoveFromCart }) => {
                   <th>Card Name</th>
                   <th>List Name</th>
                   <th>Message</th>
+                  <th>Return Address</th>
                   <th>Quantity</th>
                   <th>Total</th>
                   <th />

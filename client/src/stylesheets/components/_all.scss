@@ -4,10 +4,16 @@
 @import 'landingpage';
 @import 'navigation';
 @import 'listresolver';
+@import 'returnaddress';
 @import 'auth';
 @import 'shoppingcart';
 @import 'checkout';
 @import 'flashmessage';
+
+
+body {
+  margin-bottom: 10vh;
+}
 
 .card-title {
   text-transform: capitalize;

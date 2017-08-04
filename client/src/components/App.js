@@ -6,6 +6,7 @@ import CardsAllContainer from "../containers/CardsAllContainer";
 import CurrentCardContainer from "../containers/CurrentCardContainer";
 import CurrentCardEditContainer from "../containers/CurrentCardEditContainer";
 import ListResolverContainer from "../containers/ListResolverContainer";
+import ReturnAddressContainer from "../containers/ReturnAddressContainer";
 import ShoppingCartContainer from "../containers/ShoppingCartContainer";
 import AuthContainer from "../containers/AuthContainer";
 import CheckoutContainer from "../containers/CheckoutContainer";
@@ -27,6 +28,10 @@ class App extends Component {
           <NavigationContainer title={"CardTastuk"} />
           <Switch>
             <Route path="/checkout" component={CheckoutContainer} />
+            <Route
+              path="/cards/:id/address"
+              component={ReturnAddressContainer}
+            />
             <Route path="/cards/:id/upload" component={ListResolverContainer} />
             <Route
               path="/cards/:id/edit"

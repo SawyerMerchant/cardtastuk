@@ -40,19 +40,24 @@ class Checkout extends Component {
               </FormGroup>
               <FormGroup controlId="street_address_2">
                 <ControlLabel>Street Address 2</ControlLabel>
-                <FormControl type="text" name="street_address_2" />
+                <FormControl type="text" name="street_address_2" required />
               </FormGroup>
               <FormGroup controlId="city">
                 <ControlLabel>City</ControlLabel>
-                <FormControl type="text" name="city" />
+                <FormControl type="text" name="city" required />
               </FormGroup>
               <FormGroup controlId="state">
                 <ControlLabel>State</ControlLabel>
-                <FormControl type="text" name="state" />
+                <FormControl type="text" name="state" required />
               </FormGroup>
               <FormGroup controlId="zipcode">
                 <ControlLabel>Zipcode</ControlLabel>
-                <FormControl type="number" pattern="[0-9]{5}" name="zipcode" />
+                <FormControl
+                  type="number"
+                  pattern="[0-9]{5}"
+                  name="zipcode"
+                  required
+                />
               </FormGroup>
             </form>
             <h3>Total: {total}</h3>

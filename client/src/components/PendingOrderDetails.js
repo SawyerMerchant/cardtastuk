@@ -1,5 +1,4 @@
 import React from "react";
-import { Button, Glyphicon } from "react-bootstrap";
 import { calculatePrice } from "../helpers";
 
 const minCardWarning = count => {
@@ -13,13 +12,7 @@ const minCardWarning = count => {
   }
   return null;
 };
-const AddToCartWidget = ({
-  card,
-  currentList,
-  cardMessage,
-  onAddToCart,
-  isAuthenticated
-}) => {
+const AddToCartWidget = ({ card, currentList }) => {
   const warning = minCardWarning(+currentList.count);
   return (
     <div>
@@ -28,16 +21,6 @@ const AddToCartWidget = ({
       <h3>Total: {calculatePrice(currentList.count, card.price)}</h3>
       {warning}
       <br />
-      <form
-        id="add-to-cart"
-        onSubmit={e =>
-          onAddToCart(e, card, currentList, cardMessage, isAuthenticated)}
-      >
-        <Button bsStyle="info" bsSize="large" type="submit" block>
-          <Glyphicon glyph="shopping-cart" />{" "}
-          Add To Cart
-        </Button>
-      </form>
     </div>
   );
 };

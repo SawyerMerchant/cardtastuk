@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Grid, Row, Col, Button } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import ListSelect from "./ListSelect";
 import ListUploadContainer from "../containers/ListUploadContainer";
-import AddToCartWidget from "./AddToCartWidget";
+import PendingOrderDetails from "./PendingOrderDetails";
 
-class Upload extends Component {
+class ListResolver extends Component {
   componentWillMount() {
     if (!this.props.isAuthenticated) {
       this.props.history.push("/auth?error=unauthenticated");
@@ -18,9 +19,7 @@ class Upload extends Component {
       lists,
       currentList,
       user,
-      isAuthenticated,
-      setCurrentList,
-      onAddToCart
+      setCurrentList
     } = this.props;
     return (
       <Grid className="list-resolver">
@@ -42,13 +41,16 @@ class Upload extends Component {
 
             <ListUploadContainer />
 
-            <AddToCartWidget
-              card={card}
-              currentList={currentList}
-              cardMessage={cardMessage}
-              onAddToCart={onAddToCart}
-              isAuthenticated={isAuthenticated}
-            />
+            <PendingOrderDetails card={card} currentList={currentList} />
+
+            <LinkContainer
+              to={`/cards/${card.id}/address`}
+              className="card-details-button"
+            >
+              <Button bsStyle="info">
+                Next: Enter a return address
+              </Button>
+            </LinkContainer>
           </Col>
         </Row>
       </Grid>
@@ -56,4 +58,4 @@ class Upload extends Component {
   }
 }
 
-export default Upload;
+export default ListResolver;
