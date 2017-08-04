@@ -37,12 +37,11 @@ export function endUserSession(user) {
     method: "DELETE",
     headers: {
       "access-token": user.accessToken,
-      "client": user.client,
-      "uid": user.uid
+      client: user.client,
+      uid: user.uid
     }
-  }
+  };
   return dispatch => {
-    
     fetch("/auth/sign_out", config)
       .then(response => {
         if (!response.ok) {
@@ -92,7 +91,7 @@ export function registerUser(form, history) {
         return response.json();
       })
       .then(json => {
-        dispatch(getUserLoginSuccess({...json.data, client, accessToken}));
+        dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
         history.goBack(); // redirect user to previous page before login was requested
       })
       .catch(error => {
@@ -110,7 +109,7 @@ export function loginUser(form, history) {
       password: form.password
     })
   };
-  
+
   let accessToken;
   let client;
 
@@ -135,7 +134,7 @@ export function loginUser(form, history) {
           },
           count: 0
         };
-        dispatch(getUserLoginSuccess({...json.data, client, accessToken}));
+        dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
         dispatch(getUserListsSuccess(json.data.lists));
         dispatch(setCurrentList(firstList));
         history.goBack(); // redirect user to previous page before login was requested
