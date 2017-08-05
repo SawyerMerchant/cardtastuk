@@ -1,0 +1,276 @@
+{
+    "token": {
+        "id": "tok_1AnB27LijpjLuJOipBfzoUhE",
+        "object": "token",
+        "card": {
+            "id": "card_1AnB27LijpjLuJOiPId80Lxd",
+            "object": "card",
+            "address_city": nil,
+            "address_country": nil,
+            "address_line1": nil,
+            "address_line1_check": nil,
+            "address_line2": nil,
+            "address_state": nil,
+            "address_zip": nil,
+            "address_zip_check": nil,
+            "brand": "Visa",
+            "country": "US",
+            "cvc_check": "pass",
+            "dynamic_last4": nil,
+            "exp_month": 11,
+            "exp_year": 2018,
+            "funding": "credit",
+            "last4": "4242",
+            "metadata": { },
+            "name": "sawyermerchant@gmail.com",
+            "tokenization_method": nil
+        },
+        "client_ip": "47.204.6.96",
+        "created": 1501873227,
+        "email": "sawyermerchant@gmail.com",
+        "livemode": false,
+        "type": "card",
+        "used": false
+    },
+    "user": {
+        "id": 1,
+        "email": "dayna@hickle.biz",
+        "provider": "email",
+        "uid": "dayna@hickle.biz",
+        "name": nil,
+        "nickname": nil,
+        "image": nil,
+        "lists": [
+            {
+                "id": 1,
+                "name": "Customers",
+                "user_id": 1,
+                "created_at": "2017-08-04T18:22:41.626Z",
+                "updated_at": "2017-08-04T18:22:41.626Z",
+                "url_file_name": "data",
+                "url_content_type": "text/plain",
+                "url_file_size": 1384,
+                "url_updated_at": "2017-08-04T18:22:41.608Z",
+                "count": 25,
+                "first_record": {
+                    "zip": "70116",
+                    "city": "New Orleans",
+                    "state": "LA",
+                    "last_name": "Butt",
+                    "first_name": "James",
+                    "address_line1": "6649 N Blue Gum St",
+                    "address_line2": "Apt. 2"
+                }
+            }
+        ],
+        "orders": [
+            {
+                "id": 1,
+                "user_id": 1,
+                "status": nil,
+                "stripe": {
+                    "user": {
+                        "id": 1,
+                        "uid": "dayna@hickle.biz",
+                        "name": nil,
+                        "email": "dayna@hickle.biz",
+                        "image": nil,
+                        "lists": [ ],
+                        "client": "6VIw6R8-lwyBJC8EdU5hbQ",
+                        "orders": [ ],
+                        "nickname": nil,
+                        "provider": "email",
+                        "accessToken": "KLhDmJ3Ot0Ci_2yrZCSvmA"
+                    },
+                    "token": {
+                        "id": "tok_1AnARxLijpjLuJOi4zCEJpfQ",
+                        "card": {
+                            "id": "card_1AnARxLijpjLuJOiXDBQnC5E",
+                            "name": "sawyermerchant@gmail.com",
+                            "brand": "Visa",
+                            "last4": "4242",
+                            "object": "card",
+                            "country": "US",
+                            "funding": "credit",
+                            "exp_year": 2018,
+                            "metadata": { },
+                            "cvc_check": "pass",
+                            "exp_month": 11,
+                            "address_zip": nil,
+                            "address_city": nil,
+                            "address_line1": nil,
+                            "address_line2": nil,
+                            "address_state": nil,
+                            "dynamic_last4": nil,
+                            "address_country": nil,
+                            "address_zip_check": nil,
+                            "address_line1_check": nil,
+                            "tokenization_method": nil
+                        },
+                        "type": "card",
+                        "used": false,
+                        "email": "sawyermerchant@gmail.com",
+                        "object": "token",
+                        "created": 1501870985,
+                        "livemode": false,
+                        "client_ip": "47.204.6.96"
+                    },
+                    "order_total": 75,
+                    "transaction_details": {
+                        "line_items": [
+                            {
+                                "id": "9e2db965-833c-4331-9930-5e2e753a7f9a",
+                                "card": {
+                                    "id": 2,
+                                    "name": "try-hard etsy Yuccie",
+                                    "size": "5x7",
+                                    "tags": [
+                                        {
+                                            "name": "heirloom swag"
+                                        },
+                                        {
+                                            "name": "hoodie sustainable"
+                                        },
+                                        {
+                                            "name": "chia quinoa"
+                                        }
+                                    ],
+                                    "price": {
+                                        "x25": 300,
+                                        "x100": 290,
+                                        "x250": 281,
+                                        "x500": 234,
+                                        "x1000": 202,
+                                        "x2000": 185,
+                                        "updated_at": "2017-08-04T18:16:28.910Z"
+                                    },
+                                    "category": {
+                                        "name": "mixtape"
+                                    },
+                                    "price_id": 1,
+                                    "created_at": "2017-08-04T18:16:29.096Z",
+                                    "updated_at": "2017-08-04T18:16:29.096Z",
+                                    "category_id": 7,
+                                    "orientation": "portrait",
+                                    "large_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/original/christmas_decoration_on_tree_187371.jpg",
+                                    "small_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/thumb/christmas_decoration_on_tree_187371.jpg",
+                                    "medium_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/medium/christmas_decoration_on_tree_187371.jpg",
+                                    "default_greeting": "Taxidermy intelligentsia 8-bit. Flannel 90's gluten-free art party bushwick xoxo master. Trust fund letterpress lomo mixtape five dollar toast. Brooklyn next level sriracha truffaut etsy."
+                                },
+                                "list": {
+                                    "id": 1,
+                                    "name": "Customers",
+                                    "count": 25,
+                                    "user_id": 1,
+                                    "created_at": "2017-08-04T18:22:41.626Z",
+                                    "updated_at": "2017-08-04T18:22:41.626Z",
+                                    "first_record": {
+                                        "zip": "70116",
+                                        "city": "New Orleans",
+                                        "state": "LA",
+                                        "last_name": "Butt",
+                                        "first_name": "James",
+                                        "address_line1": "6649 N Blue Gum St",
+                                        "address_line2": "Apt. 2"
+                                    },
+                                    "url_file_name": "data",
+                                    "url_file_size": 1384,
+                                    "url_updated_at": "2017-08-04T18:22:41.608Z",
+                                    "url_content_type": "text/plain"
+                                },
+                                "message": "Taxidermy intelligentsia 8-bit. Flannel 90's gluten-free art party bushwick xoxo master. Trust fund letterpress lomo mixtape five dollar toast. Brooklyn next level sriracha truffaut etsy.",
+                                "quantity": 25
+                            }
+                        ],
+                        "billing_address": {
+                            "city": "Tampa",
+                            "state": "Florida",
+                            "zipcode": "33613",
+                            "street_address_1": "14310 Hanging Moss Circle",
+                            "street_address_2": "201"
+                        }
+                    }
+                },
+                "created_at": "2017-08-04T18:23:08.462Z",
+                "updated_at": "2017-08-04T18:23:08.462Z"
+            }
+        ],
+        "client": "ljv_uD3Oe0-bKDZ-kEpGpg",
+        "accessToken": "m8sg8zyJ-LHW0bCE-RGMnQ"
+    },
+    "order_total": 75,
+    "transaction_details": {
+        "billing_address": {
+            "street_address_1": "14310 Hanging Moss Circle",
+            "street_address_2": "201",
+            "city": "Tampa",
+            "state": "Florida",
+            "zipcode": "33613"
+        },
+        "line_items": [
+            {
+                "id": "85d6f78a-ca08-4a05-bf8a-1fd3699e4963",
+                "card": {
+                    "id": 2,
+                    "name": "try-hard etsy Yuccie",
+                    "large_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/original/christmas_decoration_on_tree_187371.jpg",
+                    "medium_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/medium/christmas_decoration_on_tree_187371.jpg",
+                    "small_img_url": "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/thumb/christmas_decoration_on_tree_187371.jpg",
+                    "default_greeting": "Taxidermy intelligentsia 8-bit. Flannel 90's gluten-free art party bushwick xoxo master. Trust fund letterpress lomo mixtape five dollar toast. Brooklyn next level sriracha truffaut etsy.",
+                    "orientation": "portrait",
+                    "size": "5x7",
+                    "category_id": 7,
+                    "created_at": "2017-08-04T18:16:29.096Z",
+                    "updated_at": "2017-08-04T18:16:29.096Z",
+                    "price_id": 1,
+                    "category": {
+                        "name": "mixtape"
+                    },
+                    "tags": [
+                        {
+                            "name": "heirloom swag"
+                        },
+                        {
+                            "name": "hoodie sustainable"
+                        },
+                        {
+                            "name": "chia quinoa"
+                        }
+                    ],
+                    "price": {
+                        "x25": 300,
+                        "x100": 290,
+                        "x250": 281,
+                        "x500": 234,
+                        "x1000": 202,
+                        "x2000": 185,
+                        "updated_at": "2017-08-04T18:16:28.910Z"
+                    }
+                },
+                "list": {
+                    "id": 1,
+                    "name": "Customers",
+                    "user_id": 1,
+                    "created_at": "2017-08-04T18:22:41.626Z",
+                    "updated_at": "2017-08-04T18:22:41.626Z",
+                    "url_file_name": "data",
+                    "url_content_type": "text/plain",
+                    "url_file_size": 1384,
+                    "url_updated_at": "2017-08-04T18:22:41.608Z",
+                    "count": 25,
+                    "first_record": {
+                        "zip": "70116",
+                        "city": "New Orleans",
+                        "state": "LA",
+                        "last_name": "Butt",
+                        "first_name": "James",
+                        "address_line1": "6649 N Blue Gum St",
+                        "address_line2": "Apt. 2"
+                    }
+                },
+                "quantity": 25,
+                "message": "Taxidermy intelligentsia 8-bit. Flannel 90's gluten-free art party bushwick xoxo master. Trust fund letterpress lomo mixtape five dollar toast. Brooklyn next level sriracha truffaut etsy."
+            }
+        ]
+    }
+}

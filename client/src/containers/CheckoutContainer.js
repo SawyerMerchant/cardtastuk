@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const data = serialize(form, { hash: true });
       let config = {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: { "Content-Type": "application/json" },
         mode: "no-cors",
         body: JSON.stringify({
           token: token,
