@@ -1,4 +1,5 @@
 require 'stripe'
+require 'resolv-replace'
 class Order < ApplicationRecord
   belongs_to :user
 end
@@ -20,11 +21,17 @@ class StripeOrder
 
   def charge
     tries ||= 3
+    amount = order_total
+    source = @order.stripe['token']['id']
+    transfer_group = @order.id
+    # puts "amount: #{total}"
+    # puts "source: #{@order.stripe['token']['id']}"
+    # puts "transfer_group: #{@order.id}"
     response = Stripe::Charge.create({
-      :amount => order_total,
+      :amount => amount,
       :currency => "usd",
-      :source => @order.stripe['token']['id'],
-      :transfer_group => @order.id,
+      :source => source,
+      :transfer_group => transfer_group,
     })
   rescue
     @logger.warn "Failed to connect, #{tries} tries remaining. Response was #{response}"

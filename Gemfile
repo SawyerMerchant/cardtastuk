@@ -35,6 +35,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda'
   gem 'rspec_api_documentation'
+  # gem 'responders', '~> 2.2'
 end
 
 group :development do
@@ -69,3 +70,6 @@ gem "paperclip", "~> 5.0.0"
 
 # handle charges
 gem 'stripe'
+
+# api parameters
+gem 'active_model_serializers', '~> 0.10.0'
