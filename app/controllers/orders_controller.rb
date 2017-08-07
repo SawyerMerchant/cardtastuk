@@ -6,9 +6,10 @@ class OrdersController < ApiController
     stripeOrder = StripeOrder.new(order)
     response = stripeOrder.charge
 
+    data = {id: order.id, amount: response['amount']}.to_json
 
     if response['status'] == 'succeeded'
-      render json: {id: order.id, amount: response['amount']}, status: :success
+      render json: data, status: 200
     else
       render json: response['errors'], status: :unprocessable_entity
     end
