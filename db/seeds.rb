@@ -33,12 +33,20 @@ cards = []
   orientation = n % 2 == 0 ? "landscape"  : "portrait"
   catID = rand(1..10)
 
+  large_img_url = n % 2 == 0 ? "https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/cards/aws_images/000/000/035/original/3kingsLAND.jpg" : "https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/cards/aws_images/000/000/037/original/old_santaPORT.jpg"
+
+  medium_img_url = n % 2 == 0 ? "https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/cards/aws_images/000/000/035/medium/3kingsLAND.jpg" :
+  "https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/cards/aws_images/000/000/037/medium/old_santaPORT.jpg"
+
+  small_img_url = n % 2 == 0 ? "https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/cards/aws_images/000/000/035/thumb/3kingsLAND.jpg" :
+  "https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/cards/aws_images/000/000/037/thumb/old_santaPORT.jpg"
+
   card = Card.create(
     name: Faker::Hipster.words(3).join(" "),
     category_id: catID,
-    large_img_url: "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/original/christmas_decoration_on_tree_187371.jpg",
-    medium_img_url: "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/medium/christmas_decoration_on_tree_187371.jpg",
-    small_img_url:  "https://s3-us-west-2.amazonaws.com/cards201606/arts/images/000/000/003/thumb/christmas_decoration_on_tree_187371.jpg",
+    large_img_url: large_img_url,
+    medium_img_url: medium_img_url,
+    small_img_url:  small_img_url,
     default_greeting: Faker::Hipster.paragraph,
     orientation: orientation,
     size: "5x7",
