@@ -9,6 +9,7 @@ import {
   Button
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import FilterablesContainer from "../containers/FilterablesContainer";
 
 const buildTagsString = tags => {
   let tagString = "";
@@ -52,6 +53,7 @@ const CardsAll = ({ cards, onPageIncrement, onPageDecrement }) => {
         </Grid>
       </Jumbotron>
       <Grid>
+        <FilterablesContainer />
         <Row>
           {cardPanels}
         </Row>
