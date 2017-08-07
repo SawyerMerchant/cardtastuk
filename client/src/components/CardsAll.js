@@ -9,6 +9,7 @@ import {
   Button
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { getParams } from "../helpers";
 import FilterablesContainer from "../containers/FilterablesContainer";
 
 const buildTagsString = tags => {
@@ -38,8 +39,9 @@ const buildCardPanels = cards => {
   );
 };
 
-const CardsAll = ({ cards, onPageIncrement, onPageDecrement }) => {
+const CardsAll = ({ cards, onPageIncrement, onPageDecrement, location }) => {
   let cardPanels = buildCardPanels(cards);
+  let page = getParams(location.search).page || 1;
   return (
     <div className="cards-all">
       <Jumbotron>
@@ -61,7 +63,12 @@ const CardsAll = ({ cards, onPageIncrement, onPageDecrement }) => {
           <Col md={2}>
             <Button bsStyle="primary" onClick={onPageDecrement}>Prev</Button>
           </Col>
-          <Col md={2} mdOffset={8}>
+          <Col md={2} mdOffset={3}>
+            <h3>
+              Page {page}
+            </h3>
+          </Col>
+          <Col md={2} mdOffset={3}>
             <Button bsStyle="primary" onClick={onPageIncrement}>Next</Button>
           </Col>
         </Row>
