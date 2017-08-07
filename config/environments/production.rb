@@ -79,7 +79,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
 
     # Don't forget to make S3 your storage option!
-    :storage => :s3,
+    storage: :s3,
     s3_host_name: ENV['AWS_HOST_NAME'],
     s3_region: ENV['AWS_REGION'],
 
