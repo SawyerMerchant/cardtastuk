@@ -80,13 +80,14 @@ Rails.application.configure do
 
     # Don't forget to make S3 your storage option!
     :storage => :s3,
+    s3_host_name: ENV['AWS_HOST_NAME'],
+    s3_region: ENV['AWS_REGION']
 
     :s3_credentials => {
       s3_host_name: ENV['AWS_HOST_NAME'],
       bucket: ENV['LIST_BUCKET'],
       access_key_id: ENV['AWS_ACCESS_KEY'],
       secret_access_key: ENV['AWS_SECRET_KEY'],
-      s3_region: ENV['AWS_REGION']
       # put your host name here if needed
       #   see the reading below for more details
       # NOTE: These must be the correct region for YOUR bucket
