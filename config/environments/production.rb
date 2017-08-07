@@ -85,7 +85,7 @@ Rails.application.configure do
       s3_host_name: ENV['AWS_HOST_NAME'],
       bucket: ENV['LIST_BUCKET'],
       access_key_id: ENV['AWS_ACCESS_KEY'],
-      secret_access_key: ENV['AWS_SECRET_KEY']
+      secret_access_key: ENV['AWS_SECRET_KEY'],
       region: ENV['AWS_REGION']
       # put your host name here if needed
       #   see the reading below for more details
