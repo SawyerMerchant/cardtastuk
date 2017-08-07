@@ -98,3 +98,23 @@ export const filterCards = (cards, router) => {
   let filteredCards = paginateCards(cards, page, ITEMS_PER_PAGE);
   return filteredCards;
 };
+
+export const handlePageIncrement = router => {
+  let currentPage = getParams(router.location.search).page;
+  if (!currentPage) {
+    return 2;
+  } else {
+    return Number(currentPage) + 1;
+  }
+};
+
+export const handlePageDecrement = router => {
+  let currentPage = getParams(router.location.search).page;
+  if (!currentPage) {
+    return 1;
+  } else if (+currentPage === 1) {
+    return 1;
+  } else {
+    return Number(currentPage) - 1;
+  }
+};

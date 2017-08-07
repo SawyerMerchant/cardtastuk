@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Table,
-  Popover,
-  OverlayTrigger,
-  Glyphicon,
-  Button
-} from "react-bootstrap";
+import { Table, Popover, OverlayTrigger, Glyphicon } from "react-bootstrap";
 import { calculatePrice, calculateTotal } from "../helpers";
 
 const buildReturnAddressPopover = address => {

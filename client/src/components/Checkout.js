@@ -9,7 +9,6 @@ import {
   Button
 } from "react-bootstrap";
 import StripeCheckout from "react-stripe-checkout";
-import { calculateTotal } from "../helpers";
 import CheckoutSummary from "./CheckoutSummary";
 
 class Checkout extends Component {
@@ -26,7 +25,6 @@ class Checkout extends Component {
 
   render() {
     const { cart } = this.props;
-    const total = calculateTotal(cart);
 
     return (
       <Grid className="checkout">

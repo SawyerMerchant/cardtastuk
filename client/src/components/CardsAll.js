@@ -1,5 +1,13 @@
 import React from "react";
-import { Jumbotron, Grid, Row, Col, Panel, Image } from "react-bootstrap";
+import {
+  Jumbotron,
+  Grid,
+  Row,
+  Col,
+  Panel,
+  Image,
+  Button
+} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const buildTagsString = tags => {
@@ -29,7 +37,7 @@ const buildCardPanels = cards => {
   );
 };
 
-const CardsAll = ({ cards }) => {
+const CardsAll = ({ cards, onPageIncrement, onPageDecrement }) => {
   let cardPanels = buildCardPanels(cards);
   return (
     <div className="cards-all">
@@ -46,6 +54,14 @@ const CardsAll = ({ cards }) => {
       <Grid>
         <Row>
           {cardPanels}
+        </Row>
+        <Row>
+          <Col md={2}>
+            <Button bsStyle="primary" onClick={onPageDecrement}>Prev</Button>
+          </Col>
+          <Col md={2} mdOffset={8}>
+            <Button bsStyle="primary" onClick={onPageIncrement}>Next</Button>
+          </Col>
         </Row>
       </Grid>
     </div>
