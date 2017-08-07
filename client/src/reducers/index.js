@@ -6,6 +6,8 @@ import { user } from "./user";
 import { listsAll } from "./listsAll";
 import { currentList } from "./currentList";
 import { shoppingCart } from "./shoppingCart";
+import { categoriesAll } from "./categoriesAll";
+import { tagsAll } from "./tagsAll";
 
 const cardTastukApp = combineReducers({
   cardsAll,
@@ -14,7 +16,9 @@ const cardTastukApp = combineReducers({
   user,
   listsAll,
   currentList,
-  shoppingCart
+  shoppingCart,
+  categoriesAll,
+  tagsAll
 });
 
 export default cardTastukApp;
