@@ -17,6 +17,4 @@ class CardsController < ApiController
                                              })
   end
 
-  def create
-  end
 end
