@@ -67,6 +67,7 @@ gem 'rack-cors', :require => 'rack/cors'
 
 # csv upload
 gem "paperclip", "~> 5.0.0"
+gem 'aws-sdk'
 
 # handle charges
 gem 'stripe'
