@@ -61,7 +61,6 @@ class Checkout extends Component {
                 />
               </FormGroup>
             </form>
-            <h3>Total: {total}</h3>
           </Col>
           <Col md={6}>
             <CheckoutSummary cart={cart} />

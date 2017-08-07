@@ -1,4 +1,5 @@
 import moneyFormatter from "money-formatter";
+const ITEMS_PER_PAGE = 6;
 
 export const getParams = query => {
   if (!query) {
@@ -78,4 +79,22 @@ export const flashMsgs = {
   badLogin:
     "Could not login. Please re-enter your email and password and try again.",
   unauthenticated: "Please login first before continuing."
+};
+
+export const paginateCards = (cards, page = 1, itemsPerPage) => {
+  if (page === 1) {
+    return cards.slice(0, itemsPerPage);
+  }
+
+  let start = (page - 1) * itemsPerPage + 1;
+  let end = page * itemsPerPage + 1;
+
+  return cards.slice(start, end);
+};
+
+export const filterCards = (cards, router) => {
+  let page = getParams(router.location.search).page;
+
+  let filteredCards = paginateCards(cards, page, ITEMS_PER_PAGE);
+  return filteredCards;
 };

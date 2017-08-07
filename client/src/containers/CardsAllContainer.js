@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CardsAll from "../components/CardsAll";
+import { filterCards } from "../helpers";
 import { getAllCards } from "../actions/cardsAll";
 
 class CardsAllContainer extends Component {
@@ -13,9 +14,9 @@ class CardsAllContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    cards: state.cardsAll.data
+    cards: filterCards(state.cardsAll.data, ownProps)
   };
 };
 
