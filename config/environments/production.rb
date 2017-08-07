@@ -86,7 +86,7 @@ Rails.application.configure do
       bucket: ENV['LIST_BUCKET'],
       access_key_id: ENV['AWS_ACCESS_KEY'],
       secret_access_key: ENV['AWS_SECRET_KEY'],
-      region: ENV['AWS_REGION']
+      s3_region: ENV['AWS_REGION']
       # put your host name here if needed
       #   see the reading below for more details
       # NOTE: These must be the correct region for YOUR bucket
