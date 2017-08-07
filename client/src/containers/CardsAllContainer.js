@@ -20,7 +20,12 @@ class CardsAllContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    cards: filterCards(state.cardsAll.data, ownProps)
+    cards: filterCards(
+      state.cardsAll.data,
+      ownProps,
+      state.currentCategory,
+      state.currentTag
+    )
   };
 };
 

@@ -62,7 +62,7 @@ const _getCategories = cards => {
 
 const _getTags = cards => {
   let results = new Set();
-  
+
   cards.forEach(card => {
     card.tags.forEach(tag => {
       results.add(tag.name);

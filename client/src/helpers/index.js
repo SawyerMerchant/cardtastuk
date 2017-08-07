@@ -81,24 +81,6 @@ export const flashMsgs = {
   unauthenticated: "Please login first before continuing."
 };
 
-export const paginateCards = (cards, page = 1, itemsPerPage) => {
-  if (page === 1) {
-    return cards.slice(0, itemsPerPage);
-  }
-
-  let start = (page - 1) * itemsPerPage + 1;
-  let end = page * itemsPerPage + 1;
-
-  return cards.slice(start, end);
-};
-
-export const filterCards = (cards, router) => {
-  let page = getParams(router.location.search).page;
-
-  let filteredCards = paginateCards(cards, page, ITEMS_PER_PAGE);
-  return filteredCards;
-};
-
 export const handlePageIncrement = router => {
   let currentPage = getParams(router.location.search).page;
   if (!currentPage) {
@@ -117,4 +99,56 @@ export const handlePageDecrement = router => {
   } else {
     return Number(currentPage) - 1;
   }
+};
+
+const filterByCategory = (cards, category) => {
+  if (category === "") {
+    return cards;
+  }
+
+  let results = [];
+  cards.forEach(card => {
+    if (card.category.name === category) {
+      results.push(card);
+    }
+  });
+
+  return results;
+};
+
+const filterByTag = (cards, tag) => {
+  if (tag === "") {
+    return cards;
+  }
+
+  let results = [];
+  cards.forEach(card => {
+    card.tags.forEach(eachTag => {
+      if (eachTag.name === tag) {
+        results.push(card);
+      }
+    });
+  });
+
+  return results;
+};
+
+export const paginateCards = (cards, page, itemsPerPage) => {
+  if (page === 1) {
+    return cards.slice(0, itemsPerPage);
+  }
+
+  let start = (page - 1) * itemsPerPage + 1;
+  let end = page * itemsPerPage + 1;
+
+  return cards.slice(start, end);
+};
+
+export const filterCards = (cards, router, category, tag) => {
+  let filteredCards = filterByCategory(cards, category);
+  filteredCards = filterByTag(filteredCards, tag);
+
+  let page = getParams(router.location.search).page || 1;
+  filteredCards = paginateCards(filteredCards, +page, ITEMS_PER_PAGE);
+  return filteredCards;
 };

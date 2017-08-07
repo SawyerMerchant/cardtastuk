@@ -8,6 +8,8 @@ import { currentList } from "./currentList";
 import { shoppingCart } from "./shoppingCart";
 import { categoriesAll } from "./categoriesAll";
 import { tagsAll } from "./tagsAll";
+import { currentCategory } from "./currentCategory";
+import { currentTag } from "./currentTag";
 
 const cardTastukApp = combineReducers({
   cardsAll,
@@ -18,7 +20,9 @@ const cardTastukApp = combineReducers({
   currentList,
   shoppingCart,
   categoriesAll,
-  tagsAll
+  tagsAll,
+  currentCategory,
+  currentTag
 });
 
 export default cardTastukApp;

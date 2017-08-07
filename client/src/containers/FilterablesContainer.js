@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Filterables from "../components/Filterables";
-import { registerUser, loginUser } from "../actions/user";
-import { withRouter } from "react-router-dom";
+import { setCurrentTag } from "../actions/currentTag";
+import { setCurrentCategory } from "../actions/currentCategory";
 
 const mapStateToProps = state => {
   return {
@@ -10,18 +10,21 @@ const mapStateToProps = state => {
   };
 };
 
-
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onLogin: e => {
+    onChangeTag: e => {
+      let tag = e.target.value;
+      dispatch(setCurrentTag(tag));
     },
-    onRegister: e => {
+    onChangeCategory: e => {
+      let category = e.target.value;
+      dispatch(setCurrentCategory(category));
     }
   };
 };
 
+const FilterablesContainer = connect(mapStateToProps, mapDispatchToProps)(
+  Filterables
+);
 
-
-const FilterablesContainer = connect(mapStateToProps, mapDispatchToProps)(Filterables);
-
-export default withRouter(FilterablesContainer);
+export default FilterablesContainer;
