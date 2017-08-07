@@ -16,4 +16,7 @@ class CardsController < ApiController
                                              :price => { :except => [:id, :name, :created_at, :created_at]}
                                              })
   end
+
+  def create
+  end
 end

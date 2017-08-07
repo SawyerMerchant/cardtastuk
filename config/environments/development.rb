@@ -50,5 +50,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # This is your imagemagick directory, retrieved
+  # using `which convert`
+  Paperclip.options[:command_path] = "/usr/local/bin"
   
 end
