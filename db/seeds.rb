@@ -3,7 +3,7 @@ if Rails.env == "development"
   Rake::Task['db:migrate:reset'].invoke
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'sawyermerchant@gmail.com', password: 'password', password_confirmation: 'password') #if Rails.env.development?
 
 COUNT = 10
 

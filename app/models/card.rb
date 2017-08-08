@@ -9,7 +9,7 @@ class Card < ApplicationRecord
   after_initialize :init
 
     def init
-      self.price_id  ||= 1
+      self.price_id  ||= Price.last.id
 
     end
 
