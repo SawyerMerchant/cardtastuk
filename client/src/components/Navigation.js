@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import PropTypes from "prop-types";
 
 const NavLinks = ({ cart, user, onLogout }) => {
   return (
@@ -39,6 +40,13 @@ const Navigation = ({ title, cart, user, onLogout }) => {
       <NavLinks cart={cart} user={user} onLogout={onLogout} />
     </Navbar>
   );
+};
+
+Navigation.propTypes = {
+  title: PropTypes.string.isRequired,
+  cart: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
+  onLogout: PropTypes.func.isRequired
 };
 
 export default Navigation;

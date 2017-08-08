@@ -1,5 +1,6 @@
 import React from "react";
 import { calculatePrice } from "../helpers";
+import PropTypes from "prop-types";
 
 const minCardWarning = count => {
   if (count < 25) {
@@ -12,7 +13,7 @@ const minCardWarning = count => {
   }
   return null;
 };
-const AddToCartWidget = ({ card, currentList }) => {
+const PendingOrderDetails = ({ card, currentList }) => {
   const warning = minCardWarning(+currentList.count);
   return (
     <div>
@@ -25,4 +26,9 @@ const AddToCartWidget = ({ card, currentList }) => {
   );
 };
 
-export default AddToCartWidget;
+PendingOrderDetails.propTypes = {
+  card: PropTypes.object.isRequired,
+  currentList: PropTypes.object.isRequired
+};
+
+export default PendingOrderDetails;

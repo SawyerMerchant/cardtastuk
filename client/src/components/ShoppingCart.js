@@ -10,6 +10,7 @@ import {
   Glyphicon
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import PropTypes from "prop-types";
 import { calculatePrice, calculateTotal } from "../helpers";
 
 const buildReturnAddressPopover = address => {
@@ -113,6 +114,11 @@ const ShoppingCart = ({ cart, onRemoveFromCart }) => {
       </Grid>
     </div>
   );
+};
+
+ShoppingCart.propTypes = {
+  cart: PropTypes.array.isRequired,
+  onRemoveFromCart: PropTypes.func.isRequired
 };
 
 export default ShoppingCart;

@@ -11,6 +11,7 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 import { getParams } from "../helpers";
 import FilterablesContainer from "../containers/FilterablesContainer";
+import PropTypes from "prop-types";
 
 const buildTagsString = tags => {
   let tagString = "";
@@ -75,6 +76,12 @@ const CardsAll = ({ cards, onPageIncrement, onPageDecrement, location }) => {
       </Grid>
     </div>
   );
+};
+
+CardsAll.propTypes = {
+  cards: PropTypes.array.isRequired,
+  onPageIncrement: PropTypes.func.isRequired,
+  onPageDecrement: PropTypes.func.isRequired
 };
 
 export default CardsAll;

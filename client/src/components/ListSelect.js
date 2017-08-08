@@ -1,5 +1,6 @@
 import React from "react";
 import { FormGroup, ControlLabel, FormControl } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const buildListOptions = lists => {
   return lists.map(list =>
@@ -28,6 +29,11 @@ const ListSelect = ({ setCurrentList, lists }) => {
       </form>
     </div>
   );
+};
+
+ListSelect.propTypes = {
+  lists: PropTypes.array.isRequired,
+  setCurrentList: PropTypes.func.isRequired
 };
 
 export default ListSelect;

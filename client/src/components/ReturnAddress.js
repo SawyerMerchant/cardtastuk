@@ -9,6 +9,7 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import PropTypes from "prop-types";
 import PendingOrderDetails from "./PendingOrderDetails";
 import BackBtn from "./BackBtn";
 
@@ -94,5 +95,14 @@ class ReturnAddress extends Component {
     );
   }
 }
+
+ReturnAddress.propTypes = {
+  card: PropTypes.object.isRequired,
+  cardMessage: PropTypes.string,
+  currentList: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  onAddToCart: PropTypes.func.isRequired
+};
 
 export default ReturnAddress;

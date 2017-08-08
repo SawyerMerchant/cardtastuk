@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Alert, Grid } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 class FlashMessage extends Component {
   constructor() {
@@ -28,5 +29,10 @@ class FlashMessage extends Component {
     }
   }
 }
+
+FlashMessage.propTypes = {
+  type: PropTypes.string,
+  message: PropTypes.string
+};
 
 export default FlashMessage;

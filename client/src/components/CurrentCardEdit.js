@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import PropTypes from "prop-types";
 import BackBtn from "./BackBtn";
 
 const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
@@ -48,6 +49,11 @@ const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
       </Row>
     </Grid>
   );
+};
+
+CurrentCardEdit.propTypes = {
+  card: PropTypes.object.isRequired,
+  onChangeMessage: PropTypes.func.isRequired
 };
 
 export default CurrentCardEdit;

@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import moneyFormatter from "money-formatter";
+import PropTypes from "prop-types";
 import BackBtn from "./BackBtn";
 
 const buildPricingPopover = prices => {
@@ -81,6 +82,10 @@ const CurrentCard = ({ card, history }) => {
       </Row>
     </Grid>
   );
+};
+
+CurrentCard.propTypes = {
+  card: PropTypes.object.isRequired
 };
 
 export default CurrentCard;

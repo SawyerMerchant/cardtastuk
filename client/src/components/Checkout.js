@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import StripeCheckout from "react-stripe-checkout";
 import CheckoutSummary from "./CheckoutSummary";
+import PropTypes from "prop-types";
 
 class Checkout extends Component {
   componentDidMount() {
@@ -80,5 +81,9 @@ class Checkout extends Component {
     );
   }
 }
+
+Checkout.propTypes = {
+  cart: PropTypes.array.isRequired
+};
 
 export default Checkout;

@@ -5,6 +5,7 @@ import ListSelect from "./ListSelect";
 import ListUploadContainer from "../containers/ListUploadContainer";
 import PendingOrderDetails from "./PendingOrderDetails";
 import BackBtn from "./BackBtn";
+import PropTypes from "prop-types";
 
 const handleNextPageClick = (e, list) => {
   if (+list.count < 1) {
@@ -68,5 +69,15 @@ class ListResolver extends Component {
     );
   }
 }
+
+ListResolver.propTypes = {
+  card: PropTypes.object.isRequired,
+  cardMessage: PropTypes.string,
+  lists: PropTypes.array.isRequired,
+  currentList: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  setCurrentList: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+};
 
 export default ListResolver;
