@@ -14,6 +14,5 @@ task :pdf => :environment do
     file << pdf
   end
 
-
 end
 task :pdf
