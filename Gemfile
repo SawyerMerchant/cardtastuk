@@ -74,3 +74,7 @@ gem 'stripe'
 
 # api parameters
 # gem 'active_model_serializers', '~> 0.10.0'
+
+# wicked pdf
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary', group: :development

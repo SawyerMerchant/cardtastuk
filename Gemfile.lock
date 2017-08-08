@@ -307,6 +307,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    wicked_pdf (1.1.0)
+    wkhtmltopdf-binary (0.12.3.1)
 
 PLATFORMS
   ruby
@@ -338,6 +340,8 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   stripe
   tzinfo-data
+  wicked_pdf
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 2.3.0p0
