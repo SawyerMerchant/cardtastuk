@@ -3,7 +3,7 @@ if Rails.env == "development"
   Rake::Task['db:migrate:reset'].invoke
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'sawyermerchant@gmail.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 COUNT = 10
 
@@ -31,7 +31,7 @@ puts "making cards"
 cards = []
 (COUNT * 3).times do |n|
   orientation = n % 2 == 0 ? "landscape"  : "portrait"
-  catID = rand(1..10)
+  catID = rand(Category.first.id..Category.last.id)
 
   large_img_url = n % 2 == 0 ? "https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/cards/aws_images/000/000/035/original/3kingsLAND.jpg" : "https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/cards/aws_images/000/000/037/original/old_santaPORT.jpg"
 
