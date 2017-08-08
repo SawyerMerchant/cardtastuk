@@ -49,7 +49,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           return response.json();
         })
         .then(json => {
-          console.log(json);
+          ownProps.history.push(`/success?id=${json.id}&amount=${json.amount}`);
         })
         .catch(error => {
           console.log(error);

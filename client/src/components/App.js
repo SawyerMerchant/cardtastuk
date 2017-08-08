@@ -11,6 +11,7 @@ import ShoppingCartContainer from "../containers/ShoppingCartContainer";
 import AuthContainer from "../containers/AuthContainer";
 import CheckoutContainer from "../containers/CheckoutContainer";
 import LandingPage from "./LandingPage";
+import SuccessfulTransaction from "./SuccessfulTransaction";
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
         <ScrollToTop>
           <NavigationContainer title={"CardTastuk"} />
           <Switch>
+            <Route path="/success" component={SuccessfulTransaction} />
             <Route path="/checkout" component={CheckoutContainer} />
             <Route
               path="/cards/:id/address"
