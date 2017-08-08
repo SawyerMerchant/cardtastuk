@@ -4,6 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import ListSelect from "./ListSelect";
 import ListUploadContainer from "../containers/ListUploadContainer";
 import PendingOrderDetails from "./PendingOrderDetails";
+import BackBtn from "./BackBtn";
 
 const handleNextPageClick = (e, list) => {
   if (+list.count < 1) {
@@ -25,7 +26,8 @@ class ListResolver extends Component {
       lists,
       currentList,
       user,
-      setCurrentList
+      setCurrentList,
+      history
     } = this.props;
     return (
       <Grid className="list-resolver">
@@ -58,6 +60,8 @@ class ListResolver extends Component {
                 Next: Enter a return address
               </Button>
             </LinkContainer>
+
+            <BackBtn history={history} />
           </Col>
         </Row>
       </Grid>

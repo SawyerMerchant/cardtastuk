@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import moneyFormatter from "money-formatter";
+import BackBtn from "./BackBtn";
 
 const buildPricingPopover = prices => {
   let price25 = moneyFormatter.format("USD", prices.x25 / 100);
@@ -32,7 +33,7 @@ const buildPricingPopover = prices => {
   );
 };
 
-const CurrentCard = ({ card }) => {
+const CurrentCard = ({ card, history }) => {
   let pricingPopover = buildPricingPopover(card.price);
   let price25 = moneyFormatter.format("USD", card.price.x25 / 100);
   let price2000 = moneyFormatter.format("USD", card.price.x2000 / 100);
@@ -74,6 +75,8 @@ const CurrentCard = ({ card }) => {
               Start Writing
             </Button>
           </LinkContainer>
+
+          <BackBtn history={history} />
         </Col>
       </Row>
     </Grid>

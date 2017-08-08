@@ -10,6 +10,7 @@ import {
   FormControl
 } from "react-bootstrap";
 import PendingOrderDetails from "./PendingOrderDetails";
+import BackBtn from "./BackBtn";
 
 class ReturnAddress extends Component {
   componentWillMount() {
@@ -25,7 +26,8 @@ class ReturnAddress extends Component {
       currentList,
       user,
       isAuthenticated,
-      onAddToCart
+      onAddToCart,
+      history
     } = this.props;
     return (
       <Grid className="return-address">
@@ -84,6 +86,8 @@ class ReturnAddress extends Component {
                 Add To Cart
               </Button>
             </form>
+
+            <BackBtn history={history} />
           </Col>
         </Row>
       </Grid>

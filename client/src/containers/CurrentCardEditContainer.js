@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import CurrentCardEdit from "../components/CurrentCardEdit";
 import { getCurrentCardInit } from "../actions/currentCard";
 import { changeCardMessage } from "../actions/cardMessage";
+import { withRouter } from "react-router-dom";
 
 class CurrentCardEditContainer extends Component {
   componentDidMount() {
@@ -32,5 +33,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  CurrentCardEditContainer
+  withRouter(CurrentCardEditContainer)
 );

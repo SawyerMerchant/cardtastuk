@@ -1,8 +1,9 @@
 import React from "react";
 import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import BackBtn from "./BackBtn";
 
-const CurrentCardEdit = ({ card, onChangeMessage }) => {
+const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
   return (
     <Grid className="current-card-edit">
       <Row>
@@ -41,6 +42,8 @@ const CurrentCardEdit = ({ card, onChangeMessage }) => {
               Next: Upload a list of users
             </Button>
           </LinkContainer>
+
+          <BackBtn history={history} />
         </Col>
       </Row>
     </Grid>

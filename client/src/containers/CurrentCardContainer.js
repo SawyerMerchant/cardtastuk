@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CurrentCard from "../components/CurrentCard";
+import { withRouter } from "react-router-dom";
 import { getCurrentCardInit } from "../actions/currentCard";
 
 class CurrentCardContainer extends Component {
@@ -28,5 +29,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  CurrentCardContainer
+  withRouter(CurrentCardContainer)
 );

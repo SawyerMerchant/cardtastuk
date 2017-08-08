@@ -12,6 +12,7 @@ class ListUpload extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onUpload(e, this.state.data_uri, this.props.user);
+    e.target.reset();
   };
 
   handleFile = e => {

@@ -7,6 +7,7 @@ import {
   handlePageDecrement
 } from "../helpers";
 import { getAllCards } from "../actions/cardsAll";
+import { withRouter } from "react-router-dom";
 
 class CardsAllContainer extends Component {
   componentDidMount() {
@@ -47,4 +48,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardsAllContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withRouter(CardsAllContainer)
+);
