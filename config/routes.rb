@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
 
+  # get '/admin', to "active_admin/devise/sessions#new"
+
   get '*path', to: "application#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?
   end

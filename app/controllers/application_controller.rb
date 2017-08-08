@@ -3,5 +3,4 @@ class ApplicationController < ActionController::Base
     render "public/index.html.erb"
   end
 
-
 end
