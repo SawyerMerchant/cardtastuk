@@ -16,7 +16,7 @@ class SignaturePadCollapsible extends Component {
           bsStyle="success"
           onClick={() => this.setState({ open: !this.state.open })}
         >
-          Add your signature to the card
+          Add your signature to the card (Optional)
         </Button>
         <Collapse in={this.state.open}>
           <Well>
