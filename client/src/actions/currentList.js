@@ -8,7 +8,7 @@ export function setCurrentList(data) {
   };
 }
 
-export function uploadList(file, name, user) {
+export function uploadList(file, name, user, history) {
   let formData = new FormData();
 
   formData.append("url", file);
@@ -33,8 +33,10 @@ export function uploadList(file, name, user) {
       .then(json => {
         dispatch(addNewList(json));
         dispatch(setCurrentList(json));
+        history.push(`${window.location.pathname}?status=success`);
       })
       .catch(error => {
+        history.push(`${window.location.pathname}?status=error`);
         console.log(error);
       });
   };

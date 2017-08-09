@@ -72,7 +72,7 @@ class UploadInstructionsModal extends Component {
             </p>
 
             <p>
-              Alternatively, you can
+              You can also
               {" "}
               <a href="https://s3-us-west-2.amazonaws.com/cardtastuk-csv-lists/exampleContacts.csv">
                 download an example template here
