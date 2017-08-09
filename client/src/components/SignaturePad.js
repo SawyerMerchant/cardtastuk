@@ -43,12 +43,16 @@ class ReactSignature extends Component {
     };
     this.isEmpty = false;
   };
+
   handleMouseDown = e => {
     mouseButtonDown = true;
     this.strokeBegin(e);
   };
 
   handleMouseMove = e => {
+    if (e.target === canvas) {
+      e.preventDefault();
+    }
     if (mouseButtonDown) {
       this.strokeUpdate(e);
     }
@@ -57,6 +61,33 @@ class ReactSignature extends Component {
   handleMouseUp = e => {
     mouseButtonDown = false;
     this.strokeEnd(e);
+  };
+
+  handleTouchStart = e => {
+    let touch = e.touches[0];
+
+    let mouseEvent = new MouseEvent("mousedown", {
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+
+    this.handleMouseDown(mouseEvent);
+  };
+
+  handleTouchMove = e => {
+    let touch = e.touches[0];
+
+    let mouseEvent = new MouseEvent("mousemove", {
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+
+    this.handleMouseMove(mouseEvent);
+  };
+
+  handleTouchEnd = e => {
+    let mouseEvent = new MouseEvent("mouseup", {});
+    this.handleMouseUp(mouseEvent);
   };
 
   strokeUpdate = e => {
@@ -237,6 +268,9 @@ class ReactSignature extends Component {
             width={this.props.width}
             height={this.props.height}
             ref="canvas"
+            onTouchStart={this.handleTouchStart}
+            onTouchMove={this.handleTouchMove}
+            onTouchEnd={this.handleTouchEnd}
             onMouseDown={this.handleMouseDown}
             onMouseMove={this.handleMouseMove}
             onMouseUp={this.handleMouseUp}

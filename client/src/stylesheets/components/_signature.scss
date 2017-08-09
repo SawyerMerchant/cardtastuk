@@ -8,6 +8,7 @@
       margin: 1em 0 0 auto;
     }
     canvas {
+      touch-action: none;
       display: block;
       margin: auto;
       border: solid 2px #555;
