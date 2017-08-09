@@ -1,0 +1,16 @@
+.signature-pad-collapsible {
+  button {
+    display: block;
+    margin: 1em auto;
+  }
+  .signature-pad {
+    button {
+      margin: 1em 0 0 auto;
+    }
+    canvas {
+      display: block;
+      margin: auto;
+      border: solid 2px black;
+    }
+  }
+}

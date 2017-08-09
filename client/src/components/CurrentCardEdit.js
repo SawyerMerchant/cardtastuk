@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
-import SignaturePad from "./SignaturePad";
+import SignaturePadCollapsible from "./SignaturePadCollapsible";
 import BackBtn from "./BackBtn";
 
 const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
@@ -36,7 +36,7 @@ const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
             the card to the left.
           </p>
 
-          <SignaturePad />
+          <SignaturePadCollapsible />
 
           <LinkContainer
             to={`/cards/${card.id}/upload`}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 import Point from "../helpers/points_util";
 import Bezier from "../helpers/bezier_util";
 
@@ -11,6 +12,8 @@ let canvas;
 let context;
 let mouseButtonDown = false;
 
+// adapted into ES6 class from
+// https://github.com/StrollHealth/react-signature/tree/master/src
 class ReactSignature extends Component {
   componentDidMount = () => {
     canvas = this.refs.canvas;
@@ -225,7 +228,7 @@ class ReactSignature extends Component {
 
   render() {
     return (
-      <div className="signature-pad">
+      <div className="signature-pad m-signature-pad">
         <form onSubmit={this.handleSubmit}>
           <canvas
             width={this.props.width}
@@ -235,8 +238,9 @@ class ReactSignature extends Component {
             onMouseMove={this.handleMouseMove}
             onMouseUp={this.handleMouseUp}
           />
-          <input type="submit" />
+          <Button bsStyle="success" type="submit">Save Signature</Button>
         </form>
+        <Button bsStyle="warning" onClick={this.handleClear} >Clear</Button>
       </div>
     );
   }
@@ -244,7 +248,7 @@ class ReactSignature extends Component {
 
 ReactSignature.defaultProps = {
   width: 450,
-  height: 300
+  height: 200
 };
 
 export default ReactSignature;
