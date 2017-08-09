@@ -6,6 +6,7 @@ import {
   FormGroup,
   ControlLabel
 } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const buildCategoryOptions = categories => {
   return categories.map(category =>
@@ -54,6 +55,13 @@ const Filterables = ({ categories, tags, onChangeTag, onChangeCategory }) => {
       </Col>
     </Row>
   );
+};
+
+Filterables.propTypes = {
+  categories: PropTypes.array.isRequired,
+  tags: PropTypes.array.isRequired,
+  onChangeCategory: PropTypes.func.isRequired,
+  onChangeTag: PropTypes.func.isRequired
 };
 
 export default Filterables;

@@ -10,6 +10,8 @@ import {
 } from "react-bootstrap";
 import StripeCheckout from "react-stripe-checkout";
 import CheckoutSummary from "./CheckoutSummary";
+import USAStatesDropdown from "./USAStatesDropdown";
+import PropTypes from "prop-types";
 
 class Checkout extends Component {
   componentDidMount() {
@@ -47,7 +49,7 @@ class Checkout extends Component {
               </FormGroup>
               <FormGroup controlId="state">
                 <ControlLabel>State</ControlLabel>
-                <FormControl type="text" name="state" required />
+                <USAStatesDropdown />
               </FormGroup>
               <FormGroup controlId="zipcode">
                 <ControlLabel>Zipcode</ControlLabel>
@@ -80,5 +82,9 @@ class Checkout extends Component {
     );
   }
 }
+
+Checkout.propTypes = {
+  cart: PropTypes.array.isRequired
+};
 
 export default Checkout;

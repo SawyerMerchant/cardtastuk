@@ -78,7 +78,9 @@ export const flashMsgs = {
   badPass: "Your passwords did not match. Please try again.",
   badLogin:
     "Could not login. Please re-enter your email and password and try again.",
-  unauthenticated: "Please login first before continuing."
+  unauthenticated: "Please login first before continuing.",
+  successfulUpload: "File uploaded successfully.",
+  badUpload: "Something went wrong. Please check your CSV file and try again."
 };
 
 export const handlePageIncrement = router => {

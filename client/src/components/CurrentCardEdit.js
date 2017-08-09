@@ -1,9 +1,11 @@
 import React from "react";
 import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import PropTypes from "prop-types";
+import SignaturePadCollapsible from "./SignaturePadCollapsible";
 import BackBtn from "./BackBtn";
 
-const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
+const CurrentCardEdit = ({ card, onChangeMessage, history, signature }) => {
   return (
     <Grid className="current-card-edit">
       <Row>
@@ -22,7 +24,12 @@ const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
                   onChange={onChangeMessage}
                 />
               </form>
-              <p className="signature">Sincerely, &lt;User&gt;</p>
+              <p className="signature">Sincerely,</p>
+              <p className="signature">
+                {signature
+                  ? <img src={signature} alt="User's signature" />
+                  : "<User>"}
+              </p>
             </div>
           </div>
         </Col>
@@ -33,6 +40,8 @@ const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
             Write the message you would like to send to all your recipients in
             the card to the left.
           </p>
+
+          <SignaturePadCollapsible />
 
           <LinkContainer
             to={`/cards/${card.id}/upload`}
@@ -48,6 +57,11 @@ const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
       </Row>
     </Grid>
   );
+};
+
+CurrentCardEdit.propTypes = {
+  card: PropTypes.object.isRequired,
+  onChangeMessage: PropTypes.func.isRequired
 };
 
 export default CurrentCardEdit;

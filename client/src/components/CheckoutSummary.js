@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Popover, OverlayTrigger, Glyphicon } from "react-bootstrap";
+import PropTypes from "prop-types";
 import { calculatePrice, calculateTotal } from "../helpers";
 
 const buildReturnAddressPopover = address => {
@@ -22,7 +23,7 @@ const buildMessagePopover = message => {
   );
 };
 
-const buildCartCells = (cart, onRemoveFromCart) => {
+const buildCartCells = cart => {
   return cart.map(item => {
     let messagePopover = buildMessagePopover(item.message);
     let returnAddressPopover = buildReturnAddressPopover(item.return_address);
@@ -55,8 +56,8 @@ const buildCartCells = (cart, onRemoveFromCart) => {
   });
 };
 
-const CheckoutSummary = ({ cart, onRemoveFromCart }) => {
-  const cartCells = buildCartCells(cart, onRemoveFromCart);
+const CheckoutSummary = ({ cart }) => {
+  const cartCells = buildCartCells(cart);
   const total = calculateTotal(cart);
 
   return (
@@ -79,6 +80,10 @@ const CheckoutSummary = ({ cart, onRemoveFromCart }) => {
       <h3>Total: {total}</h3>
     </div>
   );
+};
+
+CheckoutSummary.propTypes = {
+  cart: PropTypes.array.isRequired
 };
 
 export default CheckoutSummary;

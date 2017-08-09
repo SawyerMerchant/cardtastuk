@@ -10,6 +10,7 @@ import { categoriesAll } from "./categoriesAll";
 import { tagsAll } from "./tagsAll";
 import { currentCategory } from "./currentCategory";
 import { currentTag } from "./currentTag";
+import { signature } from "./signature";
 
 const cardTastukApp = combineReducers({
   cardsAll,
@@ -22,7 +23,8 @@ const cardTastukApp = combineReducers({
   categoriesAll,
   tagsAll,
   currentCategory,
-  currentTag
+  currentTag,
+  signature
 });
 
 export default cardTastukApp;

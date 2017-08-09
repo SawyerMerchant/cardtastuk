@@ -12,6 +12,7 @@ import {
   Button
 } from "react-bootstrap";
 import { getParams, flashMsgs } from "../helpers";
+import PropTypes from "prop-types";
 import FlashMessage from "./FlashMessage";
 
 const buildFlash = error => {
@@ -109,5 +110,10 @@ class Auth extends Component {
     );
   }
 }
+
+Auth.propTypes = {
+  onRegister: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired
+};
 
 export default Auth;

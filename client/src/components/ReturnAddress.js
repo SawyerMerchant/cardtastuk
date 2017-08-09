@@ -9,8 +9,10 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import PropTypes from "prop-types";
 import PendingOrderDetails from "./PendingOrderDetails";
 import BackBtn from "./BackBtn";
+import USAStatesDropdown from "./USAStatesDropdown";
 
 class ReturnAddress extends Component {
   componentWillMount() {
@@ -27,7 +29,8 @@ class ReturnAddress extends Component {
       user,
       isAuthenticated,
       onAddToCart,
-      history
+      history,
+      signature
     } = this.props;
     return (
       <Grid className="return-address">
@@ -38,7 +41,12 @@ class ReturnAddress extends Component {
               <div className="card-edit-message">
                 <p>Dear {currentList.first_record.first_name}</p>
                 <p>{cardMessage}</p>
-                <p className="signature">Sincerely, {user.name}</p>
+                <p className="signature">Sincerely,</p>
+                <p className="signature">
+                  {signature
+                    ? <img src={signature} alt="User's signature" />
+                    : "<User>"}
+                </p>
               </div>
             </div>
           </Col>
@@ -51,7 +59,14 @@ class ReturnAddress extends Component {
             <form
               id="add-to-cart"
               onSubmit={e =>
-                onAddToCart(e, card, currentList, cardMessage, isAuthenticated)}
+                onAddToCart(
+                  e,
+                  card,
+                  currentList,
+                  cardMessage,
+                  isAuthenticated,
+                  signature
+                )}
             >
               <FormGroup controlId="street_address_1">
                 <ControlLabel>Street Address 1</ControlLabel>
@@ -67,7 +82,8 @@ class ReturnAddress extends Component {
               </FormGroup>
               <FormGroup controlId="state">
                 <ControlLabel>State</ControlLabel>
-                <FormControl type="text" name="state" required />
+                {/* <FormControl type="text" name="state" required /> */}
+                <USAStatesDropdown />
               </FormGroup>
               <FormGroup controlId="zipcode">
                 <ControlLabel>Zipcode</ControlLabel>
@@ -94,5 +110,14 @@ class ReturnAddress extends Component {
     );
   }
 }
+
+ReturnAddress.propTypes = {
+  card: PropTypes.object.isRequired,
+  cardMessage: PropTypes.string,
+  currentList: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  onAddToCart: PropTypes.func.isRequired
+};
 
 export default ReturnAddress;

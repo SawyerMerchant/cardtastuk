@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FormGroup, ControlLabel, FormControl, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 class ListUpload extends Component {
   constructor(props) {
@@ -62,5 +63,9 @@ class ListUpload extends Component {
     );
   }
 }
+
+ListUpload.propTypes = {
+  onUpload: PropTypes.func.isRequired
+};
 
 export default ListUpload;
