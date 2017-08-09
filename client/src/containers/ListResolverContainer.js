@@ -24,7 +24,8 @@ const mapStateToProps = state => {
     isAuthenticated: state.user.isAuthenticated,
     lists: state.listsAll.data,
     currentList: state.currentList.data,
-    user: state.user.data
+    user: state.user.data,
+    signature: state.signature
   };
 };
 

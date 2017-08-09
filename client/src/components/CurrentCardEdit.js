@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import SignaturePadCollapsible from "./SignaturePadCollapsible";
 import BackBtn from "./BackBtn";
 
-const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
+const CurrentCardEdit = ({ card, onChangeMessage, history, signature }) => {
   return (
     <Grid className="current-card-edit">
       <Row>
@@ -24,7 +24,12 @@ const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
                   onChange={onChangeMessage}
                 />
               </form>
-              <p className="signature">Sincerely, &lt;User&gt;</p>
+              <p className="signature">Sincerely,</p>
+              <p className="signature">
+                {signature
+                  ? <img src={signature} alt="User's signature" />
+                  : "<User>"}
+              </p>
             </div>
           </div>
         </Col>

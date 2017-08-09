@@ -29,7 +29,8 @@ class ReturnAddress extends Component {
       user,
       isAuthenticated,
       onAddToCart,
-      history
+      history,
+      signature
     } = this.props;
     return (
       <Grid className="return-address">
@@ -40,7 +41,12 @@ class ReturnAddress extends Component {
               <div className="card-edit-message">
                 <p>Dear {currentList.first_record.first_name}</p>
                 <p>{cardMessage}</p>
-                <p className="signature">Sincerely, {user.name}</p>
+                <p className="signature">Sincerely,</p>
+                <p className="signature">
+                  {signature
+                    ? <img src={signature} alt="User's signature" />
+                    : "<User>"}
+                </p>
               </div>
             </div>
           </Col>
@@ -53,7 +59,14 @@ class ReturnAddress extends Component {
             <form
               id="add-to-cart"
               onSubmit={e =>
-                onAddToCart(e, card, currentList, cardMessage, isAuthenticated)}
+                onAddToCart(
+                  e,
+                  card,
+                  currentList,
+                  cardMessage,
+                  isAuthenticated,
+                  signature
+                )}
             >
               <FormGroup controlId="street_address_1">
                 <ControlLabel>Street Address 1</ControlLabel>

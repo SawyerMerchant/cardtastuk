@@ -50,7 +50,8 @@ class ListResolver extends Component {
       user,
       setCurrentList,
       history,
-      location
+      location,
+      signature
     } = this.props;
 
     let query = getParams(location.search);
@@ -67,7 +68,12 @@ class ListResolver extends Component {
                 <div className="card-edit-message">
                   <p>Dear {currentList.first_record.first_name}</p>
                   <p>{cardMessage}</p>
-                  <p className="signature">Sincerely, {user.name}</p>
+                  <p className="signature">Sincerely,</p>
+                  <p className="signature">
+                    {signature
+                      ? <img src={signature} alt="User's signature" />
+                      : "<User>"}
+                  </p>
                 </div>
               </div>
             </Col>

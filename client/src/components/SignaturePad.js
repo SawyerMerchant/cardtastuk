@@ -23,6 +23,7 @@ class ReactSignature extends Component {
   handleClear = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
     this.reset();
+    this.props.onClearSignature();
   };
 
   toDataURL = () => {
@@ -223,7 +224,8 @@ class ReactSignature extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.toDataURL());
+    let signature = this.toDataURL();
+    this.props.onSetSignature(signature);
   };
 
   render() {
@@ -240,15 +242,15 @@ class ReactSignature extends Component {
           />
           <Button bsStyle="success" type="submit">Save Signature</Button>
         </form>
-        <Button bsStyle="warning" onClick={this.handleClear} >Clear</Button>
+        <Button bsStyle="warning" onClick={this.handleClear}>Clear</Button>
       </div>
     );
   }
 }
 
 ReactSignature.defaultProps = {
-  width: 450,
-  height: 200
+  width: 350,
+  height: 125
 };
 
 export default ReactSignature;
