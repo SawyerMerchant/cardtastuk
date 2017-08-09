@@ -19,7 +19,8 @@ const store = createStore(
     user: persistedState.user,
     listsAll: persistedState.listsAll,
     shoppingCart: persistedState.shoppingCart,
-    currentList: persistedState.currentList
+    currentList: persistedState.currentList,
+    signature: persistedState.signature
   },
   composeEnhancers(applyMiddleware(thunk))
 );

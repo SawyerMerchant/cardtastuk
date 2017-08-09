@@ -47,7 +47,6 @@ class ListResolver extends Component {
       cardMessage,
       lists,
       currentList,
-      user,
       setCurrentList,
       history,
       location,

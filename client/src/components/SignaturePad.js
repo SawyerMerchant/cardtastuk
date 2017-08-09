@@ -17,6 +17,7 @@ let mouseButtonDown = false;
 class ReactSignature extends Component {
   componentDidMount = () => {
     canvas = this.refs.canvas;
+    this.points = [];
     context = canvas.getContext("2d");
   };
 

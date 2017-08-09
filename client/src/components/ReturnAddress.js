@@ -26,7 +26,6 @@ class ReturnAddress extends Component {
       card,
       cardMessage,
       currentList,
-      user,
       isAuthenticated,
       onAddToCart,
       history,

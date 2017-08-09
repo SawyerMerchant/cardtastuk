@@ -28,7 +28,9 @@ class ListUpload extends Component {
       });
     };
 
-    reader.readAsDataURL(file);
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
 
   render() {
