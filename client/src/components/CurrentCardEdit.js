@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
+import SignaturePad from "./SignaturePad";
 import BackBtn from "./BackBtn";
 
 const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
@@ -34,6 +35,8 @@ const CurrentCardEdit = ({ card, onChangeMessage, history }) => {
             Write the message you would like to send to all your recipients in
             the card to the left.
           </p>
+
+          <SignaturePad />
 
           <LinkContainer
             to={`/cards/${card.id}/upload`}
