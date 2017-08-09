@@ -12,6 +12,7 @@ import {
 import PropTypes from "prop-types";
 import PendingOrderDetails from "./PendingOrderDetails";
 import BackBtn from "./BackBtn";
+import USAStatesDropdown from "./USAStatesDropdown";
 
 class ReturnAddress extends Component {
   componentWillMount() {
@@ -68,7 +69,8 @@ class ReturnAddress extends Component {
               </FormGroup>
               <FormGroup controlId="state">
                 <ControlLabel>State</ControlLabel>
-                <FormControl type="text" name="state" required />
+                {/* <FormControl type="text" name="state" required /> */}
+                <USAStatesDropdown />
               </FormGroup>
               <FormGroup controlId="zipcode">
                 <ControlLabel>Zipcode</ControlLabel>
