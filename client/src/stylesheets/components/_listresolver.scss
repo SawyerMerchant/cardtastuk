@@ -14,4 +14,10 @@
   .signature {
     text-align: right;
   }
+  .upload-instructions-modal-btn {
+    display: block;
+    margin: 2em auto;
+    background-color: $brand-secondary;
+    border-color: $brand-secondary;
+  }
 }

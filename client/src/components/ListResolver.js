@@ -5,6 +5,7 @@ import ListSelect from "./ListSelect";
 import ListUploadContainer from "../containers/ListUploadContainer";
 import PendingOrderDetails from "./PendingOrderDetails";
 import BackBtn from "./BackBtn";
+import UploadInstructionsModal from "./UploadInstructionsModal";
 import PropTypes from "prop-types";
 
 const handleNextPageClick = (e, list) => {
@@ -49,6 +50,8 @@ class ListResolver extends Component {
             <ListSelect lists={lists} setCurrentList={setCurrentList} />
 
             <ListUploadContainer />
+
+            <UploadInstructionsModal />
 
             <PendingOrderDetails card={card} currentList={currentList} />
 

@@ -7,6 +7,7 @@ $font-family-brand: 'Shadows Into Light', sans-serif;
 $headings-font-family: $font-family-serif;
 
 $brand-primary: #C8A2C8;
+$brand-secondary: #BBCC69;
 $brand-success: adjust-hue($brand-primary, 30deg);
 $brand-info: adjust-hue($brand-primary, -45deg);
 $brand-inverse: adjust-hue($brand-primary, 180deg);
