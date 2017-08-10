@@ -53,18 +53,22 @@ class Order < ApplicationRecord
 
   def make_line_item(li)
     charge_amount = line_item_total(li)
-    decoded_data = Base64.decode64(li['user_signature'])
-    autograph = StringIO.new(decoded_data)
-    autograph.class_eval do
+    baseString = li['user_signature'].split(',')[1]
+    decoded_data = Base64.decode64(baseString)
+    data = StringIO.new(decoded_data)
+    data.class_eval do
       attr_accessor :content_type, :original_filename
     end
-    
+
+    data.content_type = "image/png"
+    data.original_filename = "signature.png"
+
     LineItem.create(
       order_id: self.id,
       list_id:  li['list']['id'],
       greeting: li['message'],
       card_id:  li['card']['id'],
-      autograph: autograph,
+      autograph: data,
       #TODO add print_name
       quantity: li['quantity'],
       price_id: li['card']['price_id'],
