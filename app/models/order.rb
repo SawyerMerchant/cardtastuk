@@ -2,6 +2,7 @@ require 'stripe'
 require 'resolv-replace'
 class Order < ApplicationRecord
   belongs_to :user
+  has_many :proofs
 end
 
 
