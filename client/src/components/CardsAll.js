@@ -11,6 +11,7 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 import { getParams } from "../helpers";
 import FilterablesContainer from "../containers/FilterablesContainer";
+import Loader from "./Loader";
 import PropTypes from "prop-types";
 
 const buildTagsString = tags => {
@@ -40,9 +41,38 @@ const buildCardPanels = cards => {
   );
 };
 
-const CardsAll = ({ cards, onPageIncrement, onPageDecrement, location }) => {
+const CardsAll = ({
+  cards,
+  onPageIncrement,
+  onPageDecrement,
+  isFetching,
+  location
+}) => {
   let cardPanels = buildCardPanels(cards);
   let page = getParams(location.search).page || 1;
+
+  let content = (
+    <div>
+      <FilterablesContainer />
+      <Row>
+        {cardPanels}
+      </Row>
+      <Row>
+        <Col md={2}>
+          <Button bsStyle="primary" onClick={onPageDecrement}>Prev</Button>
+        </Col>
+        <Col md={2} mdOffset={3}>
+          <h3>
+            Page {page}
+          </h3>
+        </Col>
+        <Col md={2} mdOffset={3}>
+          <Button bsStyle="primary" onClick={onPageIncrement}>Next</Button>
+        </Col>
+      </Row>
+    </div>
+  );
+
   return (
     <div className="cards-all">
       <Jumbotron>
@@ -56,23 +86,7 @@ const CardsAll = ({ cards, onPageIncrement, onPageDecrement, location }) => {
         </Grid>
       </Jumbotron>
       <Grid>
-        <FilterablesContainer />
-        <Row>
-          {cardPanels}
-        </Row>
-        <Row>
-          <Col md={2}>
-            <Button bsStyle="primary" onClick={onPageDecrement}>Prev</Button>
-          </Col>
-          <Col md={2} mdOffset={3}>
-            <h3>
-              Page {page}
-            </h3>
-          </Col>
-          <Col md={2} mdOffset={3}>
-            <Button bsStyle="primary" onClick={onPageIncrement}>Next</Button>
-          </Col>
-        </Row>
+        {isFetching ? <Loader /> : content}
       </Grid>
     </div>
   );

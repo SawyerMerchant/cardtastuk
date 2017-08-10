@@ -13,6 +13,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import moneyFormatter from "money-formatter";
 import PropTypes from "prop-types";
 import BackBtn from "./BackBtn";
+import Loader from "./Loader";
 
 const buildPricingPopover = prices => {
   let price25 = moneyFormatter.format("USD", prices.x25 / 100);
@@ -34,16 +35,19 @@ const buildPricingPopover = prices => {
   );
 };
 
-const CurrentCard = ({ card, history }) => {
+const CurrentCard = ({ card, history, isFetching }) => {
   let pricingPopover = buildPricingPopover(card.price);
   let price25 = moneyFormatter.format("USD", card.price.x25 / 100);
   let price2000 = moneyFormatter.format("USD", card.price.x2000 / 100);
+
   return (
     <Grid className="current-card">
       <Row>
         <h1 className="card-title">{card.name}</h1>
         <Col md={6} xs={12}>
-          <Image responsive thumbnail src={card.large_img_url} />
+          {isFetching
+            ? <Loader />
+            : <Image responsive thumbnail src={card.large_img_url} />}
         </Col>
         <Col md={6} xs={12} className="card-details">
           <h2 className="card-title">{card.name}</h2>

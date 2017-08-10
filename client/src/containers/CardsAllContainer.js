@@ -26,7 +26,8 @@ const mapStateToProps = (state, ownProps) => {
       ownProps,
       state.currentCategory,
       state.currentTag
-    )
+    ),
+    isFetching: state.cardsAll.isFetching
   };
 };
 

@@ -16,7 +16,8 @@ class CurrentCardContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    card: state.currentCard.data
+    card: state.currentCard.data,
+    isFetching: state.currentCard.isFetching
   };
 };
 

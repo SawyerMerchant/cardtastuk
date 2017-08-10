@@ -31,3 +31,11 @@ body {
 .back-btn {
   margin-bottom: 1em;
 }
+
+span.img-loader {
+  display: block;
+  background-image: url("/ajax-loader.gif");
+  margin: auto;
+  height: 1em;
+  width: 1em;
+}
