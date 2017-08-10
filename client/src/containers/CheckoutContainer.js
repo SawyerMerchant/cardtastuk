@@ -3,6 +3,7 @@ import Checkout from "../components/Checkout";
 import serialize from "form-serialize";
 import { withRouter } from "react-router-dom";
 import { calculatePriceUnformatted } from "../helpers";
+import { clearCart } from "../actions/shoppingCart";
 
 const mapStateToProps = state => {
   return {
@@ -49,6 +50,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           return response.json();
         })
         .then(json => {
+          dispatch(clearCart());
           ownProps.history.push(`/success?id=${json.id}&amount=${json.amount}`);
         })
         .catch(error => {
