@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810124935) do
+ActiveRecord::Schema.define(version: 20170810152935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,9 +89,19 @@ ActiveRecord::Schema.define(version: 20170810124935) do
     t.datetime "signature_updated_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "print_name"
+    t.integer  "quantity"
+    t.integer  "price_id"
+    t.integer  "charge_amount"
+    t.string   "return_address_line_1"
+    t.string   "return_address_line_2"
+    t.string   "return_city"
+    t.string   "return_state"
+    t.string   "return_zip"
     t.index ["card_id"], name: "index_line_items_on_card_id", using: :btree
     t.index ["list_id"], name: "index_line_items_on_list_id", using: :btree
     t.index ["order_id"], name: "index_line_items_on_order_id", using: :btree
+    t.index ["price_id"], name: "index_line_items_on_price_id", using: :btree
   end
 
   create_table "lists", force: :cascade do |t|
@@ -113,8 +123,10 @@ ActiveRecord::Schema.define(version: 20170810124935) do
     t.integer  "user_id"
     t.string   "status"
     t.jsonb    "stripe"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "front_charge"
+    t.integer  "back_charge"
     t.index ["stripe"], name: "index_orders_on_stripe", using: :gin
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -171,9 +183,13 @@ ActiveRecord::Schema.define(version: 20170810124935) do
     t.json     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "billing_address"
+    t.integer  "return_address"
+    t.index ["billing_address"], name: "index_users_on_billing_address", using: :btree
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["return_address"], name: "index_users_on_return_address", using: :btree
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 

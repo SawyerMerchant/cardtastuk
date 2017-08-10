@@ -25,7 +25,8 @@ class OrdersController < ApiController
   def newOrder
     Order.new(
       user_id: @body['user']['id'],
-      stripe: @body
+      stripe: @body,
+      front_charge: @body['order_total']
     )
   end
 

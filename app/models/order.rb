@@ -5,19 +5,43 @@ class Order < ApplicationRecord
   has_many :proofs
   has_many :line_items
 
-  after_save :make_line_items, :save_billing_address, :save_return_address
+  after_create :save_billing_address, :save_return_address, :total_order
 
-
-  def make_line_items
-    self.stripe['transaction_details']['line_items'].each do |li|
-      LineItem.create(
-        order_id: self.id,
-        list_id:  li['list']['id']
-        greeting: li['message']
-        card_id:  li['card']['id']
-        #TODO add signature / name
-      )
+  def order_total
+    total = 0
+    @order.stripe['transaction_details']['line_items'].each do |li|
+      total += line_item_total(li)
     end
+    total
+  end
+
+  def total_order
+    total = 0
+    self.stripe['transaction_details']['line_items'].each do |li|
+      total += make_line_item(li)
+    end
+    self.back_charge = total
+  end
+
+  def make_line_item(li)
+    charge_amount = line_item_total(li)
+    LineItem.create(
+      order_id: self.id,
+      list_id:  li['list']['id'],
+      greeting: li['message'],
+      card_id:  li['card']['id'],
+      #TODO add signature
+      #TODO add print_name
+      quantity: li['quantity'],
+      price_id: li['card']['price_id'],
+      charge_amount: charge_amount,
+      return_address_line_1: li['return_address']['street_address_1'],
+      return_address_line_2: li['return_address']['street_address_2'],
+      return_city: li['return_address']['city'],
+      return_state: li['return_address']['state'],
+      return_zip: li['return_address']['zipcode']
+    )
+    return charge_amount
   end
 
   def save_billing_address
@@ -27,6 +51,37 @@ class Order < ApplicationRecord
   end
 
   def save_return_address
+  end
+
+  def line_item_total(line_item)
+    card = Card.find(line_item["card"]["id"])
+    quantity = line_item["quantity"]
+    tier = get_tier(quantity)
+    unit_price = card.price[tier]
+    quantity * unit_price
+  end
+
+  def get_tier(quantity)
+    case quantity
+    when 1..24
+      raise ArgumentError, "Order List must contain at least 25 recipients"
+    when 25..99
+      :x25
+    when 100..249
+      :x100
+    when 250..499
+      :x250
+    when 500..999
+      :x500
+    when 1000..1999
+      :x1000
+    when quantity > 1999
+      :x2000
+    when String
+      raise ArgumentError, "Order quantity may not be a string"
+    else
+      raise ArgumentError, "#{quantity} quantity is unprocessable"
+    end
   end
 end
 
