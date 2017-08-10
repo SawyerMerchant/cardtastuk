@@ -3,6 +3,7 @@ import { cardsAll } from "./cardsAll";
 import { currentCard } from "./currentCard";
 import { cardMessage } from "./cardMessage";
 import { user } from "./user";
+import { userName } from "./userName";
 import { listsAll } from "./listsAll";
 import { currentList } from "./currentList";
 import { shoppingCart } from "./shoppingCart";
@@ -17,6 +18,7 @@ const cardTastukApp = combineReducers({
   currentCard,
   cardMessage,
   user,
+  userName,
   listsAll,
   currentList,
   shoppingCart,

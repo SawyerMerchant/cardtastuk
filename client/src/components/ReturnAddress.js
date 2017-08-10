@@ -26,6 +26,7 @@ class ReturnAddress extends Component {
       card,
       cardMessage,
       currentList,
+      userName,
       isAuthenticated,
       onAddToCart,
       history,
@@ -44,7 +45,7 @@ class ReturnAddress extends Component {
                 <p className="signature">
                   {signature
                     ? <img src={signature} alt="User's signature" />
-                    : "<User>"}
+                    : userName}
                 </p>
               </div>
             </div>
@@ -64,7 +65,8 @@ class ReturnAddress extends Component {
                   currentList,
                   cardMessage,
                   isAuthenticated,
-                  signature
+                  signature,
+                  userName
                 )}
             >
               <FormGroup controlId="street_address_1">

@@ -95,7 +95,7 @@ class ReactSignature extends Component {
     if (e.target === canvas) {
       e.preventDefault();
     }
-    
+
     let mouseEvent = new MouseEvent("mouseup", {});
     this.handleMouseUp(mouseEvent);
   };

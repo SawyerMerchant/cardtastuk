@@ -3,9 +3,17 @@ import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
 import SignaturePadCollapsible from "./SignaturePadCollapsible";
+import UserNameCollapsible from "./UserNameCollapsible";
 import BackBtn from "./BackBtn";
 
-const CurrentCardEdit = ({ card, onChangeMessage, history, signature }) => {
+const CurrentCardEdit = ({
+  card,
+  onChangeMessage,
+  onSetName,
+  history,
+  signature,
+  userName
+}) => {
   return (
     <Grid className="current-card-edit">
       <Row>
@@ -28,7 +36,7 @@ const CurrentCardEdit = ({ card, onChangeMessage, history, signature }) => {
               <p className="signature">
                 {signature
                   ? <img src={signature} alt="User's signature" />
-                  : "<User>"}
+                  : userName}
               </p>
             </div>
           </div>
@@ -42,6 +50,10 @@ const CurrentCardEdit = ({ card, onChangeMessage, history, signature }) => {
           </p>
 
           <SignaturePadCollapsible />
+
+          <h3> - Or - </h3>
+
+          <UserNameCollapsible onSetName={onSetName} />
 
           <LinkContainer
             to={`/cards/${card.id}/upload`}

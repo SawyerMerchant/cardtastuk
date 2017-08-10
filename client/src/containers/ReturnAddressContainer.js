@@ -25,6 +25,7 @@ const mapStateToProps = state => {
     isAuthenticated: state.user.isAuthenticated,
     currentList: state.currentList.data,
     user: state.user.data,
+    userName: state.userName,
     signature: state.signature
   };
 };
@@ -40,7 +41,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       currentList,
       cardMessage,
       isAuthenticated,
-      signature
+      signature,
+      userName
     ) => {
       e.preventDefault();
       const form = e.target;
@@ -54,6 +56,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           quantity: currentList.count,
           return_address: data,
           user_signature: signature,
+          user_name: signature ? "" : userName,
           message: cardMessage
         };
         dispatch(addToShoppingCart(cartItem, ownProps.history));

@@ -46,6 +46,7 @@ class ListResolver extends Component {
       card,
       cardMessage,
       lists,
+      userName,
       currentList,
       setCurrentList,
       history,
@@ -71,7 +72,7 @@ class ListResolver extends Component {
                   <p className="signature">
                     {signature
                       ? <img src={signature} alt="User's signature" />
-                      : "<User>"}
+                      : userName}
                   </p>
                 </div>
               </div>

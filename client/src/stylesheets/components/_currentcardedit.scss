@@ -9,6 +9,13 @@
   }
 }
 
+form {
+  button .btn {
+    display: block;
+    margin: 1em 0 0 auto;
+  }
+}
+
 .card-edit-message {
   background-image:  url("/edit-bg.png");
   background-size: cover;
