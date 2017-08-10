@@ -76,6 +76,7 @@ class ReactSignature extends Component {
 
   handleTouchMove = e => {
     let touch = e.touches[0];
+    e.preventDefault();
 
     let mouseEvent = new MouseEvent("mousemove", {
       clientX: touch.clientX,
