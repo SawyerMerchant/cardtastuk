@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810121543) do
+ActiveRecord::Schema.define(version: 20170810124935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,22 @@ ActiveRecord::Schema.define(version: 20170810121543) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "list_id"
+    t.text     "greeting"
+    t.integer  "card_id"
+    t.string   "signature_file_name"
+    t.string   "signature_content_type"
+    t.integer  "signature_file_size"
+    t.datetime "signature_updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["card_id"], name: "index_line_items_on_card_id", using: :btree
+    t.index ["list_id"], name: "index_line_items_on_list_id", using: :btree
+    t.index ["order_id"], name: "index_line_items_on_order_id", using: :btree
   end
 
   create_table "lists", force: :cascade do |t|
@@ -162,6 +178,9 @@ ActiveRecord::Schema.define(version: 20170810121543) do
   end
 
   add_foreign_key "cards", "categories"
+  add_foreign_key "line_items", "cards"
+  add_foreign_key "line_items", "lists"
+  add_foreign_key "line_items", "orders"
   add_foreign_key "lists", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "proofs", "orders"

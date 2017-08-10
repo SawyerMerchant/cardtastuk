@@ -3,6 +3,31 @@ require 'resolv-replace'
 class Order < ApplicationRecord
   belongs_to :user
   has_many :proofs
+  has_many :line_items
+
+  after_save :make_line_items, :save_billing_address, :save_return_address
+
+
+  def make_line_items
+    self.stripe['transaction_details']['line_items'].each do |li|
+      LineItem.create(
+        order_id: self.id,
+        list_id:  li['list']['id']
+        greeting: li['message']
+        card_id:  li['card']['id']
+        #TODO add signature / name
+      )
+    end
+  end
+
+  def save_billing_address
+    user = User.find(self.stripe['user']['id'])
+    self.stripe['transaction_details']['billing_address']
+    # TODO add billing email if different than login
+  end
+
+  def save_return_address
+  end
 end
 
 
@@ -15,7 +40,6 @@ class StripeOrder
   end
 
   def process
-    # make_line_items
     # charge
     #
   end
