@@ -6,6 +6,14 @@ import SignaturePadCollapsible from "./SignaturePadCollapsible";
 import UserNameCollapsible from "./UserNameCollapsible";
 import BackBtn from "./BackBtn";
 
+const handleClick = (e, userName, signature) => {
+  let isUserNameEmpty = userName === "< User >" || userName === "";
+  let isSignatureEmpy = signature === "";
+  if (isUserNameEmpty && isSignatureEmpy) {
+    e.preventDefault();
+  }
+};
+
 const CurrentCardEdit = ({
   card,
   onChangeMessage,
@@ -46,7 +54,7 @@ const CurrentCardEdit = ({
 
           <p>
             Write the message you would like to send to all your recipients in
-            the card to the left.
+            the card to the left. Then, click one of the two buttons below to fill in the card closing message.
           </p>
 
           <SignaturePadCollapsible />
@@ -58,6 +66,7 @@ const CurrentCardEdit = ({
           <LinkContainer
             to={`/cards/${card.id}/upload`}
             className="card-details-button"
+            onClick={e => handleClick(e, userName, signature)}
           >
             <Button bsStyle="info">
               Next: Upload a list of users
