@@ -3,8 +3,8 @@ class OrdersController < ApiController
   def create
     order = newOrder
     order.save
-    stripeOrder = StripeOrder.new(order)
-    response = stripeOrder.charge
+    # stripeOrder = StripeOrder.new(order)
+    response = order.send_to_stripe
 
     data = {id: order.id, amount: response['amount']}.to_json
 
@@ -26,6 +26,7 @@ class OrdersController < ApiController
     Order.new(
       user_id: @body['user']['id'],
       stripe: @body
+      # front_charge: @body['order_total']
     )
   end
 
