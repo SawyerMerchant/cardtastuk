@@ -65,6 +65,9 @@ class ReactSignature extends Component {
 
   handleTouchStart = e => {
     let touch = e.touches[0];
+    if (e.target === canvas) {
+      e.preventDefault();
+    }
 
     let mouseEvent = new MouseEvent("mousedown", {
       clientX: touch.clientX,
@@ -76,7 +79,9 @@ class ReactSignature extends Component {
 
   handleTouchMove = e => {
     let touch = e.touches[0];
-    e.preventDefault();
+    if (e.target === canvas) {
+      e.preventDefault();
+    }
 
     let mouseEvent = new MouseEvent("mousemove", {
       clientX: touch.clientX,
@@ -87,6 +92,10 @@ class ReactSignature extends Component {
   };
 
   handleTouchEnd = e => {
+    if (e.target === canvas) {
+      e.preventDefault();
+    }
+    
     let mouseEvent = new MouseEvent("mouseup", {});
     this.handleMouseUp(mouseEvent);
   };
