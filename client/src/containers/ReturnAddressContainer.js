@@ -26,7 +26,8 @@ const mapStateToProps = state => {
     currentList: state.currentList.data,
     user: state.user.data,
     userName: state.userName,
-    signature: state.signature
+    signature: state.signature,
+    cardFont: state.cardFont
   };
 };
 
@@ -42,7 +43,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       cardMessage,
       isAuthenticated,
       signature,
-      userName
+      userName,
+      cardFont
     ) => {
       e.preventDefault();
       const form = e.target;
@@ -55,6 +57,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
           list: currentList,
           quantity: currentList.count,
           return_address: data,
+          font: cardFont,
           user_signature: signature,
           user_name: signature ? "" : userName,
           message: cardMessage

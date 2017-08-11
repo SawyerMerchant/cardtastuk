@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
+import FontPickerContainer from "../containers/FontPickerContainer";
 import SignaturePadCollapsible from "./SignaturePadCollapsible";
 import UserNameCollapsible from "./UserNameCollapsible";
 import BackBtn from "./BackBtn";
@@ -20,7 +21,8 @@ const CurrentCardEdit = ({
   onSetName,
   history,
   signature,
-  userName
+  userName,
+  cardFont
 }) => {
   return (
     <Grid className="current-card-edit">
@@ -28,7 +30,7 @@ const CurrentCardEdit = ({
         <h1 className="card-title">{card.name}</h1>
         <Col md={6} xs={12}>
           <div className="card-edit-container">
-            <div className="card-edit-message">
+            <div className={`card-edit-message ${cardFont}`}>
               <p>Dear &lt;First Name&gt;,</p>
               <form>
                 <FormControl
@@ -54,8 +56,11 @@ const CurrentCardEdit = ({
 
           <p>
             Write the message you would like to send to all your recipients in
-            the card to the left. Then, click one of the two buttons below to fill in the card closing message.
+            the card to the left. Then, click one of the two buttons below to
+            fill in the card closing message.
           </p>
+
+          <FontPickerContainer />
 
           <SignaturePadCollapsible />
 
