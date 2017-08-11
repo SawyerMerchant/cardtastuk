@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :proofs, only: [:show]
+
   # get '*', to: redirect("/index.html")
 
   # get '/admin', to "active_admin/devise/sessions#new"

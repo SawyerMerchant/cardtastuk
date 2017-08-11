@@ -1,3 +1,4 @@
+# include "ActionView::Helpers::AssetTagHelper"
 class ProofsController < ApplicationController
   def show
     @proof = Proof.find(params[:id])
