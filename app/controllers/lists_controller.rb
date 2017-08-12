@@ -32,6 +32,7 @@ class ListsController < ApiController
         @first_record[:zip] = row[6]
       end
       @row_count += 1
+      # Address.create()
     end
     @name = params[:name]
     @user_id = params[:user_id]
