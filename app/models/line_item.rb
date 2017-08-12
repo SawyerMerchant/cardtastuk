@@ -5,4 +5,6 @@ class LineItem < ApplicationRecord
   has_attached_file :autograph #, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
   # validates_attachment :autograph, content_type: { content_type: "image/jpeg" }
   do_not_validate_attachment_file_type :autograph
+  has_many :proofs
+  
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170810175648) do
+ActiveRecord::Schema.define(version: 20170811140437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,14 +144,14 @@ ActiveRecord::Schema.define(version: 20170810175648) do
   end
 
   create_table "proofs", force: :cascade do |t|
-    t.integer  "order_id"
+    t.integer  "line_item_id"
     t.string   "document_file_name"
     t.string   "document_content_type"
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["order_id"], name: "index_proofs_on_order_id", using: :btree
+    t.index ["line_item_id"], name: "index_proofs_on_line_item_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|
@@ -199,5 +199,5 @@ ActiveRecord::Schema.define(version: 20170810175648) do
   add_foreign_key "line_items", "orders"
   add_foreign_key "lists", "users"
   add_foreign_key "orders", "users"
-  add_foreign_key "proofs", "orders"
+  add_foreign_key "proofs", "orders", column: "line_item_id"
 end

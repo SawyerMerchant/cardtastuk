@@ -2,7 +2,6 @@ require 'stripe'
 require 'resolv-replace'
 class Order < ApplicationRecord
   belongs_to :user
-  has_many :proofs
   has_many :line_items
 
   after_create :save_billing_address, :save_return_address, :total_order, :connect_stripe

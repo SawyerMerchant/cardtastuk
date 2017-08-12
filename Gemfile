@@ -78,6 +78,7 @@ gem 'stripe'
 # wicked pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', group: :development
+gem 'httparty'
 
 # mechanize
 gem 'mechanize'
