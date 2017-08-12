@@ -1,9 +1,10 @@
 class ListsController < ApiController
   before_action :parse_csv, :make_list, only: [:create]
-  # before_action :make_list, only: [:create]
   before_action :make_recipients, only: [:create], if: -> { @list.persisted? }
 
   def create
+    puts "@list.to_json"
+    p @list.to_json
     if @list.persisted?
       render json: @list.to_json, status: :created, location: @list
     else
@@ -27,14 +28,14 @@ class ListsController < ApiController
   end
 
   def make_list
-    @list = List.new(url: @url, name: @name, user_id: @user_id)
+    @list = List.create(url: @url, name: @name, user_id: @user_id)
   end
 
   def make_recipients
     CSV.parse(@uploaded_list, headers: true) do |row|
       recipient = Recipient.create(first_name: row['first_name'],
                                    last_name:  row['last_name'],
-                                   list_id:    list.id)
+                                   list_id:    @list.id)
       a = Address.create(address_line1: row['address_line1'],
                          address_line2: row['address_line2'],
                          city:          row['city'],

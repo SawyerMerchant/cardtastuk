@@ -11,7 +11,7 @@ class List < ApplicationRecord
 
   def as_json(options={})
     super(options).merge({count: self.recipients.count,
-                   first_record: self.recipeints.first   })
+                   first_record: self.recipients.first   })
   end
 
 end
