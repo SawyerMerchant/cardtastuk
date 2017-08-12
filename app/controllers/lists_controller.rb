@@ -1,11 +1,14 @@
 class ListsController < ApiController
-  before_action :parse_csv
+  before_action :parse_csv, :make_list, only: [:create]
+  before_action :make_recipients, only: [:create], if: -> { @list.persisted? }
+
   def create
-    list = List.new(url: @url, name: @name, user_id: @user_id, count: @row_count, first_record: @first_record)
-    if list.save
-      render json: list.to_json, status: :created, location: list
+    puts "@list.to_json"
+    p @list.to_json
+    if @list.persisted?
+      render json: @list.to_json, status: :created, location: @list
     else
-      render json: list.errors, status: :unprocessable_entity
+      render json: @list.errors, status: :unprocessable_entity
     end
   end
 
@@ -19,22 +22,28 @@ class ListsController < ApiController
 
   def parse_csv
     @url = Paperclip.io_adapters.for(params[:url])
-    @row_count = 0
-    @first_record = {}
-    CSV.parse(Paperclip.io_adapters.for(@url).read, :headers=>true) do |row|
-      if @row_count == 0
-        @first_record[:first_name] = row[0]
-        @first_record[:last_name] = row[1]
-        @first_record[:address_line1] = row[2]
-        @first_record[:address_line2] = row[3]
-        @first_record[:city] = row[4]
-        @first_record[:state] = row[5]
-        @first_record[:zip] = row[6]
-      end
-      @row_count += 1
-    end
+    @uploaded_list = Paperclip.io_adapters.for(@url).read
     @name = params[:name]
     @user_id = params[:user_id]
-
   end
+
+  def make_list
+    @list = List.create(url: @url, name: @name, user_id: @user_id)
+  end
+
+  def make_recipients
+    CSV.parse(@uploaded_list, headers: true) do |row|
+      recipient = Recipient.create(first_name: row['first_name'],
+                                   last_name:  row['last_name'],
+                                   list_id:    @list.id)
+      a = Address.create(address_line1: row['address_line1'],
+                         address_line2: row['address_line2'],
+                         city:          row['city'],
+                         state:         row['state'],
+                         zip:           row['zip'])
+      recipient.address = a
+    end
+  end
+
+
 end
