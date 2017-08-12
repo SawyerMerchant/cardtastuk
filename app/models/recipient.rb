@@ -1,4 +1,4 @@
 class Recipient < ApplicationRecord
   belongs_to :list
-  belongs_to :address
+  has_one :address, as: :addressable, dependent: :destroy
 end

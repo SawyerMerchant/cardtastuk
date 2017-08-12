@@ -6,8 +6,12 @@ class User < ApplicationRecord
 
   has_many :lists
   has_many :orders
-  belongs_to :billing_address, class_name: "Address", required: false#or has_one address, foreign_key: 'x_address
-  belongs_to :shipping_address, class_name: "Address", required: false #or has_one address, foreign_key: 'x_address
+
+  has_one :billing_address, as: :addressable,
+          class_name: "Address"#, dependent: :destroy, foreign_key: "addressable_id"
+
+  has_one :return_address, as: :addressable,
+          class_name: "Address"#, dependent: :destroy, foreign_key: "addressable_id"
 
   def as_json(options={})
     super(options).merge({lists: self.lists, orders: self.orders})

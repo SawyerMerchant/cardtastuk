@@ -7,4 +7,11 @@ class List < ApplicationRecord
   # if you want to create an expression index for a given path, you’ll have to use execute - use execute in a migration:
   # http://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails
 
+  has_many :recipients
+
+  def as_json(options={})
+    super(options).merge({count: self.recipients.count,
+                   first_record: self.recipeints.first   })
+  end
+
 end
