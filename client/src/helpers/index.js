@@ -154,3 +154,34 @@ export const filterCards = (cards, router, category, tag) => {
   filteredCards = paginateCards(filteredCards, +page, ITEMS_PER_PAGE);
   return filteredCards;
 };
+
+export const cardFonts = [
+  {
+    name: "Dancing Script",
+    cssName: "dancing-script"
+  },
+  {
+    name: "Indie Flower",
+    cssName: "indie-flower"
+  },
+  {
+    name: "Great Vibes",
+    cssName: "great-vibes"
+  },
+  {
+    name: "Amatic SC",
+    cssName: "amatic-sc"
+  },
+  {
+    name: "Satisfy",
+    cssName: "satisfy"
+  },
+  {
+    name: "Shadows Into Light Two",
+    cssName: "shadows-into-light-two"
+  },
+  {
+    name: "Tangerine",
+    cssName: "tangerine"
+  }
+];

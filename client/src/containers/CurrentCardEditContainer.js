@@ -21,7 +21,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     card: state.currentCard.data,
     signature: state.signature,
-    userName: state.userName
+    userName: state.userName,
+    cardFont: state.cardFont
   };
 };
 

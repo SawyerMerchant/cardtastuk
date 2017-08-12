@@ -26,7 +26,34 @@ form {
   padding: .5em;
   margin: 0 .5em 3.5em .5em;
   font-size: 2em;
-  font-family: 'Dancing Script', cursive;
+  
+  &.dancing-script {
+    font-family: 'Dancing Script', cursive;
+  }
+
+  &.indie-flower {
+    font-family: 'Indie Flower', cursive;
+  }
+
+  &.great-vibes {
+    font-family: 'Great Vibes', cursive;
+  }
+
+  &.amatic-sc {
+    font-family: 'Amatic SC', cursive;
+  }
+
+  &.satisfy {
+    font-family: 'Satisfy', cursive;
+  }
+
+  &.shadows-into-light-two {
+    font-family: 'Shadows Into Light Two', cursive;
+  }
+
+  &.tangerine {
+    font-family: 'Tangerine', cursive;
+  }
 
   form {
     textarea {

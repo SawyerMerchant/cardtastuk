@@ -26,7 +26,8 @@ const mapStateToProps = state => {
     currentList: state.currentList.data,
     user: state.user.data,
     userName: state.userName,
-    signature: state.signature
+    signature: state.signature,
+    cardFont: state.cardFont
   };
 };
 
