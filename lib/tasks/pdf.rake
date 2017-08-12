@@ -1,15 +1,13 @@
 require 'wicked_pdf'
-require 'HTTParty'
+
 
 task :pdf => :environment do
 
-  # string_response = HTTParty.get('http://localhost:3001/proofs/1')
-  #
-  # p string_response
+
 
   pdf = WickedPdf.new.pdf_from_url('http://localhost:3001/proofs/1', :page_height => '10.25in', :page_width => '7.25in')
 
-  file_name = "39"
+  file_name = "1"
 
   save_path = Rails.root.join('pdfs',"#{file_name}.pdf")
 
