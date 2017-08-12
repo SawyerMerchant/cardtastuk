@@ -19,11 +19,11 @@ Rails.application.routes.draw do
 
   resources :proofs, only: [:show]
 
-  get '*', to: redirect("/")
+  # get '*', to: redirect("/")
 
   # get '/admin', to "active_admin/devise/sessions#new"
 
-  # get '*path', to: "application#fallback_index_html", constraints: ->(request) do
-  #   !request.xhr? && request.format.html?
-  # end
+  get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+    !request.xhr? && request.format.html?
+  end
 end
