@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811140437) do
+ActiveRecord::Schema.define(version: 20170812152638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20170811140437) do
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
     t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -154,6 +164,17 @@ ActiveRecord::Schema.define(version: 20170811140437) do
     t.index ["line_item_id"], name: "index_proofs_on_line_item_id", using: :btree
   end
 
+  create_table "recipients", force: :cascade do |t|
+    t.integer  "list_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_recipients_on_address_id", using: :btree
+    t.index ["list_id"], name: "index_recipients_on_list_id", using: :btree
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -200,4 +221,6 @@ ActiveRecord::Schema.define(version: 20170811140437) do
   add_foreign_key "lists", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "proofs", "orders", column: "line_item_id"
+  add_foreign_key "recipients", "addresses"
+  add_foreign_key "recipients", "lists"
 end
