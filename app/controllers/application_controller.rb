@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   def fallback_index_html
     puts "%%%%%%%%%%hit fallback_index_html%%%%%%%%%%%%%"
-    get "/index.html"
+    render "root_path"
   end
 
   def current_organization
