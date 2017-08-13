@@ -48,6 +48,8 @@ module Cardtastuk
       g.factory_girl dir: '/spec'
     end
 
+    config.eager_load_paths << Rails.root.join('lib')
+
   end
 
 end

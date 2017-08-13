@@ -3,4 +3,8 @@ class ApplicationController < ActionController::Base
     render "/index.html"
   end
 
+  def current_organization
+    @current_organization ||= ::Subdomains::Organization[request.subdomain]
+  end
+
 end

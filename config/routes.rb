@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  get 'controllers/index'
+
   get 'orders/create'
 
   mount_devise_token_auth_for 'User', at: 'auth'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
 
   scope '/api' do #, defaults: { format: :json } do
     scope '/v1' do
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
       resources :tags, only: [:index, :show]
       resources :lists, only: [:create, :show]
       resources :orders, only: [:create]
-
+      resources :organizations, only: [:index]
     end
   end
 

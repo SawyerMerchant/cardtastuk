@@ -69,3 +69,10 @@ COUNT.times do
   user.save!
   users << user
 end
+
+puts "Making Organizations"
+COUNT.times do
+  Organization.create(name: Faker::Hipster.word,
+                      subdomain: Faker::Hipster.word,
+                      active: true)
+end
