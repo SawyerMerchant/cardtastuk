@@ -1,5 +1,5 @@
 import { clearCart } from "./shoppingCart";
-import { setCurrentList } from "./currentList";
+import { setCurrentList, clearCurrentList } from "./currentList";
 import { clearLists, getUserListsSuccess } from "./listsAll";
 import { clearSignature } from "./signature";
 export const GET_USER_LOGIN_REQUEST = "GET_USER_LOGIN_REQUEST";
@@ -56,6 +56,7 @@ export function endUserSession(user) {
         dispatch(clearCart());
         dispatch(clearLists());
         dispatch(clearSignature());
+        dispatch(clearCurrentList());
       })
       .catch(error => {
         console.log(error);
