@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   def fallback_index_html
     puts "%%%%%%%%%%hit fallback_index_html%%%%%%%%%%%%%"
-    render Rails.public_path.join("index.html")
+    # render Rails.public_path.join("index.html")
   end
 
   def current_organization
