@@ -50,7 +50,7 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data'#, platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # ActiveAdmin
 gem 'devise', '> 4.x'
@@ -85,4 +85,4 @@ gem 'httparty'
 gem 'mechanize'
 
 #fix heroku
-gem 'coffee-rails'
+# gem 'coffee-rails'
