@@ -2,7 +2,9 @@ class OrdersController < ApiController
   before_action :parse_params
   def create
     order = newOrder
-    order.save
+    puts "Order Saving"
+    p order.save
+    order.total_order
     # stripeOrder = StripeOrder.new(order)
     response = order.send_to_stripe
 

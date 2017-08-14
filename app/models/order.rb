@@ -3,9 +3,9 @@ require 'resolv-replace'
 class Order < ApplicationRecord
   belongs_to :user
   has_many :line_items
-  belongs_to :fulfillment, required: :false
+  belongs_to :fulfillment, required: false
 
-  after_create :save_billing_address, :save_return_address, :total_order, :connect_stripe
+  after_create :save_billing_address, :save_return_address, :connectAPI 
 
   def self.pending_card_count
     sql = "SELECT SUM(line_items.quantity)
@@ -39,7 +39,6 @@ class Order < ApplicationRecord
   end
 
   def send_to_stripe
-    connectAPI
     if !confirm_totals
       @logger.warn "Front and back charge mismatch"
     else
