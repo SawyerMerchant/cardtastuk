@@ -46,6 +46,7 @@ group :development do
   # Run Procfiles locally
   gem 'foreman'
   gem "letter_opener"
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -82,3 +83,6 @@ gem 'httparty'
 
 # mechanize
 gem 'mechanize'
+
+#fix heroku
+gem 'coffee-rails'
