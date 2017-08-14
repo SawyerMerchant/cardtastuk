@@ -84,5 +84,5 @@ gem 'httparty'
 # mechanize
 gem 'mechanize'
 
-#fix heroku
-# gem 'coffee-rails'
+# fix heroku
+gem 'coffee-rails'
