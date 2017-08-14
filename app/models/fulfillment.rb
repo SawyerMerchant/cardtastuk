@@ -40,33 +40,33 @@ class Fulfillment < ApplicationRecord
   def self.transmit(quantity)
     combined_list = Fulfillment.build_csv
     f = Fulfillment.create(combined_list: combined_list)
-    # agent = Mechanize.new
-    # page = agent.get(PRINT_URL)
-    # p pageUri = page.uri.to_s #confirm on first page
-    # quoteButton = page.link_with(dom_id: "ctl00_MainContextPH_HyperLink1")
-    #
-    # quoteUrl = quoteButton.href
-    # page = agent.get(quoteUrl)
-    # p pageUri = page.uri.to_s #confirm on second page
-    # ###########################################
-    #
-    # form = page.form(name: "aspnetForm")
+    agent = Mechanize.new
+    page = agent.get(PRINT_URL)
+    p pageUri = page.uri.to_s #confirm on first page
+    quoteButton = page.link_with(dom_id: "ctl00_MainContextPH_HyperLink1")
+
+    quoteUrl = quoteButton.href
+    page = agent.get(quoteUrl)
+    p pageUri = page.uri.to_s #confirm on second page
+    ###########################################
+
+    form = page.form(name: "aspnetForm")
     # p form.buttons.length
-    # # form.set_attribute
-    # # form["ctl00$MainContextPH$tbProjectName"] = "AutoTestID"
-    # form["ctl00_MainContextPH_tbProjectName"] = f.id
-    # form["ctl00_MainContextPH_tbQuantity"] = quantity
-    # form["ctl00_MainContextPH_tbProjectDetails"] = collect_orders_string
-    # # projectNameField = page.input_with(dom_id: "ctl00_MainContextPH_tbProjectName")
-    # # projectNameField.value = "AutoTest"
-    #
-    # # button = page.input_with(dom_id: "ctl00_MainContextPH_bntSubmit")
-    # # form.submit(button)
-    #
-    # button = form.button(name: 'ctl00$MainContextPH$bntSubmit')
-    # puts "%%%%%%%%%%%%%%%%%%"
-    # thankYouPage = form.click_button(button)
-    # p pageUri = thankYouPage.uri.to_s
+    # form.set_attribute
+    # form["ctl00$MainContextPH$tbProjectName"] = "AutoTestID"
+    form["ctl00_MainContextPH_tbProjectName"] = f.id
+    form["ctl00_MainContextPH_tbQuantity"] = quantity
+    form["ctl00_MainContextPH_tbProjectDetails"] = collect_orders_string
+    # projectNameField = page.input_with(dom_id: "ctl00_MainContextPH_tbProjectName")
+    # projectNameField.value = "AutoTest"
+
+    # button = page.input_with(dom_id: "ctl00_MainContextPH_bntSubmit")
+    # form.submit(button)
+
+    button = form.button(name: 'ctl00$MainContextPH$bntSubmit')
+    puts "%%%%%%%%%%%%%%%%%%"
+    thankYouPage = form.click_button(button)
+    p pageUri = thankYouPage.uri.to_s
   end
 
 end
