@@ -67,7 +67,7 @@ class ListResolver extends Component {
         <Grid className="list-resolver">
           <Row>
             <h1 className="card-title">{card.name}</h1>
-            <Crumbs card={card} position={1}/>
+            <Crumbs card={card} position={1} />
             <Col md={6} xs={12}>
               <div className="card-edit-container">
                 <div className={`card-edit-message ${cardFont}`}>

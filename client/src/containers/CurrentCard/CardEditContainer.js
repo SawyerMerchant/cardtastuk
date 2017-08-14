@@ -22,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
     card: state.currentCard.data,
     signature: state.signature,
     userName: state.userName,
-    cardFont: state.cardFont
+    cardFont: state.cardFont,
+    cardMessage: state.cardMessage
   };
 };
 

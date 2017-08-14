@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import { Breadcrumb } from 'react-bootstrap';
+import { Breadcrumb } from "react-bootstrap";
 
 const buildCrumbItems = (currentPath, position) => {
   let results = [];
@@ -10,15 +10,15 @@ const buildCrumbItems = (currentPath, position) => {
         <Breadcrumb.Item key={cardSteps[i].name} active>
           {cardSteps[i].name}
         </Breadcrumb.Item>
-      )
+      );
     } else {
       results.push(
-        <Breadcrumb.Item key={cardSteps[i].name}>
-          <Link to={`${currentPath}${cardSteps[i].path}`}>
+        <li key={cardSteps[i].name}>
+          <Link to={`${currentPath}${cardSteps[i].path}`} role="button">
             {cardSteps[i].name}
           </Link>
-        </Breadcrumb.Item>
-      )
+        </li>
+      );
     }
   }
 
@@ -38,16 +38,16 @@ const cardSteps = [
     name: "3. Enter a Return Address",
     path: "/address"
   }
-]
+];
 
-const Crumbs = ({card, position}) => {
+const Crumbs = ({ card, position }) => {
   let currentPath = `/cards/${card.id}`;
   let crumbItems = buildCrumbItems(currentPath, position);
   return (
     <Breadcrumb className="crumbs">
       {crumbItems}
     </Breadcrumb>
-  )
+  );
 };
 
 export default Crumbs;

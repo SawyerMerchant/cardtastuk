@@ -29,7 +29,7 @@ class ReturnAddress extends Component {
       <Grid className="return-address">
         <Row>
           <h1 className="card-title">{card.name}</h1>
-          <Crumbs card={card} position={2}/>
+          <Crumbs card={card} position={2} />
           <Col md={6} xs={12}>
             <div className="card-edit-container">
               <div className={`card-edit-message ${cardFont}`}>
