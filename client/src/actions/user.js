@@ -1,6 +1,7 @@
 import { clearCart } from "./shoppingCart";
-import { setCurrentList } from "./currentList";
+import { setCurrentList, clearCurrentList } from "./currentList";
 import { clearLists, getUserListsSuccess } from "./listsAll";
+import { clearSignature } from "./signature";
 export const GET_USER_LOGIN_REQUEST = "GET_USER_LOGIN_REQUEST";
 export const GET_USER_LOGIN_SUCCESS = "GET_USER_LOGIN_SUCCESS";
 export const GET_USER_LOGIN_FAILURE = "GET_USER_LOGIN_FAILURE";
@@ -54,6 +55,8 @@ export function endUserSession(user) {
         dispatch(logoutUser());
         dispatch(clearCart());
         dispatch(clearLists());
+        dispatch(clearSignature());
+        dispatch(clearCurrentList());
       })
       .catch(error => {
         console.log(error);
@@ -61,7 +64,7 @@ export function endUserSession(user) {
   };
 }
 
-export function registerUser(form, history) {
+export function registerUser(form, history, cardRedirectId) {
   let config = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -92,15 +95,24 @@ export function registerUser(form, history) {
       })
       .then(json => {
         dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
-        history.goBack(); // redirect user to previous page before login was requested
+        if (cardRedirectId) {
+          history.push(`/cards/${cardRedirectId}/upload`);
+        } else {
+          history.push("/cards");
+        }
       })
       .catch(error => {
         dispatch(getUserLoginFailure(error));
+        if (cardRedirectId) {
+          history.push(`/auth?error=badLogin&cardRedirectId=${cardRedirectId}`);
+        } else {
+          history.push("/auth?error=badLogin");
+        }
       });
   };
 }
 
-export function loginUser(form, history) {
+export function loginUser(form, history, cardRedirectId) {
   let config = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -137,11 +149,20 @@ export function loginUser(form, history) {
         dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
         dispatch(getUserListsSuccess(json.data.lists));
         dispatch(setCurrentList(firstList));
-        history.goBack(); // redirect user to previous page before login was requested
+
+        if (cardRedirectId) {
+          history.push(`/cards/${cardRedirectId}/upload`);
+        } else {
+          history.push("/cards");
+        }
       })
       .catch(error => {
         dispatch(getUserLoginFailure(error));
-        history.push(`${window.location.pathname}?error=bad_login`);
+        if (cardRedirectId) {
+          history.push(`/auth?error=badLogin&cardRedirectId=${cardRedirectId}`);
+        } else {
+          history.push("/auth?error=badLogin");
+        }
       });
   };
 }

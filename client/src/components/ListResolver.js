@@ -37,7 +37,9 @@ const handleNextPageClick = (e, list) => {
 class ListResolver extends Component {
   componentWillMount() {
     if (!this.props.isAuthenticated) {
-      this.props.history.push("/auth?error=unauthenticated");
+      this.props.history.push(
+        `/auth?error=unauthenticated&cardRedirectId=${this.props.card.id}`
+      );
     }
   }
 

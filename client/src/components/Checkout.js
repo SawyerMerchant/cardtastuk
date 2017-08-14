@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import {
-  Grid,
-  Row,
-  Col,
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  Button
-} from "react-bootstrap";
+import { Grid, Row, Col, Button } from "react-bootstrap";
 import StripeCheckout from "react-stripe-checkout";
 import CheckoutSummary from "./CheckoutSummary";
-import USAStatesDropdown from "./USAStatesDropdown";
+import AddressFormFields from "./AddressFormFields";
 import PropTypes from "prop-types";
 
 class Checkout extends Component {
@@ -35,31 +27,7 @@ class Checkout extends Component {
           <Col md={6}>
             <form id="checkout-form">
               <h3>Billing Address</h3>
-              <FormGroup controlId="street_address_1">
-                <ControlLabel>Street Address 1</ControlLabel>
-                <FormControl type="text" name="street_address_1" required />
-              </FormGroup>
-              <FormGroup controlId="street_address_2">
-                <ControlLabel>Street Address 2</ControlLabel>
-                <FormControl type="text" name="street_address_2" required />
-              </FormGroup>
-              <FormGroup controlId="city">
-                <ControlLabel>City</ControlLabel>
-                <FormControl type="text" name="city" required />
-              </FormGroup>
-              <FormGroup controlId="state">
-                <ControlLabel>State</ControlLabel>
-                <USAStatesDropdown />
-              </FormGroup>
-              <FormGroup controlId="zipcode">
-                <ControlLabel>Zipcode</ControlLabel>
-                <FormControl
-                  type="number"
-                  pattern="[0-9]{5}"
-                  name="zipcode"
-                  required
-                />
-              </FormGroup>
+              <AddressFormFields />
             </form>
           </Col>
           <Col md={6}>

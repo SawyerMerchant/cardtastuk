@@ -25,10 +25,10 @@ const buildFlash = error => {
   if (error === "unauthenticated") {
     message = flashMsgs.unauthenticated;
     type = "warning";
-  } else if (error === "bad_password") {
+  } else if (error === "badPassword") {
     message = flashMsgs.badPass;
     type = "danger";
-  } else if (error === "bad_login") {
+  } else if (error === "badLogin") {
     message = flashMsgs.badLogin;
     type = "danger";
   }
@@ -55,10 +55,10 @@ class Auth extends Component {
           <Row>
             <Col md={8} mdOffset={2} xs={10} xsOffset={1}>
               <h1>Registration and Log In</h1>
-              <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+              <Tabs defaultActiveKey={1} id="authentication-tabs">
                 <Tab eventKey={1} title="Register">
                   <Panel header={"Register for an account today."}>
-                    <form onSubmit={onRegister}>
+                    <form onSubmit={e => onRegister(e, query.cardRedirectId)}>
                       <FormGroup controlId="email">
                         <ControlLabel>Email</ControlLabel>
                         <FormControl type="email" name="email" required />
@@ -89,7 +89,7 @@ class Auth extends Component {
                 </Tab>
                 <Tab eventKey={2} title="Login">
                   <Panel header={"Login to an existing account."}>
-                    <form onSubmit={onLogin}>
+                    <form onSubmit={e => onLogin(e, query.cardRedirectId)}>
                       <FormGroup controlId="email">
                         <ControlLabel>Email</ControlLabel>
                         <FormControl type="email" name="email" required />

@@ -1,10 +1,17 @@
 import { addNewList } from "./listsAll";
 export const SET_CURRENT_LIST = "SET_CURRENT_LIST";
+export const CLEAR_CURRENT_LIST = "CLEAR_CURRENT_LIST";
 
 export function setCurrentList(data) {
   return {
     type: SET_CURRENT_LIST,
     data
+  };
+}
+
+export function clearCurrentList() {
+  return {
+    type: CLEAR_CURRENT_LIST
   };
 }
 

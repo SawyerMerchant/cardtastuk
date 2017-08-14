@@ -18,6 +18,8 @@ export const currentList = (state = initialState, action) => {
         ...state,
         data: action.data
       };
+    case Actions.CLEAR_CURRENT_LIST:
+      return initialState;
     default:
       return state;
   }
