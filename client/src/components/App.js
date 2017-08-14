@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
-import NavigationContainer from "../containers/NavigationContainer";
-import CardsAllContainer from "../containers/CardsAllContainer";
-import CurrentCardContainer from "../containers/CurrentCardContainer";
-import CurrentCardEditContainer from "../containers/CurrentCardEditContainer";
-import ListResolverContainer from "../containers/ListResolverContainer";
-import ReturnAddressContainer from "../containers/ReturnAddressContainer";
-import ShoppingCartContainer from "../containers/ShoppingCartContainer";
-import AuthContainer from "../containers/AuthContainer";
-import CheckoutContainer from "../containers/CheckoutContainer";
-import LandingPage from "./LandingPage";
-import SuccessfulTransaction from "./SuccessfulTransaction";
+import NavigationContainer from "../containers/Shared/NavigationContainer";
+import CardsAllContainer from "../containers/CardsAll/CardsAllContainer";
+import CardViewContainer from "../containers/CurrentCard/CardViewContainer";
+import CardEditContainer from "../containers/CurrentCard/CardEditContainer";
+import ListHandlerContainer from "../containers/CurrentCard/ListHandlerContainer";
+import ReturnAddressContainer from "../containers/CurrentCard/CardReturnAddressContainer";
+import ShoppingCartContainer from "../containers/ShoppingCart/ShoppingCartContainer";
+import AuthContainer from "../containers/Auth/AuthContainer";
+import CheckoutContainer from "../containers/Checkout/CheckoutContainer";
+import LandingPage from "./LandingPage/";
+import SuccessfulTransaction from "./Checkout/SuccessfulTransaction";
 
 class App extends Component {
   render() {
@@ -34,12 +34,9 @@ class App extends Component {
               path="/cards/:id/address"
               component={ReturnAddressContainer}
             />
-            <Route path="/cards/:id/upload" component={ListResolverContainer} />
-            <Route
-              path="/cards/:id/edit"
-              component={CurrentCardEditContainer}
-            />
-            <Route path="/cards/:id" component={CurrentCardContainer} />
+            <Route path="/cards/:id/upload" component={ListHandlerContainer} />
+            <Route path="/cards/:id/edit" component={CardEditContainer} />
+            <Route path="/cards/:id" component={CardViewContainer} />
             <Route path="/cards" component={CardsAllContainer} />
             <Route path="/cart" component={ShoppingCartContainer} />
             <Route path="/auth" component={AuthContainer} />
