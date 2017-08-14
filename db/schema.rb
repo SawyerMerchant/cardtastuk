@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170813100619) do
+ActiveRecord::Schema.define(version: 20170814143146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,17 @@ ActiveRecord::Schema.define(version: 20170813100619) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fulfillments", force: :cascade do |t|
+    t.integer  "card_count"
+    t.string   "confirmation"
+    t.string   "combined_list_file_name"
+    t.string   "combined_list_content_type"
+    t.integer  "combined_list_file_size"
+    t.datetime "combined_list_updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "list_id"
@@ -133,12 +144,13 @@ ActiveRecord::Schema.define(version: 20170813100619) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "status"
+    t.string   "status",         default: "pending"
     t.jsonb    "stripe"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "front_charge"
     t.integer  "back_charge"
+    t.integer  "fulfillment_id"
     t.index ["stripe"], name: "index_orders_on_stripe", using: :gin
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
@@ -223,6 +235,7 @@ ActiveRecord::Schema.define(version: 20170813100619) do
   add_foreign_key "line_items", "lists"
   add_foreign_key "line_items", "orders"
   add_foreign_key "lists", "users"
+  add_foreign_key "orders", "fulfillments"
   add_foreign_key "orders", "users"
   add_foreign_key "proofs", "orders", column: "line_item_id"
   add_foreign_key "recipients", "lists"

@@ -3,20 +3,43 @@ require 'resolv-replace'
 class Order < ApplicationRecord
   belongs_to :user
   has_many :line_items
+  belongs_to :fulfillment, required: :false
 
   after_create :save_billing_address, :save_return_address, :total_order, :connect_stripe
 
-  def connect_stripe
+  def self.pending_card_count
+    sql = "SELECT SUM(line_items.quantity)
+            FROM line_items
+            JOIN orders
+            ON orders.id = line_items.order_id
+            WHERE orders.status = 'pending'"
+    # sql = "SELECT COUNT(*)
+    #         FROM  recipients
+    #         JOIN  line_items
+    #         ON    line_items.list_id = recipients.list_id
+    #         JOIN  orders
+    #         ON    orders.id = line_items.order_id
+    #         WHERE orders.status = 'pending'"
+    quantity = ActiveRecord::Base.connection.execute(sql)[0]["sum"]
+    puts "#{quantity} Pending Cards"
+    p quantity
+
+  end
+
+  def connectAPI
     Stripe.api_key = 'sk_test_f1UnEkd05xv5bOPkj3KusZrc'
     @logger = Logger.new(STDOUT)
     @logger.level = Logger::WARN
   end
 
   def confirm_totals
+    puts "front_charge: #{self.front_charge}"
+    puts "back_charge: #{self.back_charge}"
     self.front_charge == self.back_charge
   end
 
   def send_to_stripe
+    connectAPI
     if !confirm_totals
       @logger.warn "Front and back charge mismatch"
     else
