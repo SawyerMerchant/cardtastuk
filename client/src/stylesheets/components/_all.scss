@@ -14,14 +14,11 @@
 @import 'uploadmodal';
 @import 'signature';
 @import 'username';
+@import 'crumbs';
 
 body {
   margin-bottom: 10vh;
   background-color: #FAFAFA;
-}
-
-.card-title {
-  text-transform: capitalize;
 }
 
 .btn {

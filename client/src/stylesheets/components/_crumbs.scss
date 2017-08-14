@@ -1,0 +1,8 @@
+.crumbs {
+  li a {
+    color: darken($brand-primary, 20%);
+  }
+  li * {
+    color: #555;
+  }
+}

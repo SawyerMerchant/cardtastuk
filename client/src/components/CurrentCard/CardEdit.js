@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import FontPickerContainer from "../../containers/CurrentCard/FontPickerContainer";
 import SignaturePadCollapsible from "./SignaturePadCollapsible";
 import UserNameCollapsible from "./UserNameCollapsible";
+import Crumbs from "./Crumbs";
 import BackBtn from "../Shared/BackBtn";
 
 const handleClick = (e, userName, signature) => {
@@ -28,6 +29,7 @@ const CurrentCardEdit = ({
     <Grid className="current-card-edit">
       <Row>
         <h1 className="card-title">{card.name}</h1>
+        <Crumbs card={card} position={0}/>
         <Col md={6} xs={12}>
           <div className="card-edit-container">
             <div className={`card-edit-message ${cardFont}`}>
@@ -52,7 +54,7 @@ const CurrentCardEdit = ({
           </div>
         </Col>
         <Col md={6} xs={12} className="card-details">
-          <h2 className="card-title">1. Add a message</h2>
+          <h2 className="card-title">1. Add a Message</h2>
 
           <p>
             Write the message you would like to send to all your recipients in
