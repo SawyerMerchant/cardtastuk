@@ -42,29 +42,33 @@ export function endUserSession(user) {
       uid: user.uid
     }
   };
-  return dispatch => {
-    fetch("/auth/sign_out", config)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
 
-        return response.json();
-      })
-      .then(json => {
-        dispatch(logoutUser());
-        dispatch(clearCart());
-        dispatch(clearLists());
-        dispatch(clearSignature());
-        dispatch(clearCurrentList());
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  return async dispatch => {
+    try {
+      let response = await fetch("/auth/sign_out", config);
+
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+
+      dispatch(logoutUser());
+      dispatch(clearCart());
+      dispatch(clearLists());
+      dispatch(clearSignature());
+      dispatch(clearCurrentList());
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
-export function registerUser(form, history, organization, admin, cardRedirectId) {
+export function registerUser(
+  form,
+  history,
+  organization,
+  admin,
+  cardRedirectId
+) {
   let config = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -81,36 +85,34 @@ export function registerUser(form, history, organization, admin, cardRedirectId)
   let accessToken;
   let client;
 
-  return dispatch => {
+  return async dispatch => {
     dispatch(getUserLoginRequest());
 
-    fetch("/auth", config)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
+    try {
+      let response = await fetch("/auth", config);
 
-        accessToken = response.headers.get("access-token");
-        client = response.headers.get("client");
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+      accessToken = response.headers.get("access-token");
+      client = response.headers.get("client");
 
-        return response.json();
-      })
-      .then(json => {
-        dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
-        if (cardRedirectId) {
-          history.push(`/cards/${cardRedirectId}/upload`);
-        } else {
-          history.push("/cards");
-        }
-      })
-      .catch(error => {
-        dispatch(getUserLoginFailure(error));
-        if (cardRedirectId) {
-          history.push(`/auth?error=badLogin&cardRedirectId=${cardRedirectId}`);
-        } else {
-          history.push("/auth?error=badLogin");
-        }
-      });
+      let json = await response.json();
+      dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
+
+      if (cardRedirectId) {
+        history.push(`/cards/${cardRedirectId}/upload`);
+      } else {
+        history.push("/cards");
+      }
+    } catch (error) {
+      dispatch(getUserLoginFailure(error));
+      if (cardRedirectId) {
+        history.push(`/auth?error=badLogin&cardRedirectId=${cardRedirectId}`);
+      } else {
+        history.push("/auth?error=badLogin");
+      }
+    }
   };
 }
 
@@ -127,44 +129,41 @@ export function loginUser(form, history, cardRedirectId) {
   let accessToken;
   let client;
 
-  return dispatch => {
+  return async dispatch => {
     dispatch(getUserLoginRequest());
+    try {
+      let response = await fetch("/auth/sign_in", config);
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+      accessToken = response.headers.get("access-token");
+      client = response.headers.get("client");
 
-    fetch("/auth/sign_in", config)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
-        accessToken = response.headers.get("access-token");
-        client = response.headers.get("client");
-        return response.json();
-      })
-      .then(json => {
-        let firstList = json.data.lists[0] || {
-          id: 0,
-          name: "",
-          first_record: {
-            first_name: "<First Name>"
-          },
-          count: 0
-        };
-        dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
-        dispatch(getUserListsSuccess(json.data.lists));
-        dispatch(setCurrentList(firstList));
+      let json = await response.json();
+      let firstList = json.data.lists[0] || {
+        id: 0,
+        name: "",
+        first_record: {
+          first_name: "<First Name>"
+        },
+        count: 0
+      };
+      dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
+      dispatch(getUserListsSuccess(json.data.lists));
+      dispatch(setCurrentList(firstList));
 
-        if (cardRedirectId) {
-          history.push(`/cards/${cardRedirectId}/upload`);
-        } else {
-          history.push("/cards");
-        }
-      })
-      .catch(error => {
-        dispatch(getUserLoginFailure(error));
-        if (cardRedirectId) {
-          history.push(`/auth?error=badLogin&cardRedirectId=${cardRedirectId}`);
-        } else {
-          history.push("/auth?error=badLogin");
-        }
-      });
+      if (cardRedirectId) {
+        history.push(`/cards/${cardRedirectId}/upload`);
+      } else {
+        history.push("/cards");
+      }
+    } catch (error) {
+      dispatch(getUserLoginFailure(error));
+      if (cardRedirectId) {
+        history.push(`/auth?error=badLogin&cardRedirectId=${cardRedirectId}`);
+      } else {
+        history.push("/auth?error=badLogin");
+      }
+    }
   };
 }

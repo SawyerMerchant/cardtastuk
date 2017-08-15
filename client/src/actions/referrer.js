@@ -1,4 +1,3 @@
-
 export const GET_REFERRER_REQUEST = "GET_REFERRER_REQUEST";
 export const GET_REFERRER_SUCCESS = "GET_REFERRER_SUCCESS";
 export const GET_REFERRER_FAILURE = "GET_REFERRER_FAILURE";
@@ -24,29 +23,30 @@ export function getReferrerFailure(error) {
 }
 
 export function getReferrer(organization, adminId) {
-  return dispatch => {
+  return async dispatch => {
     dispatch(getReferrerRequest());
-    fetch(`/api/v1/organizations`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
 
-        return response.json();
-      })
-      .then(json => {
-        let results = json.filter(orgs => {
-          return orgs.subdomain === organization;
-        });
-        if (results) {
-          dispatch(getReferrerSuccess({
+    try {
+      let response = await fetch(`/api/v1/organizations`);
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+      let json = await response.json();
+
+      let results = json.filter(orgs => {
+        return orgs.subdomain === organization;
+      });
+
+      if (results) {
+        dispatch(
+          getReferrerSuccess({
             admin: adminId,
             organization: results[0]
-          }))
-        }
-      })
-      .catch(error => {
-        dispatch(getReferrerFailure(error));
-      });
+          })
+        );
+      }
+    } catch (error) {
+      dispatch(getReferrerFailure(error));
+    }
   };
 }

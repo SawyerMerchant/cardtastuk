@@ -187,7 +187,7 @@ export const cardFonts = [
 ];
 
 export const parseSubdomain = () => {
-  let host = window.location.hostname.split('.');
+  let host = window.location.hostname.split(".");
 
   if (process.env && process.env.NODE_ENV === "development") {
     if (host[0] !== "localhost") {

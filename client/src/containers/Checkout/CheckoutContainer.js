@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onPayment: (form, token, cart, user, organization, adminId) => {
+    onPayment: async (form, token, cart, user, organization, adminId) => {
       let total = 0;
 
       cart.forEach(item => {
@@ -26,6 +26,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       total /= 100;
 
       const data = serialize(form, { hash: true });
+
       let config = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -41,21 +42,18 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         })
       };
 
-      fetch("/api/v1/orders", config)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`${response.status}: ${response.statusText}`);
-          }
+      try {
+        let response = await fetch("/api/v1/orders", config);
+        if (!response.ok) {
+          throw new Error(`${response.status}: ${response.statusText}`);
+        }
+        let json = await response.json();
 
-          return response.json();
-        })
-        .then(json => {
-          dispatch(clearCart());
-          ownProps.history.push(`/success?id=${json.id}&amount=${json.amount}`);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+        dispatch(clearCart());
+        ownProps.history.push(`/success?id=${json.id}&amount=${json.amount}`);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 };
