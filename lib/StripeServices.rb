@@ -70,4 +70,4 @@ module StripeServices
   end
 
 end
-puts "running a test order"
+# puts "running a test order"

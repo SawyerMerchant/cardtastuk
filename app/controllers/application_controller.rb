@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_organization
-    @current_organization ||= ::Subdomains::Organization[request.subdomain]
+    @current_organization ||= ::Organization[request.subdomain]
   end
 
 end

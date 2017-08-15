@@ -70,7 +70,7 @@ module StripeServices
   end
 
 end
-puts "running a test order"
+# puts "running a test order"
 # file = File.read('../../../test_order.json')
 # data_hash = JSON.parse(file)
 # order = Order.last
