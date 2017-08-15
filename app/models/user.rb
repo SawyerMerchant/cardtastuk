@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_one :return_address, as: :addressable,
           class_name: "Address"#, dependent: :destroy, foreign_key: "addressable_id"
 
+  belongs_to :organization, required: false
+  belongs_to :admin_user, required: false
+
   def as_json(options={})
     super(options).merge({lists: self.lists, orders: self.orders})
   end
