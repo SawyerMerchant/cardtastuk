@@ -13,6 +13,7 @@ import { currentCategory } from "./currentCategory";
 import { currentTag } from "./currentTag";
 import { signature } from "./signature";
 import { cardFont } from "./cardFont";
+import { referrer } from "./referrer";
 
 const cardTastukApp = combineReducers({
   cardsAll,
@@ -28,7 +29,8 @@ const cardTastukApp = combineReducers({
   currentCategory,
   currentTag,
   signature,
-  cardFont
+  cardFont,
+  referrer
 });
 
 export default cardTastukApp;

@@ -20,7 +20,8 @@ const store = createStore(
     listsAll: persistedState.listsAll,
     shoppingCart: persistedState.shoppingCart,
     currentList: persistedState.currentList,
-    signature: persistedState.signature
+    signature: persistedState.signature,
+    referrer: persistedState.referrer
   },
   composeEnhancers(applyMiddleware(thunk))
 );

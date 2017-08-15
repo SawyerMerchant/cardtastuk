@@ -44,7 +44,7 @@ class Auth extends Component {
   }
 
   render() {
-    const { onLogin, onRegister, location } = this.props;
+    const { onLogin, onRegister, location, organization, admin } = this.props;
     let query = getParams(location.search);
     let flash = buildFlash(query.error);
 
@@ -58,7 +58,15 @@ class Auth extends Component {
               <Tabs defaultActiveKey={1} id="authentication-tabs">
                 <Tab eventKey={1} title="Register">
                   <Panel header={"Register for an account today."}>
-                    <form onSubmit={e => onRegister(e, query.cardRedirectId)}>
+                    <form
+                      onSubmit={e =>
+                        onRegister(
+                          e,
+                          organization,
+                          admin,
+                          query.cardRedirectId
+                        )}
+                    >
                       <FormGroup controlId="email">
                         <ControlLabel>Email</ControlLabel>
                         <FormControl type="email" name="email" required />

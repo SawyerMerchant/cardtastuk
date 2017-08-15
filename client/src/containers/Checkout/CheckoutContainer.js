@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onPayment: (form, token, cart, user) => {
+    onPayment: (form, token, cart, user, organization, adminId) => {
       let total = 0;
 
       cart.forEach(item => {

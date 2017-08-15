@@ -64,7 +64,7 @@ export function endUserSession(user) {
   };
 }
 
-export function registerUser(form, history, cardRedirectId) {
+export function registerUser(form, history, organization, admin, cardRedirectId) {
   let config = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -72,6 +72,8 @@ export function registerUser(form, history, cardRedirectId) {
       email: form.email,
       password: form.password,
       password_confirmation: form.password_confirmation,
+      organization_id: organization.id,
+      admin_user_id: admin,
       confirm_success_url: "/"
     })
   };
