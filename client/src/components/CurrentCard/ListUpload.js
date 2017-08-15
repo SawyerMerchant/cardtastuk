@@ -37,8 +37,11 @@ class ListUpload extends Component {
     return (
       <div>
         <p>
-          Upload a CSV with your recipients using the form below. Don't forget
-          to name your list (e.g. "Friends", "Clients", etc.)!
+          Upload a CSV with your recipients using the form below. If you've already uploaded a list to our service, you can choose from one of them below. 
+          Don't forget to name your list! 
+        </p>
+        <p>
+          Examples: "Friends", "Clients", etc.
         </p>
         <form
           id="list-upload"
@@ -56,7 +59,7 @@ class ListUpload extends Component {
           </FormGroup>
           <FormGroup controlId="list_name">
             <ControlLabel>Give this group a name:</ControlLabel>
-            <FormControl type="text" name="list_name" required />
+            <FormControl type="text" name="list_name" required/>
           </FormGroup>
           <Button bsStyle="success" type="submit">
             Upload
