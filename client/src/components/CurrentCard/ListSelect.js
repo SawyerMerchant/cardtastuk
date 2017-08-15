@@ -11,11 +11,14 @@ const buildListOptions = lists => {
 const ListSelect = ({ setCurrentList, lists }) => {
   const listOptions = buildListOptions(lists);
 
+  if (lists.length === 0) {
+    return null;
+  }
+
   return (
     <div>
       <p>
-        If you've already uploaded a list of users, go ahead and choose a
-        list now.
+        Now, select the list you want to use for this mailing.
       </p>
       <form id="choose-list">
         <FormGroup controlId="list" onChange={e => setCurrentList(e, lists)}>

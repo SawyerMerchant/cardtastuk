@@ -21,6 +21,7 @@ const store = createStore(
     shoppingCart: persistedState.shoppingCart,
     currentList: persistedState.currentList,
     signature: persistedState.signature,
+    userName: persistedState.userName,
     referrer: persistedState.referrer
   },
   composeEnhancers(applyMiddleware(thunk))

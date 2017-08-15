@@ -37,7 +37,8 @@ class ListUpload extends Component {
     return (
       <div>
         <p>
-          Otherwise, upload a group of users here.
+          Upload a CSV with your recipients using the form below. Don't forget
+          to name your list (e.g. "Friends", "Clients", etc.)!
         </p>
         <form
           id="list-upload"

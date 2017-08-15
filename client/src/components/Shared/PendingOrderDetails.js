@@ -3,7 +3,7 @@ import { calculatePrice } from "../../helpers";
 import PropTypes from "prop-types";
 
 const minCardWarning = count => {
-  if (count < 25) {
+  if (count < 25 && count > 0) {
     return (
       <h4 className="text-danger">
         Warning: There is a minimum order quantity of 25 cards. You will be
