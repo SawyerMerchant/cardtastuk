@@ -22,7 +22,7 @@ class UploadInstructionsModal extends Component {
       <div className="upload-modal">
         <Button className="upload-instructions-modal-btn" onClick={this.open}>
           <Glyphicon glyph="question-sign" />{" "}
-          Lost? Click here to see how to upload your contacts.
+          Lost? Click here to see how to setup your contacts file.
         </Button>
 
         <Modal show={this.state.showModal} onHide={this.close}>
@@ -70,7 +70,11 @@ class UploadInstructionsModal extends Component {
               to view detailed instructions on turning your Excel file into a
               CSV.
             </p>
-
+            <p>
+              For Google Sheets users, simply open your sheet, then click on{" "}
+              <strong>File</strong> > <strong>Download As</strong> >{" "}
+              <strong>Comma-separated values (.csv, current sheet)</strong>.
+            </p>
             <p>
               You can also
               {" "}

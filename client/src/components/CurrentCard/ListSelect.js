@@ -1,6 +1,6 @@
 import React from "react";
 import { FormGroup, ControlLabel, FormControl } from "react-bootstrap";
-import { Collapse } from 'react-collapse';
+import { Collapse } from "react-collapse";
 import PropTypes from "prop-types";
 
 const buildListOptions = lists => {

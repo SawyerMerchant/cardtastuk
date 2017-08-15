@@ -87,9 +87,9 @@ class ListResolver extends Component {
 
               <ListUploadContainer />
 
-              <ListSelect lists={lists} setCurrentList={setCurrentList} />
-
               <UploadInstructionsModal />
+
+              <ListSelect lists={lists} setCurrentList={setCurrentList} />
 
               <PendingOrderDetails card={card} currentList={currentList} />
 
