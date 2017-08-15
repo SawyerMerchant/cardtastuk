@@ -18,6 +18,7 @@ const handleClick = (e, userName, signature) => {
 
 const CurrentCardEdit = ({
   card,
+  cardMessage,
   onChangeMessage,
   onSetName,
   history,
@@ -25,11 +26,12 @@ const CurrentCardEdit = ({
   userName,
   cardFont
 }) => {
+  let message = cardMessage || card.default_greeting;
   return (
     <Grid className="current-card-edit">
       <Row>
         <h1 className="card-title">{card.name}</h1>
-        <Crumbs card={card} position={0}/>
+        <Crumbs card={card} position={0} />
         <Col md={6} xs={12}>
           <div className="card-edit-container">
             <div className={`card-edit-message ${cardFont}`}>
@@ -37,8 +39,8 @@ const CurrentCardEdit = ({
               <form>
                 <FormControl
                   componentClass="textarea"
-                  defaultValue={card.default_greeting}
-                  placeholder={card.default_greeting}
+                  defaultValue={message}
+                  placeholder={message}
                   rows={8}
                   autoFocus
                   onChange={onChangeMessage}
