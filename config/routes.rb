@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   # get '*', to: redirect("/")
 
   # get '/admin', to "active_admin/devise/sessions#new"
+  namespace "*", :constraints => ::Subdomains::Organization do
+    #  resources :posts
+  end
+
 
   get '*path', to: "application#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?
