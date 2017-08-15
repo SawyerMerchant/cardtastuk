@@ -12,12 +12,20 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       const data = serialize(form, { hash: true });
       dispatch(loginUser(data, ownProps.history, cardRedirectId));
     },
-    onRegister: (e, cardRedirectId) => {
+    onRegister: (e, organization, admin, cardRedirectId) => {
       e.preventDefault();
       const form = e.target;
       const data = serialize(form, { hash: true });
       if (data.password === data.password_confirmation) {
-        dispatch(registerUser(data, ownProps.history, cardRedirectId));
+        dispatch(
+          registerUser(
+            data,
+            ownProps.history,
+            organization,
+            admin,
+            cardRedirectId
+          )
+        );
       } else {
         ownProps.history.push("/auth?error=badPassword");
       }
@@ -27,7 +35,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.user.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated,
+    organization: state.referrer.data.organization,
+    admin: state.referrer.data.admin
   };
 };
 

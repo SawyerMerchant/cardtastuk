@@ -25,28 +25,25 @@ export function getAllCardsFailure(error) {
 }
 
 export function getAllCards() {
-  return dispatch => {
+  return async dispatch => {
     dispatch(getAllCardsRequest());
+    try {
+      let response = await fetch(`/api/v1/cards`);
 
-    fetch(`/api/v1/cards`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
 
-        return response.json();
-      })
-      .then(json => {
-        let categories = _getCategories(json);
-        let tags = _getTags(json);
+      let json = await response.json();
 
-        dispatch(getAllCardsSuccess(json));
-        dispatch(getAllCategories(categories));
-        dispatch(getAllTags(tags));
-      })
-      .catch(error => {
-        dispatch(getAllCardsFailure(error));
-      });
+      let categories = _getCategories(json);
+      let tags = _getTags(json);
+      dispatch(getAllCardsSuccess(json));
+      dispatch(getAllCategories(categories));
+      dispatch(getAllTags(tags));
+    } catch (error) {
+      dispatch(getAllCardsFailure(error));
+    }
   };
 }
 

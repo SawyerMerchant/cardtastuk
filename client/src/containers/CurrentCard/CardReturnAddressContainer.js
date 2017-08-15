@@ -44,7 +44,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       isAuthenticated,
       signature,
       userName,
-      cardFont
+      cardFont,
+      organization,
+      adminId
     ) => {
       e.preventDefault();
       const form = e.target;

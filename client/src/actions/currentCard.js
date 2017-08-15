@@ -25,44 +25,38 @@ export function getCurrentCardFailure(error) {
 }
 
 export function getCurrentCardInit(id) {
-  return dispatch => {
+  return async dispatch => {
     dispatch(getCurrentCardRequest());
 
-    fetch(`/api/v1/cards/${id}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
+    try {
+      let response = await fetch(`/api/v1/cards/${id}`);
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
 
-        return response.json();
-      })
-      .then(json => {
-        dispatch(getCurrentCardSuccess(json));
-        dispatch(changeCardMessage(json.default_greeting));
-      })
-      .catch(error => {
-        dispatch(getCurrentCardFailure(error));
-      });
+      let json = await response.json();
+      dispatch(getCurrentCardSuccess(json));
+      dispatch(changeCardMessage(json.default_greeting));
+    } catch (error) {
+      dispatch(getCurrentCardFailure(error));
+    }
   };
 }
 
 export function getCurrentCard(id) {
-  return dispatch => {
+  return async dispatch => {
     dispatch(getCurrentCardRequest());
 
-    fetch(`/api/v1/cards/${id}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
+    try {
+      let response = await fetch(`/api/v1/cards/${id}`);
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
 
-        return response.json();
-      })
-      .then(json => {
-        dispatch(getCurrentCardSuccess(json));
-      })
-      .catch(error => {
-        dispatch(getCurrentCardFailure(error));
-      });
+      let json = await response.json();
+      dispatch(getCurrentCardSuccess(json));
+    } catch (error) {
+      dispatch(getCurrentCardFailure(error));
+    }
   };
 }

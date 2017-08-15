@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Welcome from "../../components/Welcome";
-// import { getCurrentCardInit } from "../../actions/currentCard";
-// import { changeCardMessage } from "../../actions/cardMessage";
-// import { setName } from "../../actions/userName";
+import { getReferrer } from "../../actions/referrer";
 import { withRouter } from "react-router-dom";
-import { getParams } from "../../helpers";
+import { getParams, parseSubdomain } from "../../helpers";
 
 class WelcomeContainer extends Component {
   componentDidMount() {
     let query = getParams(this.props.location.search);
-    // this.props.getCurrentCard();
+    let subdomain = parseSubdomain();
+    if (subdomain && query.id) {
+      this.props.getReferrer(subdomain, query.id);
+    }
   }
 
   render() {
@@ -19,13 +20,15 @@ class WelcomeContainer extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    organization: state.referrer.data.organization
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getCurrentCard: () => {
-      // dispatch(getCurrentCardInit(ownProps.match.params.id));
+    getReferrer: (subdomain, adminId) => {
+      dispatch(getReferrer(subdomain, adminId));
     }
   };
 };

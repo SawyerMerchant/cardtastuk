@@ -185,3 +185,21 @@ export const cardFonts = [
     cssName: "tangerine"
   }
 ];
+
+export const parseSubdomain = () => {
+  let host = window.location.hostname.split(".");
+
+  if (process.env && process.env.NODE_ENV === "development") {
+    if (host[0] !== "localhost") {
+      return host[0];
+    }
+
+    return null;
+  } else {
+    if (host[0] !== "cardtastuk") {
+      return host[0];
+    }
+
+    return null;
+  }
+};
