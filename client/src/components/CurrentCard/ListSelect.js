@@ -1,5 +1,6 @@
 import React from "react";
 import { FormGroup, ControlLabel, FormControl } from "react-bootstrap";
+import { Collapse } from 'react-collapse';
 import PropTypes from "prop-types";
 
 const buildListOptions = lists => {
@@ -11,12 +12,10 @@ const buildListOptions = lists => {
 const ListSelect = ({ setCurrentList, lists }) => {
   const listOptions = buildListOptions(lists);
 
-  if (lists.length === 0) {
-    return null;
-  }
+  let shouldRender = lists.length > 0;
 
   return (
-    <div>
+    <Collapse isOpened={shouldRender}>
       <p>
         Now, select the list you want to use for this mailing.
       </p>
@@ -30,7 +29,7 @@ const ListSelect = ({ setCurrentList, lists }) => {
           </FormControl>
         </FormGroup>
       </form>
-    </div>
+    </Collapse>
   );
 };
 
