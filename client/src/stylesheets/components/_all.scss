@@ -1,9 +1,9 @@
 @import 'cardsall';
-@import 'currentcard';
+@import 'carddescription';
 @import 'currentcardedit';
 @import 'landingpage';
 @import 'navigation';
-@import 'listresolver';
+@import 'listhandler';
 @import 'returnaddress';
 @import 'auth';
 @import 'shoppingcart';
@@ -15,6 +15,7 @@
 @import 'signature';
 @import 'username';
 @import 'crumbs';
+@import 'cardsignature';
 
 body {
   margin-bottom: 10vh;

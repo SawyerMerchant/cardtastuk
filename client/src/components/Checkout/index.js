@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Grid, Row, Col, Button } from "react-bootstrap";
+import { Grid, Row, Col } from "react-bootstrap";
 import StripeCheckout from "react-stripe-checkout";
-import CheckoutSummary from "./CheckoutSummary";
-import AddressFormFields from "../FormElements/AddressFormFields";
 import PropTypes from "prop-types";
+import AddressFormFields from "../FormElements/AddressFormFields";
+import CheckoutSummary from "./CheckoutSummary";
+import PaymentButton from "./PaymentButton";
 
 class Checkout extends Component {
   componentDidMount() {
@@ -40,9 +41,7 @@ class Checkout extends Component {
               token={this.handleToken}
               stripeKey="pk_test_Td1DI04fuOM1T6U801bhD7WC"
             >
-              <Button bsStyle="info" bsSize="large" block>
-                Make a Payment
-              </Button>
+              <PaymentButton />
             </StripeCheckout>
           </Col>
         </Row>

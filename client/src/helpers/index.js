@@ -80,7 +80,8 @@ export const flashMsgs = {
     "Could not login. Please re-enter your email and password and try again.",
   unauthenticated: "Please login first before continuing.",
   successfulUpload: "File uploaded successfully.",
-  badUpload: "Something went wrong. Please check your CSV file and try again."
+  badUpload: "Something went wrong. Please check your CSV file and try again.",
+  noSignature: "Please add a signature using one of the two options below."
 };
 
 export const handlePageIncrement = router => {
@@ -196,7 +197,8 @@ export const parseSubdomain = () => {
 
     return null;
   } else {
-    if (host[0] !== "cardtastuk") {
+    // website lives on both cardtastuk.herokuapp.com and card.tastuk.com
+    if (host[0] !== "cardtastuk" && host[0] !== "card") {
       return host[0];
     }
 

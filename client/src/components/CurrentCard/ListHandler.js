@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { Grid, Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
-import ListSelect from "./ListSelect";
+import { getParams, flashMsgs } from "../../helpers";
+
 import ListUploadContainer from "../../containers/CurrentCard/ListUploadContainer";
 import FlashMessage from "../Shared/FlashMessage";
-import UploadInstructionsModal from "./UploadInstructionsModal";
 import PendingOrderDetails from "../Shared/PendingOrderDetails";
 import BackBtn from "../Shared/BackBtn";
 import Crumbs from "./Crumbs";
-import { getParams, flashMsgs } from "../../helpers";
+import UploadInstructionsModal from "./UploadInstructionsModal";
+import ListSelect from "./ListSelect";
+import CardView from "./CardView";
 
 const buildFlash = status => {
   let message;
@@ -35,7 +37,7 @@ const handleNextPageClick = (e, list) => {
   }
 };
 
-class ListResolver extends Component {
+class ListHandler extends Component {
   componentWillMount() {
     if (!this.props.isAuthenticated) {
       this.props.history.push(
@@ -67,23 +69,16 @@ class ListResolver extends Component {
         <Grid className="list-resolver">
           <Row>
             <h1 className="card-title">{card.name}</h1>
-            <Crumbs card={card} position={1} />
-            <Col md={6} xs={12}>
-              <div className="card-edit-container">
-                <div className={`card-edit-message ${cardFont}`}>
-                  <p>Dear {currentList.first_record.first_name}</p>
-                  <p>{cardMessage}</p>
-                  <p className="signature">Sincerely,</p>
-                  <p className="signature">
-                    {signature
-                      ? <img src={signature} alt="User's signature" />
-                      : userName}
-                  </p>
-                </div>
-              </div>
-            </Col>
+            <Crumbs card={card} position={2} />
+            <CardView
+              cardFont={cardFont}
+              currentList={currentList}
+              cardMessage={cardMessage}
+              signature={signature}
+              userName={userName}
+            />
             <Col md={6} xs={12} className="card-details">
-              <h2 className="card-title">2. Upload a List of Users</h2>
+              <h2>2. Upload a List of Users</h2>
 
               <ListUploadContainer />
 
@@ -112,7 +107,7 @@ class ListResolver extends Component {
   }
 }
 
-ListResolver.propTypes = {
+ListHandler.propTypes = {
   card: PropTypes.object.isRequired,
   cardMessage: PropTypes.string,
   lists: PropTypes.array.isRequired,
@@ -122,4 +117,4 @@ ListResolver.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired
 };
 
-export default ListResolver;
+export default ListHandler;

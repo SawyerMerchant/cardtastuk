@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CardView from "../../components/CurrentCard/CardView";
+import CardDescription from "../../components/CurrentCard/CardDescription";
 import { getCurrentCardInit } from "../../actions/currentCard";
 
-class CardViewContainer extends Component {
+class CardDescriptionContainer extends Component {
   componentDidMount() {
     this.props.getCurrentCard();
   }
 
   render() {
-    return <CardView {...this.props} />;
+    return <CardDescription {...this.props} />;
   }
 }
 
@@ -30,5 +30,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  withRouter(CardViewContainer)
+  withRouter(CardDescriptionContainer)
 );
