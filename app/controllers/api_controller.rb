@@ -6,6 +6,6 @@ class ApiController < ActionController::API
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :referral_organization_id, :referral_member_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :organization_id, :admin_user_id, :session])
   end
 end
