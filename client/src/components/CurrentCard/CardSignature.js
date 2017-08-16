@@ -27,19 +27,17 @@ const handleClick = (e, userName, signature, history) => {
   }
 };
 
-const CardSignature = props => {
-  const {
-    card,
-    cardMessage,
-    userName,
-    currentList,
-    history,
-    location,
-    signature,
-    cardFont,
-    onSetName
-  } = props;
-
+const CardSignature = ({
+  card,
+  cardMessage,
+  userName,
+  currentList,
+  history,
+  location,
+  signature,
+  cardFont,
+  onSetName
+}) => {
   let query = getParams(location.search);
   let flash = buildFlash(query.error);
 

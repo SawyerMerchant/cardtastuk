@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import serialize from "form-serialize";
 import CardSignature from "../../components/CurrentCard/CardSignature";
-import { getCurrentCardInit } from "../../actions/currentCard";
+import { getCurrentCard } from "../../actions/currentCard";
 import { setName } from "../../actions/userName";
 import { withRouter } from "react-router-dom";
 
@@ -30,7 +30,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getCurrentCard: () => {
-      dispatch(getCurrentCardInit(ownProps.match.params.id));
+      dispatch(getCurrentCard(ownProps.match.params.id));
     },
     onSetName: e => {
       e.preventDefault();

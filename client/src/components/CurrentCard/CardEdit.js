@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
+import { Grid, Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
 import FontPickerContainer from "../../containers/CurrentCard/FontPickerContainer";
