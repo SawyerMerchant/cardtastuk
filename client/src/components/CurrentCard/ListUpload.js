@@ -37,7 +37,13 @@ class ListUpload extends Component {
     return (
       <div>
         <p>
-          Otherwise, upload a group of users here.
+          Upload a CSV with your recipients using the form below. If you've
+          already uploaded a list to our service, you can choose from one of
+          them below.
+          Don't forget to name your list!{" "}
+        </p>
+        <p>
+          Examples: "Friends", "Clients", etc.
         </p>
         <form
           id="list-upload"

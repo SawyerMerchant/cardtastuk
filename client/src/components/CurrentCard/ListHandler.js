@@ -85,11 +85,11 @@ class ListResolver extends Component {
             <Col md={6} xs={12} className="card-details">
               <h2 className="card-title">2. Upload a List of Users</h2>
 
-              <ListSelect lists={lists} setCurrentList={setCurrentList} />
-
               <ListUploadContainer />
 
               <UploadInstructionsModal />
+
+              <ListSelect lists={lists} setCurrentList={setCurrentList} />
 
               <PendingOrderDetails card={card} currentList={currentList} />
 

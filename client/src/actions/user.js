@@ -2,6 +2,7 @@ import { clearCart } from "./shoppingCart";
 import { setCurrentList, clearCurrentList } from "./currentList";
 import { clearLists, getUserListsSuccess } from "./listsAll";
 import { clearSignature } from "./signature";
+import { clearName } from "./userName";
 export const GET_USER_LOGIN_REQUEST = "GET_USER_LOGIN_REQUEST";
 export const GET_USER_LOGIN_SUCCESS = "GET_USER_LOGIN_SUCCESS";
 export const GET_USER_LOGIN_FAILURE = "GET_USER_LOGIN_FAILURE";
@@ -56,6 +57,7 @@ export function endUserSession(user) {
       dispatch(clearLists());
       dispatch(clearSignature());
       dispatch(clearCurrentList());
+      dispatch(clearName());
     } catch (error) {
       console.log(error);
     }
