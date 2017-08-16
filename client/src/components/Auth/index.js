@@ -6,10 +6,11 @@ import FlashMessage from "../Shared/FlashMessage";
 import Registration from "./Registration";
 import Login from "./Login";
 
-const buildFlash = error => {
+const buildFlash = (error, success) => {
   let message;
   let type;
-  if (!error) {
+
+  if (!error && !success) {
     return null;
   }
 
@@ -22,6 +23,9 @@ const buildFlash = error => {
   } else if (error === "badLogin") {
     message = flashMsgs.badLogin;
     type = "danger";
+  } else if (success) {
+    message = flashMsgs.successfulRegistration;
+    type = "success";
   }
 
   return <FlashMessage type={type} message={message} />;
@@ -37,7 +41,7 @@ class Auth extends Component {
   render() {
     const { onLogin, onRegister, location, organization, admin } = this.props;
     let query = getParams(location.search);
-    let flash = buildFlash(query.error);
+    let flash = buildFlash(query.error, query.success);
 
     return (
       <div>
@@ -45,18 +49,18 @@ class Auth extends Component {
         <Grid className="auth-container">
           <Row>
             <Col md={8} mdOffset={2} xs={10} xsOffset={1}>
-              <h1>Registration and Log In</h1>
+              <h1>Log In and Registration</h1>
               <Tabs defaultActiveKey={1} id="authentication-tabs">
-                <Tab eventKey={1} title="Register">
+                <Tab eventKey={1} title="Login">
+                  <Login query={query} onLogin={onLogin} />
+                </Tab>
+                <Tab eventKey={2} title="Register">
                   <Registration
                     organization={organization}
                     admin={admin}
                     query={query}
                     onRegister={onRegister}
                   />
-                </Tab>
-                <Tab eventKey={2} title="Login">
-                  <Login query={query} onLogin={onLogin} />
                 </Tab>
               </Tabs>
             </Col>
