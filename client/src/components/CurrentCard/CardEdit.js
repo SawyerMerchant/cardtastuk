@@ -3,8 +3,9 @@ import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
 import FontPickerContainer from "../../containers/CurrentCard/FontPickerContainer";
-import Crumbs from "./Crumbs";
 import BackBtn from "../Shared/BackBtn";
+import Crumbs from "./Crumbs";
+import CardEditForm from "./CardEditForm";
 
 const CurrentCardEdit = ({
   card,
@@ -22,29 +23,13 @@ const CurrentCardEdit = ({
       <Row>
         <h1 className="card-title">{card.name}</h1>
         <Crumbs card={card} position={0} />
-        <Col md={6} xs={12}>
-          <div className="card-edit-container">
-            <div className={`card-edit-message ${cardFont}`}>
-              <p>Dear &lt;First Name&gt;,</p>
-              <form>
-                <FormControl
-                  componentClass="textarea"
-                  defaultValue={message}
-                  placeholder={message}
-                  rows={8}
-                  autoFocus
-                  onChange={onChangeMessage}
-                />
-              </form>
-              <p className="signature">Sincerely,</p>
-              <p className="signature">
-                {signature
-                  ? <img src={signature} alt="User's signature" />
-                  : userName}
-              </p>
-            </div>
-          </div>
-        </Col>
+        <CardEditForm
+          message={message}
+          cardFont={cardFont}
+          signature={signature}
+          userName={userName}
+          onChangeMessage={onChangeMessage}
+        />
         <Col md={6} xs={12} className="card-details">
           <h2>1. Write a Message</h2>
 
