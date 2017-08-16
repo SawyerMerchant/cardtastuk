@@ -1,10 +1,10 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Col, FormControl } from "react-bootstrap";
 
-const CardView = ({
+const CardEditForm = ({
+  message,
   cardFont,
-  currentList,
-  cardMessage,
+  onChangeMessage,
   signature,
   userName
 }) => {
@@ -12,8 +12,17 @@ const CardView = ({
     <Col md={6} xs={12}>
       <div className="card-edit-container">
         <div className={`card-edit-message ${cardFont}`}>
-          <p>Dear {currentList.first_record.first_name}</p>
-          <p>{cardMessage}</p>
+          <p>Dear &lt;First Name&gt;,</p>
+          <form>
+            <FormControl
+              componentClass="textarea"
+              defaultValue={message}
+              placeholder={message}
+              rows={8}
+              autoFocus
+              onChange={onChangeMessage}
+            />
+          </form>
           <p className="signature">Sincerely,</p>
           <p className="signature">
             {signature
@@ -26,4 +35,4 @@ const CardView = ({
   );
 };
 
-export default CardView;
+export default CardEditForm;

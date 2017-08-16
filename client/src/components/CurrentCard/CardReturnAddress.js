@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Grid, Row, Col, Button, Glyphicon } from "react-bootstrap";
 import PropTypes from "prop-types";
 import PendingOrderDetails from "../Shared/PendingOrderDetails";
+import BackBtn from "../Shared/BackBtn";
 import AddressFormFields from "../FormElements/AddressFormFields";
 import Crumbs from "./Crumbs";
-import BackBtn from "../Shared/BackBtn";
+import CardView from "./CardView";
 
 class ReturnAddress extends Component {
   componentWillMount() {
@@ -29,21 +30,14 @@ class ReturnAddress extends Component {
       <Grid className="return-address">
         <Row>
           <h1 className="card-title">{card.name}</h1>
-          <Crumbs card={card} position={2} />
-          <Col md={6} xs={12}>
-            <div className="card-edit-container">
-              <div className={`card-edit-message ${cardFont}`}>
-                <p>Dear {currentList.first_record.first_name}</p>
-                <p>{cardMessage}</p>
-                <p className="signature">Sincerely,</p>
-                <p className="signature">
-                  {signature
-                    ? <img src={signature} alt="User's signature" />
-                    : userName}
-                </p>
-              </div>
-            </div>
-          </Col>
+          <Crumbs card={card} position={3} />
+          <CardView
+            cardFont={cardFont}
+            currentList={currentList}
+            cardMessage={cardMessage}
+            signature={signature}
+            userName={userName}
+          />
           <Col md={6} xs={12} className="card-details">
             <h2>3. Enter a Return Address</h2>
 

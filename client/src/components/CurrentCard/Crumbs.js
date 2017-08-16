@@ -27,15 +27,19 @@ const buildCrumbItems = (currentPath, position) => {
 
 const cardSteps = [
   {
-    name: "1. Add a Message",
+    name: "1. Write a Message",
     path: "/edit"
   },
   {
-    name: "2. Upload a List of Users",
+    name: "2. Add Your Signature",
+    path: "/signature"
+  },
+  {
+    name: "3. Upload a List of Users",
     path: "/upload"
   },
   {
-    name: "3. Enter a Return Address",
+    name: "4. Enter a Return Address",
     path: "/address"
   }
 ];

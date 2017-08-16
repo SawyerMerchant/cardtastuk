@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
 import NavigationContainer from "../containers/Shared/NavigationContainer";
 import CardsAllContainer from "../containers/CardsAll/CardsAllContainer";
-import CardViewContainer from "../containers/CurrentCard/CardViewContainer";
+import CardDescriptionContainer from "../containers/CurrentCard/CardDescriptionContainer";
 import CardEditContainer from "../containers/CurrentCard/CardEditContainer";
+import CardSignatureContainer from "../containers/CurrentCard/CardSignatureContainer";
 import ListHandlerContainer from "../containers/CurrentCard/ListHandlerContainer";
 import ReturnAddressContainer from "../containers/CurrentCard/CardReturnAddressContainer";
 import ShoppingCartContainer from "../containers/ShoppingCart/ShoppingCartContainer";
@@ -37,8 +38,12 @@ class App extends Component {
               component={ReturnAddressContainer}
             />
             <Route path="/cards/:id/upload" component={ListHandlerContainer} />
+            <Route
+              path="/cards/:id/signature"
+              component={CardSignatureContainer}
+            />
             <Route path="/cards/:id/edit" component={CardEditContainer} />
-            <Route path="/cards/:id" component={CardViewContainer} />
+            <Route path="/cards/:id" component={CardDescriptionContainer} />
             <Route path="/cards" component={CardsAllContainer} />
             <Route path="/cart" component={ShoppingCartContainer} />
             <Route path="/auth" component={AuthContainer} />

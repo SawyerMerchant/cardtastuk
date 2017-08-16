@@ -84,9 +84,6 @@ export function registerUser(
     })
   };
 
-  let accessToken;
-  let client;
-
   return async dispatch => {
     dispatch(getUserLoginRequest());
 
@@ -96,16 +93,11 @@ export function registerUser(
       if (!response.ok) {
         throw new Error(`${response.status}: ${response.statusText}`);
       }
-      accessToken = response.headers.get("access-token");
-      client = response.headers.get("client");
-
-      let json = await response.json();
-      dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
 
       if (cardRedirectId) {
-        history.push(`/cards/${cardRedirectId}/upload`);
+        history.push(`/auth?success=true&cardRedirectId=${cardRedirectId}`);
       } else {
-        history.push("/cards");
+        history.push("/auth?success=true");
       }
     } catch (error) {
       dispatch(getUserLoginFailure(error));

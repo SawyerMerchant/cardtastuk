@@ -13,6 +13,7 @@ $brand-secondary: #BBCC69;
 $brand-success: adjust-hue($brand-primary, 30deg);
 $brand-info: adjust-hue($brand-primary, -45deg);
 $brand-inverse: adjust-hue($brand-primary, 180deg);
+$alert-success-bg: $brand-secondary;
 
 $btn-info-bg: $brand-inverse;
 

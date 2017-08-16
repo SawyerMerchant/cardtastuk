@@ -1,20 +1,11 @@
 import React from "react";
-import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
+import { Grid, Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
 import FontPickerContainer from "../../containers/CurrentCard/FontPickerContainer";
-import SignaturePadCollapsible from "./SignaturePadCollapsible";
-import UserNameCollapsible from "./UserNameCollapsible";
-import Crumbs from "./Crumbs";
 import BackBtn from "../Shared/BackBtn";
-
-const handleClick = (e, userName, signature) => {
-  let isUserNameEmpty = userName === "< User >" || userName === "";
-  let isSignatureEmpy = signature === "";
-  if (isUserNameEmpty && isSignatureEmpy) {
-    e.preventDefault();
-  }
-};
+import Crumbs from "./Crumbs";
+import CardEditForm from "./CardEditForm";
 
 const CurrentCardEdit = ({
   card,
@@ -32,53 +23,30 @@ const CurrentCardEdit = ({
       <Row>
         <h1 className="card-title">{card.name}</h1>
         <Crumbs card={card} position={0} />
-        <Col md={6} xs={12}>
-          <div className="card-edit-container">
-            <div className={`card-edit-message ${cardFont}`}>
-              <p>Dear &lt;First Name&gt;,</p>
-              <form>
-                <FormControl
-                  componentClass="textarea"
-                  defaultValue={message}
-                  placeholder={message}
-                  rows={8}
-                  autoFocus
-                  onChange={onChangeMessage}
-                />
-              </form>
-              <p className="signature">Sincerely,</p>
-              <p className="signature">
-                {signature
-                  ? <img src={signature} alt="User's signature" />
-                  : userName}
-              </p>
-            </div>
-          </div>
-        </Col>
+        <CardEditForm
+          message={message}
+          cardFont={cardFont}
+          signature={signature}
+          userName={userName}
+          onChangeMessage={onChangeMessage}
+        />
         <Col md={6} xs={12} className="card-details">
-          <h2 className="card-title">1. Add a Message</h2>
+          <h2>1. Write a Message</h2>
 
           <p>
             Write the message you would like to send to all your recipients in
-            the card to the left. Then, click one of the two buttons below to
-            fill in the card closing message.
+            the card to the left. Then, pick a font that you would like to use
+            for the message.
           </p>
 
           <FontPickerContainer />
 
-          <SignaturePadCollapsible />
-
-          <h3> - Or - </h3>
-
-          <UserNameCollapsible onSetName={onSetName} />
-
           <LinkContainer
-            to={`/cards/${card.id}/upload`}
+            to={`/cards/${card.id}/signature`}
             className="card-details-button"
-            onClick={e => handleClick(e, userName, signature)}
           >
             <Button bsStyle="info">
-              Next: Upload a list of users
+              Next: Add a signature
             </Button>
           </LinkContainer>
 

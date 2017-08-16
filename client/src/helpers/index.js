@@ -77,10 +77,13 @@ export const calculateTotal = cart => {
 export const flashMsgs = {
   badPass: "Your passwords did not match. Please try again.",
   badLogin:
-    "Could not login. Please re-enter your email and password and try again.",
+    "Could not register or login. Please re-enter the email and password and try again.",
   unauthenticated: "Please login first before continuing.",
   successfulUpload: "File uploaded successfully.",
-  badUpload: "Something went wrong. Please check your CSV file and try again."
+  badUpload: "Something went wrong. Please check your CSV file and try again.",
+  noSignature: "Please add a signature using one of the two options below.",
+  successfulRegistration:
+    "Thank you for registering. Please check your email to confirm the sign up, then login."
 };
 
 export const handlePageIncrement = router => {
@@ -196,7 +199,8 @@ export const parseSubdomain = () => {
 
     return null;
   } else {
-    if (host[0] !== "cardtastuk") {
+    // website lives on both cardtastuk.herokuapp.com and card.tastuk.com
+    if (host[0] !== "cardtastuk" && host[0] !== "card") {
       return host[0];
     }
 

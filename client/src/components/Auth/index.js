@@ -1,24 +1,16 @@
 import React, { Component } from "react";
-import {
-  Grid,
-  Row,
-  Col,
-  Tabs,
-  Tab,
-  Panel,
-  FormControl,
-  FormGroup,
-  ControlLabel,
-  Button
-} from "react-bootstrap";
-import { getParams, flashMsgs } from "../../helpers";
+import { Grid, Row, Col, Tabs, Tab } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { getParams, flashMsgs } from "../../helpers";
 import FlashMessage from "../Shared/FlashMessage";
+import Registration from "./Registration";
+import Login from "./Login";
 
-const buildFlash = error => {
+const buildFlash = (error, success) => {
   let message;
   let type;
-  if (!error) {
+
+  if (!error && !success) {
     return null;
   }
 
@@ -31,6 +23,9 @@ const buildFlash = error => {
   } else if (error === "badLogin") {
     message = flashMsgs.badLogin;
     type = "danger";
+  } else if (success) {
+    message = flashMsgs.successfulRegistration;
+    type = "success";
   }
 
   return <FlashMessage type={type} message={message} />;
@@ -46,7 +41,7 @@ class Auth extends Component {
   render() {
     const { onLogin, onRegister, location, organization, admin } = this.props;
     let query = getParams(location.search);
-    let flash = buildFlash(query.error);
+    let flash = buildFlash(query.error, query.success);
 
     return (
       <div>
@@ -54,61 +49,18 @@ class Auth extends Component {
         <Grid className="auth-container">
           <Row>
             <Col md={8} mdOffset={2} xs={10} xsOffset={1}>
-              <h1>Registration and Log In</h1>
+              <h1>Log In and Registration</h1>
               <Tabs defaultActiveKey={1} id="authentication-tabs">
-                <Tab eventKey={1} title="Register">
-                  <Panel header={"Register for an account today."}>
-                    <form
-                      onSubmit={e =>
-                        onRegister(
-                          e,
-                          organization,
-                          admin,
-                          query.cardRedirectId
-                        )}
-                    >
-                      <FormGroup controlId="email">
-                        <ControlLabel>Email</ControlLabel>
-                        <FormControl type="email" name="email" required />
-                      </FormGroup>
-                      <FormGroup controlId="password">
-                        <ControlLabel>Password</ControlLabel>
-                        <FormControl
-                          type="password"
-                          name="password"
-                          minLength={6}
-                          required
-                        />
-                      </FormGroup>
-                      <FormGroup controlId="password_confirmation">
-                        <ControlLabel>Confirm your password</ControlLabel>
-                        <FormControl
-                          type="password"
-                          name="password_confirmation"
-                          minLength={6}
-                          required
-                        />
-                      </FormGroup>
-                      <Button bsStyle="success" type="submit">
-                        Register for an Account
-                      </Button>
-                    </form>
-                  </Panel>
+                <Tab eventKey={1} title="Login">
+                  <Login query={query} onLogin={onLogin} />
                 </Tab>
-                <Tab eventKey={2} title="Login">
-                  <Panel header={"Login to an existing account."}>
-                    <form onSubmit={e => onLogin(e, query.cardRedirectId)}>
-                      <FormGroup controlId="email">
-                        <ControlLabel>Email</ControlLabel>
-                        <FormControl type="email" name="email" required />
-                      </FormGroup>
-                      <FormGroup controlId="password">
-                        <ControlLabel>Password</ControlLabel>
-                        <FormControl type="password" name="password" required />
-                      </FormGroup>
-                      <Button bsStyle="success" type="submit">Login</Button>
-                    </form>
-                  </Panel>
+                <Tab eventKey={2} title="Register">
+                  <Registration
+                    organization={organization}
+                    admin={admin}
+                    query={query}
+                    onRegister={onRegister}
+                  />
                 </Tab>
               </Tabs>
             </Col>
