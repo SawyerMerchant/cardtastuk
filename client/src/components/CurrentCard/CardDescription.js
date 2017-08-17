@@ -12,7 +12,7 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 import moneyFormatter from "money-formatter";
 import PropTypes from "prop-types";
-import BackBtn from "../Shared/BackBtn";
+import BackBtn from "./BackBtn";
 import Loader from "../Shared/Loader";
 
 const buildPricingPopover = prices => {
@@ -81,7 +81,7 @@ const CurrentCard = ({ card, history, isFetching }) => {
             </Button>
           </LinkContainer>
 
-          <BackBtn history={history} />
+          <BackBtn history={history} card={card} stage="index" />
         </Col>
       </Row>
     </Grid>

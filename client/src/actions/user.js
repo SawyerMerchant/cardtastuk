@@ -80,7 +80,7 @@ export function registerUser(
       password_confirmation: form.password_confirmation,
       organization_id: organization.id,
       admin_user_id: admin,
-      confirm_success_url: "/"
+      confirm_success_url: "/auth?confirmation=true"
     })
   };
 
