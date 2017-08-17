@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   has_many :line_items
   belongs_to :fulfillment, required: false
 
-  after_create :save_billing_address, :save_return_address, :connectAPI 
+  after_create :save_billing_address, :save_return_address, :connectAPI
 
   def self.pending_card_count
     sql = "SELECT SUM(line_items.quantity)
@@ -74,32 +74,56 @@ class Order < ApplicationRecord
 
   def make_line_item(li)
     charge_amount = line_item_total(li)
-    baseString = li['user_signature'].split(',')[1]
-    decoded_data = Base64.decode64(baseString)
-    data = StringIO.new(decoded_data)
-    data.class_eval do
-      attr_accessor :content_type, :original_filename
+
+    signature = false
+    if li['user_signature'] != ""
+      signature = true
+      baseString = li['user_signature'].split(',')[1]
+      decoded_data = Base64.decode64(baseString)
+      data = StringIO.new(decoded_data)
+      data.class_eval do
+        attr_accessor :content_type, :original_filename
+      end
+      data.content_type = "image/png"
+      data.original_filename = "signature.png"
+    else
+      print_name = li['userName']
     end
 
-    data.content_type = "image/png"
-    data.original_filename = "signature.png"
-
-    LineItem.create(
-      order_id: self.id,
-      list_id:  li['list']['id'],
-      greeting: li['message'],
-      card_id:  li['card']['id'],
-      autograph: data,
-      #TODO add print_name
-      quantity: li['quantity'],
-      price_id: li['card']['price_id'],
-      charge_amount: charge_amount,
-      return_address_line_1: li['return_address']['street_address_1'],
-      return_address_line_2: li['return_address']['street_address_2'],
-      return_city: li['return_address']['city'],
-      return_state: li['return_address']['state'],
-      return_zip: li['return_address']['zipcode']
-    )
+    if signature
+      LineItem.create(
+        order_id: self.id,
+        list_id:  li['list']['id'],
+        greeting: li['message'],
+        card_id:  li['card']['id'],
+        autograph: data,
+        #TODO add print_name
+        quantity: li['quantity'],
+        price_id: li['card']['price_id'],
+        charge_amount: charge_amount,
+        return_address_line_1: li['return_address']['street_address_1'],
+        return_address_line_2: li['return_address']['street_address_2'],
+        return_city: li['return_address']['city'],
+        return_state: li['return_address']['state'],
+        return_zip: li['return_address']['zipcode'],
+      )
+    else
+      LineItem.create(
+        order_id: self.id,
+        list_id:  li['list']['id'],
+        greeting: li['message'],
+        card_id:  li['card']['id'],
+        print_name: print_name,
+        quantity: li['quantity'],
+        price_id: li['card']['price_id'],
+        charge_amount: charge_amount,
+        return_address_line_1: li['return_address']['street_address_1'],
+        return_address_line_2: li['return_address']['street_address_2'],
+        return_city: li['return_address']['city'],
+        return_state: li['return_address']['state'],
+        return_zip: li['return_address']['zipcode'],
+      )
+    end
     return charge_amount
   end
 
