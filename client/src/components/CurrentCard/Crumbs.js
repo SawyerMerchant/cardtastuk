@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const buildCrumbItems = (currentPath, position) => {
   let results = [];
@@ -52,6 +53,11 @@ const Crumbs = ({ card, position }) => {
       {crumbItems}
     </Breadcrumb>
   );
+};
+
+Crumbs.PropTypes = {
+  card: PropTypes.object,
+  position: PropTypes.number
 };
 
 export default Crumbs;

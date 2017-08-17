@@ -7,7 +7,7 @@ import { getParams, flashMsgs } from "../../helpers";
 import ListUploadContainer from "../../containers/CurrentCard/ListUploadContainer";
 import FlashMessage from "../Shared/FlashMessage";
 import PendingOrderDetails from "../Shared/PendingOrderDetails";
-import BackBtn from "../Shared/BackBtn";
+import BackBtn from "./BackBtn";
 import Crumbs from "./Crumbs";
 import UploadInstructionsModal from "./UploadInstructionsModal";
 import ListSelect from "./ListSelect";
@@ -98,7 +98,7 @@ class ListHandler extends Component {
                 </Button>
               </LinkContainer>
 
-              <BackBtn history={history} />
+              <BackBtn history={history} card={card} stage="/signature" />
             </Col>
           </Row>
         </Grid>

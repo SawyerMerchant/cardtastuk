@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Grid, Row, Col, Button, Glyphicon } from "react-bootstrap";
 import PropTypes from "prop-types";
 import PendingOrderDetails from "../Shared/PendingOrderDetails";
-import BackBtn from "../Shared/BackBtn";
+import BackBtn from "./BackBtn";
 import AddressFormFields from "../FormElements/AddressFormFields";
 import Crumbs from "./Crumbs";
 import CardView from "./CardView";
@@ -68,7 +68,7 @@ class ReturnAddress extends Component {
               </Button>
             </form>
 
-            <BackBtn history={history} />
+            <BackBtn history={history} card={card} stage="/upload" />
           </Col>
         </Row>
       </Grid>

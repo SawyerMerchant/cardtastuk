@@ -6,6 +6,7 @@ import {
   FormControl,
   Button
 } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const Login = ({ query, onLogin }) => {
   return (
@@ -23,6 +24,11 @@ const Login = ({ query, onLogin }) => {
       </form>
     </Panel>
   );
+};
+
+Login.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+  query: PropTypes.object
 };
 
 export default Login;

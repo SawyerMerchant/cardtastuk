@@ -3,7 +3,7 @@ import { Grid, Row, Col, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
 import FontPickerContainer from "../../containers/CurrentCard/FontPickerContainer";
-import BackBtn from "../Shared/BackBtn";
+import BackBtn from "./BackBtn";
 import Crumbs from "./Crumbs";
 import CardEditForm from "./CardEditForm";
 
@@ -50,7 +50,7 @@ const CurrentCardEdit = ({
             </Button>
           </LinkContainer>
 
-          <BackBtn history={history} />
+          <BackBtn history={history} card={card} stage="" />
         </Col>
       </Row>
     </Grid>
@@ -59,7 +59,12 @@ const CurrentCardEdit = ({
 
 CurrentCardEdit.propTypes = {
   card: PropTypes.object.isRequired,
-  onChangeMessage: PropTypes.func.isRequired
+  cardMessage: PropTypes.string,
+  onChangeMessage: PropTypes.func.isRequired,
+  onSetName: PropTypes.func.isRequired,
+  signature: PropTypes.string,
+  userName: PropTypes.string,
+  cardFont: PropTypes.string
 };
 
 export default CurrentCardEdit;

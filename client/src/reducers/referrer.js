@@ -2,7 +2,7 @@ import * as Actions from "../actions/referrer";
 
 const initialState = {
   data: {
-    admin: {},
+    admin: "",
     organization: {}
   },
   isFetching: false,

@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, FormControl } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const CardEditForm = ({
   message,
@@ -33,6 +34,14 @@ const CardEditForm = ({
       </div>
     </Col>
   );
+};
+
+CardEditForm.PropTypes = {
+  message: PropTypes.string,
+  cardFont: PropTypes.string,
+  onChangeMessage: PropTypes.func,
+  signature: PropTypes.string,
+  userName: PropTypes.string
 };
 
 export default CardEditForm;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Col } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const CardView = ({
   cardFont,
@@ -24,6 +25,14 @@ const CardView = ({
       </div>
     </Col>
   );
+};
+
+CardView.PropTypes = {
+  cardFont: PropTypes.string,
+  currentList: PropTypes.object,
+  cardMessage: PropTypes.string,
+  signature: PropTypes.string,
+  userName: PropTypes.string
 };
 
 export default CardView;

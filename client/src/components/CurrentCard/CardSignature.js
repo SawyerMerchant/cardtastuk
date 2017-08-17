@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import PropTypes from "prop-types";
 import { getParams, flashMsgs } from "../../helpers";
 import FlashMessage from "../Shared/FlashMessage";
-import BackBtn from "../Shared/BackBtn";
+import BackBtn from "./BackBtn";
 import Crumbs from "./Crumbs";
 import CardView from "./CardView";
 import SignaturePadCollapsible from "./SignaturePadCollapsible";
@@ -80,7 +80,7 @@ const CardSignature = ({
               </Button>
             </LinkContainer>
 
-            <BackBtn history={history} />
+            <BackBtn history={history} card={card} stage="/edit" />
           </Col>
         </Row>
       </Grid>

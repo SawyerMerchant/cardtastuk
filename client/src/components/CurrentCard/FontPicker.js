@@ -1,6 +1,7 @@
 import React from "react";
 import { FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import { cardFonts } from "../../helpers";
+import PropTypes from "prop-types";
 
 const buildFontOptions = fonts => {
   return fonts.map(font =>
@@ -24,6 +25,10 @@ const FontPicker = ({ onChangeFont }) => {
       </FormGroup>
     </div>
   );
+};
+
+FontPicker.PropTypes = {
+  onChangeFont: PropTypes.func.isRequired
 };
 
 export default FontPicker;

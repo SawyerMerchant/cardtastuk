@@ -83,7 +83,8 @@ export const flashMsgs = {
   badUpload: "Something went wrong. Please check your CSV file and try again.",
   noSignature: "Please add a signature using one of the two options below.",
   successfulRegistration:
-    "Thank you for registering. Please check your email to confirm the sign up, then login."
+    "Thank you for registering. Please check your email to confirm the sign up, then login.",
+  successfulConfirmation: "Your email has been confirmed. Please login below."
 };
 
 export const handlePageIncrement = router => {

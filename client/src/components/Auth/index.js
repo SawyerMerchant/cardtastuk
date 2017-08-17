@@ -6,11 +6,11 @@ import FlashMessage from "../Shared/FlashMessage";
 import Registration from "./Registration";
 import Login from "./Login";
 
-const buildFlash = (error, success) => {
+const buildFlash = (error, success, confirmation) => {
   let message;
   let type;
 
-  if (!error && !success) {
+  if (!error && !success && !confirmation) {
     return null;
   }
 
@@ -23,6 +23,9 @@ const buildFlash = (error, success) => {
   } else if (error === "badLogin") {
     message = flashMsgs.badLogin;
     type = "danger";
+  } else if (confirmation) {
+    message = flashMsgs.successfulConfirmation;
+    type = "success";
   } else if (success) {
     message = flashMsgs.successfulRegistration;
     type = "success";
@@ -41,7 +44,7 @@ class Auth extends Component {
   render() {
     const { onLogin, onRegister, location, organization, admin } = this.props;
     let query = getParams(location.search);
-    let flash = buildFlash(query.error, query.success);
+    let flash = buildFlash(query.error, query.success, query.confirmation);
 
     return (
       <div>
@@ -73,7 +76,9 @@ class Auth extends Component {
 
 Auth.propTypes = {
   onRegister: PropTypes.func.isRequired,
-  onLogin: PropTypes.func.isRequired
+  onLogin: PropTypes.func.isRequired,
+  organization: PropTypes.object,
+  admin: PropTypes.string
 };
 
 export default Auth;
