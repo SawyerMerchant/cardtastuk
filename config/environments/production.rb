@@ -102,13 +102,14 @@ Rails.application.configure do
     }
   }
 
-  # Setup the sendgrid mailer config 
+  # Setup the sendgrid mailer config
+  config.action_mailer.default_url_options = { :host => 'cardtastuk.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'card.tastuk.com',
+    :domain => 'cardtastuk.herokuapp.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,
     :authentication => :plain,

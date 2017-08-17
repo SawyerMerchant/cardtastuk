@@ -1,4 +1,10 @@
 
 <%#= image_tag @proof.order.card.url(:thumb) %>
 
-<%= render "shared/cover", locals: {proof: @proof} %>
+<div id="outer">
+  <div id="inner">
+
+    <%= render "shared/cover", locals: {proof: @proof} %>
+
+  </div>
+</div>

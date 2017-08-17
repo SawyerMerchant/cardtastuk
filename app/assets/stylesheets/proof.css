@@ -46,10 +46,10 @@ table {
 	border-spacing: 0;
 }
 
-body {
+#outer {
   background-color: #80D6F7;
 }
-#outer {
+#inner {
   margin: 5px;
   padding: 5px;
   background-color: #F680C5;
