@@ -93,7 +93,6 @@ const buildCheckoutButton = () => {
   }
 };
 
-
 const ShoppingCart = ({ cart, onRemoveFromCart }) => {
   const cartCells = buildCartCells(cart, onRemoveFromCart);
   const total = calculateTotal(cart);
@@ -126,8 +125,7 @@ const ShoppingCart = ({ cart, onRemoveFromCart }) => {
         <Row className="checkout-button">
           <Col md={4} mdOffset={8}>
             <h3>Total: {total} </h3>
-            {cart.length > 0 &&
-              checkoutButton}
+            {cart.length > 0 && checkoutButton}
           </Col>
         </Row>
       </Grid>
