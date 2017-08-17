@@ -1,4 +1,4 @@
-class Custom::RegistrationsController < Devise::RegistrationsController
+class RegistrationsController < DeviseTokenAuth::RegistrationsController
 
   def new
     super
