@@ -71,9 +71,33 @@ const buildCartCells = (cart, onRemoveFromCart) => {
   });
 };
 
+const buildCheckoutButton = () => {
+  if (process.env && process.env.NODE_ENV === "development") {
+    return (
+      <LinkContainer to="/checkout">
+        <Button bsStyle="info" bsSize="large" block>
+          <Glyphicon glyph="usd" />{" "}
+          Checkout
+        </Button>
+      </LinkContainer>
+    );
+  } else {
+    return (
+      <a href="https://cardtastuk.herokuapp.com/checkout">
+        <Button bsStyle="info" bsSize="large" block>
+          <Glyphicon glyph="usd" />{" "}
+          Checkout
+        </Button>
+      </a>
+    );
+  }
+};
+
+
 const ShoppingCart = ({ cart, onRemoveFromCart }) => {
   const cartCells = buildCartCells(cart, onRemoveFromCart);
   const total = calculateTotal(cart);
+  let checkoutButton = buildCheckoutButton();
 
   return (
     <div className="shopping-cart">
@@ -103,12 +127,7 @@ const ShoppingCart = ({ cart, onRemoveFromCart }) => {
           <Col md={4} mdOffset={8}>
             <h3>Total: {total} </h3>
             {cart.length > 0 &&
-              <LinkContainer to="/checkout">
-                <Button bsStyle="info" bsSize="large" block>
-                  <Glyphicon glyph="usd" />{" "}
-                  Checkout
-                </Button>
-              </LinkContainer>}
+              checkoutButton}
           </Col>
         </Row>
       </Grid>
