@@ -73,7 +73,9 @@ class Auth extends Component {
 
 Auth.propTypes = {
   onRegister: PropTypes.func.isRequired,
-  onLogin: PropTypes.func.isRequired
+  onLogin: PropTypes.func.isRequired,
+  organization: PropTypes.object,
+  admin: PropTypes.string
 };
 
 export default Auth;

@@ -6,6 +6,7 @@ import {
   FormControl,
   Button
 } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const Registration = ({ organization, admin, query, onRegister }) => {
   return (
@@ -36,6 +37,13 @@ const Registration = ({ organization, admin, query, onRegister }) => {
       </form>
     </Panel>
   );
+};
+
+Registration.propTypes = {
+  onRegister: PropTypes.func.isRequired,
+  query: PropTypes.object,
+  admin: PropTypes.string,
+  organization: PropTypes.object
 };
 
 export default Registration;

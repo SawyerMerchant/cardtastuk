@@ -59,7 +59,12 @@ const CurrentCardEdit = ({
 
 CurrentCardEdit.propTypes = {
   card: PropTypes.object.isRequired,
-  onChangeMessage: PropTypes.func.isRequired
+  cardMessage: PropTypes.string,
+  onChangeMessage: PropTypes.func.isRequired,
+  onSetName: PropTypes.func.isRequired,
+  signature: PropTypes.string,
+  userName: PropTypes.string,
+  cardFont: PropTypes.string
 };
 
 export default CurrentCardEdit;
