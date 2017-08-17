@@ -106,6 +106,7 @@ class Order < ApplicationRecord
         return_city: li['return_address']['city'],
         return_state: li['return_address']['state'],
         return_zip: li['return_address']['zipcode'],
+        font: li['font']
       )
     else
       LineItem.create(
@@ -122,6 +123,7 @@ class Order < ApplicationRecord
         return_city: li['return_address']['city'],
         return_state: li['return_address']['state'],
         return_zip: li['return_address']['zipcode'],
+        font: li['font']
       )
     end
     return charge_amount

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170814233528) do
+ActiveRecord::Schema.define(version: 20170817190338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20170814233528) do
     t.string   "autograph_content_type"
     t.integer  "autograph_file_size"
     t.datetime "autograph_updated_at"
+    t.string   "font"
     t.index ["card_id"], name: "index_line_items_on_card_id", using: :btree
     t.index ["list_id"], name: "index_line_items_on_list_id", using: :btree
     t.index ["order_id"], name: "index_line_items_on_order_id", using: :btree
