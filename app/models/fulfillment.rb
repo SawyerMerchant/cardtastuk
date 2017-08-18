@@ -34,11 +34,12 @@ class Fulfillment < ApplicationRecord
     #   tempfile:File.open("myfile.csv")
     # }
 
-    return Paperclip.io_adapters.for(File.open(csvName))
+    # return Paperclip.io_adapters.for(File.open(csvName))
   end
 
   def self.transmit(quantity)
-    combined_list = Fulfillment.build_csv
+    # combined_list =
+    Fulfillment.build_csv
     f = Fulfillment.create(combined_list: combined_list)
     agent = Mechanize.new
     page = agent.get(PRINT_URL)
