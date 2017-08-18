@@ -21,7 +21,7 @@ const handleSubmit = async (e, history) => {
   }
 
   try {
-    let response = await fetch("/api/v1/admin_register", config);
+    let response = await fetch("/api/v1/organizations", config);
 
     if (!response.ok) {
       throw new Error(`${response.status}: ${response.statusText}`);

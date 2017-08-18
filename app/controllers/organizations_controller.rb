@@ -1,4 +1,4 @@
-class OrganizationsController < ApplicationController
+class OrganizationsController < ApiController
   def index
     @organizations = Organization.by_active
     render json: @organizations.to_json
