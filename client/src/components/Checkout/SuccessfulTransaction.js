@@ -4,7 +4,6 @@ import { getParams } from "../../helpers";
 
 class SuccessfulTransaction extends Component {
   componentDidMount() {
-    console.log(this.props);
     if (!this.props.isAuthenticated) {
       this.props.history.push("/auth?error=unauthenticated");
     }

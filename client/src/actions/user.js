@@ -34,7 +34,7 @@ export function logoutUser() {
   };
 }
 
-export function endUserSession(user) {
+export function endUserSession(user, history) {
   let config = {
     method: "DELETE",
     headers: {
@@ -58,6 +58,7 @@ export function endUserSession(user) {
       dispatch(clearSignature());
       dispatch(clearCurrentList());
       dispatch(clearName());
+      history.push("/auth");
     } catch (error) {
       console.log(error);
     }
@@ -120,9 +121,6 @@ export function loginUser(form, history, cardRedirectId) {
     })
   };
 
-  let accessToken;
-  let client;
-
   return async dispatch => {
     dispatch(getUserLoginRequest());
     try {
@@ -130,8 +128,9 @@ export function loginUser(form, history, cardRedirectId) {
       if (!response.ok) {
         throw new Error(`${response.status}: ${response.statusText}`);
       }
-      accessToken = response.headers.get("access-token");
-      client = response.headers.get("client");
+      let accessToken = response.headers.get("access-token");
+      let client = response.headers.get("client");
+      let expiry = response.headers.get("expiry");
 
       let json = await response.json();
       let firstList = json.data.lists[0] || {
@@ -142,7 +141,9 @@ export function loginUser(form, history, cardRedirectId) {
         },
         count: 0
       };
-      dispatch(getUserLoginSuccess({ ...json.data, client, accessToken }));
+      dispatch(
+        getUserLoginSuccess({ ...json.data, client, accessToken, expiry })
+      );
       dispatch(getUserListsSuccess(json.data.lists));
       dispatch(setCurrentList(firstList));
 
