@@ -8,6 +8,7 @@ class AdminUser < ApplicationRecord
   has_many :shortened_urls
   belongs_to :organization, required: false
 
+
   after_create do |au|
     path_name = "/welcome?referrer=#{au.first_name}&admin=#{au.id}&organization=#{au.organization_id}"
 
