@@ -24,7 +24,13 @@ export function uploadList(file, name, user, history) {
 
   let config = {
     method: "POST",
-    mode: "no-cors",
+    headers: {
+      "access-token": user.accessToken,
+      "token-type": "Bearer",
+      client: user.client,
+      expiry: user.expiry,
+      uid: user.uid
+    },
     body: formData
   };
 

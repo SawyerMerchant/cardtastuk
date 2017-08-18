@@ -189,22 +189,3 @@ export const cardFonts = [
     cssName: "tangerine"
   }
 ];
-
-export const parseSubdomain = () => {
-  let host = window.location.hostname.split(".");
-
-  if (process.env && process.env.NODE_ENV === "development") {
-    if (host[0] !== "localhost") {
-      return host[0];
-    }
-
-    return null;
-  } else {
-    // website lives on both cardtastuk.herokuapp.com and card.tastuk.com
-    if (host[0] !== "cardtastuk" && host[0] !== "card") {
-      return host[0];
-    }
-
-    return null;
-  }
-};

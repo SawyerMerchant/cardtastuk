@@ -13,7 +13,7 @@ import AuthContainer from "../containers/Auth/AuthContainer";
 import CheckoutContainer from "../containers/Checkout/CheckoutContainer";
 import WelcomeContainer from "../containers/Welcome/WelcomeContainer";
 import LandingPage from "./LandingPage/";
-import SuccessfulTransaction from "./Checkout/SuccessfulTransaction";
+import SuccessfulTransaction from "../containers/Checkout/SuccessfulTransactionContainer";
 
 class App extends Component {
   render() {

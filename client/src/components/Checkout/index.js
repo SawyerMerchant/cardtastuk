@@ -9,7 +9,7 @@ import PaymentButton from "./PaymentButton";
 class Checkout extends Component {
   componentDidMount() {
     if (!this.props.isAuthenticated) {
-      this.props.history.push("/auth");
+      this.props.history.push("/auth?error=unauthenticated");
     }
   }
 

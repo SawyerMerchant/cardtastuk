@@ -29,8 +29,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
       let config = {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+          "access-token": user.accessToken,
+          "token-type": "Bearer",
+          client: user.client,
+          expiry: user.expiry,
+          uid: user.uid
+        },
         body: JSON.stringify({
           token: token,
           user: user,
