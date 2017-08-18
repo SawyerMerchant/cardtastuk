@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818151335) do
+ActiveRecord::Schema.define(version: 20170818165353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(version: 20170818151335) do
     t.integer  "visits",        default: 0
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "path_name"
     t.index ["admin_user_id"], name: "index_shortened_urls_on_admin_user_id", using: :btree
   end
 

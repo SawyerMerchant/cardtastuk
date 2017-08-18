@@ -28,12 +28,14 @@ end
 
 puts "making shortened_urls"
 adminUsers.each do |au|
+  path_name = "/welcome?target=#{Faker::Name.first_name}&referrer=#{au.first_name}&admin=#{au.id}&organization=#{au.organization_id}"
   COUNT.times do
     code = (0...6).map { (65 + rand(26)).chr }.join
     ShortenedUrl.create(admin_user_id: au.id,
       short_url: "http://card.tastuk.com/u/#{code}",
       code: code,
-      full_path: "http://card.tastuk.com/welcome?target=#{Faker::Name.first_name}&referrer=#{au.first_name}&admin=#{au.id}&organization=#{au.organization_id}")
+      full_path: "http://card.tastuk.com#{path_name}",
+      path_name: path_name  )
   end
 end
 
