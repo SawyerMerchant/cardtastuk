@@ -39,6 +39,7 @@ adminUsers.each do |au|
   end
 end
 
+# http://cardtastuk.herokuapp.com/welcome?target=Christian&referrer=John&admin=1&organization=1
 
 puts "making categories"
 categories = []
