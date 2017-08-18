@@ -26,15 +26,15 @@ const handleSubmit = async (e, history) => {
     if (!response.ok) {
       throw new Error(`${response.status}: ${response.statusText}`);
     }
+    let url = window.location.origin;
+    window.location.replace(`${url}/admin/login`);
 
-    // history.push("/admin/login");
-    history.push("https://cardtastuk.herokuapp.com/admin");
   } catch (error) {
     console.log(error);
   }
 };
 
-const AddressFormFields = ({history}) => {
+const AdminRegister = ({history}) => {
   return (
     <Grid>
       <Row>
@@ -43,7 +43,7 @@ const AddressFormFields = ({history}) => {
           <ul>
             <li>Fun</li>
             <li>Easy</li>
-            <li>Money</li>    
+            <li>Money</li>
           </ul>
           <form onSubmit={e => handleSubmit(e, history)}>
             <FormGroup controlId="first_name">
@@ -74,4 +74,4 @@ const AddressFormFields = ({history}) => {
   );
 };
 
-export default withRouter(AddressFormFields);
+export default withRouter(AdminRegister);
