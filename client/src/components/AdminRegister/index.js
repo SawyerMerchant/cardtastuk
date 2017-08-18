@@ -33,7 +33,7 @@ const handleSubmit = async (e, history) => {
   }
 };
 
-const AddressFormFields = ({history}) => {
+const AdminRegister = ({history}) => {
   return (
     <Grid>
       <Row>
@@ -68,4 +68,4 @@ const AddressFormFields = ({history}) => {
   );
 };
 
-export default withRouter(AddressFormFields);
+export default withRouter(AdminRegister);
