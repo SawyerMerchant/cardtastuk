@@ -26,8 +26,9 @@ const handleSubmit = async (e, history) => {
     if (!response.ok) {
       throw new Error(`${response.status}: ${response.statusText}`);
     }
-
-    history.push("/admin/login");
+    let url = window.location.origin;
+    window.location.replace(`${url}/admin/login`);
+    
   } catch (error) {
     console.log(error);
   }
