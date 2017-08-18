@@ -22,7 +22,7 @@ export function getReferrerFailure(error) {
   };
 }
 
-export function getReferrer(organization, adminId) {
+export function getReferrer(organizationId, adminId) {
   return async dispatch => {
     dispatch(getReferrerRequest());
 
@@ -34,7 +34,7 @@ export function getReferrer(organization, adminId) {
       let json = await response.json();
 
       let results = json.filter(orgs => {
-        return orgs.subdomain === organization;
+        return orgs.id.toString() === organizationId.toString();
       });
 
       if (results) {

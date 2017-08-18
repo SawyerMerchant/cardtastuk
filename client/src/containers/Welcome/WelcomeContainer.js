@@ -3,14 +3,13 @@ import { connect } from "react-redux";
 import Welcome from "../../components/Welcome";
 import { getReferrer } from "../../actions/referrer";
 import { withRouter } from "react-router-dom";
-import { getParams, parseSubdomain } from "../../helpers";
+import { getParams } from "../../helpers";
 
 class WelcomeContainer extends Component {
   componentDidMount() {
     let query = getParams(this.props.location.search);
-    let subdomain = parseSubdomain();
-    if (subdomain && query.id) {
-      this.props.getReferrer(subdomain, query.id);
+    if (query.organization && query.admin) {
+      this.props.getReferrer(query.organization, query.admin);
     }
   }
 
@@ -27,8 +26,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getReferrer: (subdomain, adminId) => {
-      dispatch(getReferrer(subdomain, adminId));
+    getReferrer: (organizationId, adminId) => {
+      dispatch(getReferrer(organizationId, adminId));
     }
   };
 };
