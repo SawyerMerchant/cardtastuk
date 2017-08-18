@@ -14,6 +14,7 @@ import RedirectContainer from "../containers/Redirect/RedirectContainer";
 import CheckoutContainer from "../containers/Checkout/CheckoutContainer";
 import WelcomeContainer from "../containers/Welcome/WelcomeContainer";
 import LandingPage from "./LandingPage/";
+import AdminRegister from "./AdminRegister/";
 import SuccessfulTransaction from "../containers/Checkout/SuccessfulTransactionContainer";
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
         <ScrollToTop>
           <NavigationContainer title={"CardTastuk"} />
           <Switch>
+            <Route path="/fundraise" component={AdminRegister} />
             <Route path="/welcome" component={WelcomeContainer} />
             <Route path="/success" component={SuccessfulTransaction} />
             <Route path="/checkout" component={CheckoutContainer} />
