@@ -10,6 +10,7 @@ import ListHandlerContainer from "../containers/CurrentCard/ListHandlerContainer
 import ReturnAddressContainer from "../containers/CurrentCard/CardReturnAddressContainer";
 import ShoppingCartContainer from "../containers/ShoppingCart/ShoppingCartContainer";
 import AuthContainer from "../containers/Auth/AuthContainer";
+import RedirectContainer from "../containers/Redirect/RedirectContainer";
 import CheckoutContainer from "../containers/Checkout/CheckoutContainer";
 import WelcomeContainer from "../containers/Welcome/WelcomeContainer";
 import LandingPage from "./LandingPage/";
@@ -44,6 +45,7 @@ class App extends Component {
             />
             <Route path="/cards/:id/edit" component={CardEditContainer} />
             <Route path="/cards/:id" component={CardDescriptionContainer} />
+            <Route path="/u/:code" component={RedirectContainer} />
             <Route path="/cards" component={CardsAllContainer} />
             <Route path="/cart" component={ShoppingCartContainer} />
             <Route path="/auth" component={AuthContainer} />
