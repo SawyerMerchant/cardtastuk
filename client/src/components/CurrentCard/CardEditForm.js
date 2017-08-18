@@ -19,6 +19,7 @@ const CardEditForm = ({
               componentClass="textarea"
               defaultValue={message}
               placeholder={message}
+              maxLength={130}
               rows={8}
               autoFocus
               onChange={onChangeMessage}
