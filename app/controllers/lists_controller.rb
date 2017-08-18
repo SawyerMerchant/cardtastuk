@@ -1,4 +1,5 @@
 class ListsController < ApiController
+  before_action :authenticate_user!
   before_action :parse_csv, :make_list, only: [:create]
   before_action :make_recipients, only: [:create], if: -> { @list.persisted? }
 

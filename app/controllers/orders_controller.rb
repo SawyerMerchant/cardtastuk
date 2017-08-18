@@ -1,4 +1,5 @@
 class OrdersController < ApiController
+  before_action :authenticate_user!
   before_action :parse_params
   def create
     order = newOrder
