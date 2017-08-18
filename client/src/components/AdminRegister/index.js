@@ -27,7 +27,8 @@ const handleSubmit = async (e, history) => {
       throw new Error(`${response.status}: ${response.statusText}`);
     }
 
-    history.push("/admin/login");
+    // history.push("/admin/login");
+    history.push("https://cardtastuk.herokuapp.com/admin");
   } catch (error) {
     console.log(error);
   }
@@ -38,7 +39,12 @@ const AddressFormFields = ({history}) => {
     <Grid>
       <Row>
         <Col md={12}>
-          <h1>Register a new Admin User</h1>
+          <h1>Why should your organization fundraise with CardTastuk?</h1>
+          <ul>
+            <li>Fun</li>
+            <li>Easy</li>
+            <li>Money</li>    
+          </ul>
           <form onSubmit={e => handleSubmit(e, history)}>
             <FormGroup controlId="first_name">
               <ControlLabel>First Name</ControlLabel>
