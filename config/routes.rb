@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'shortened_urls/show'
+
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {registrations:  'registrations', confirmations: 'confirmations'}
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
       resources :lists, only: [:create, :show]
       resources :orders, only: [:create]
       resources :organizations, only: [:index]
+      resources :shortened_urls, only: [:index]
     end
   end
 

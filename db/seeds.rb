@@ -3,9 +3,40 @@ if Rails.env == "development"
   Rake::Task['db:migrate:reset'].invoke
 end
 
-AdminUser.create!(email: 'sawyermerchant@gmail.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+
 
 COUNT = 10
+
+puts "Making Organizations"
+organizations = []
+COUNT.times do
+  Organization.create(name: Faker::Hipster.word,
+                      subdomain: Faker::Hipster.word,
+                      active: true)
+end
+
+puts "making admin users"
+adminUsers = []
+COUNT.times do
+  adminUsers << au = AdminUser.create!(email: Faker::Internet.email, password: 'password', password_confirmation: 'password') #if Rails.env.development?
+  au.organization_id = rand(Organization.first.id..Organization.last.id)
+  au.first_name = Faker::Name.first_name
+  au.last_name = Faker::Name.last_name
+  au.save
+end
+
+puts "making shortened_urls"
+adminUsers.each do |au|
+  COUNT.times do
+    code = (0...6).map { (65 + rand(26)).chr }.join
+    ShortenedUrl.create(admin_user_id: au.id,
+      short_url: "http://card.tastuk.com/u/#{code}",
+      code: code,
+      full_path: "http://card.tastuk.com/welcome?target=#{Faker::Name.first_name}&referrer=#{au.first_name}&admin=#{au.id}&organization=#{au.organization_id}")
+  end
+end
+
 
 puts "making categories"
 categories = []
@@ -68,11 +99,4 @@ COUNT.times do
   user = User.new(email: Faker::Internet.email, password: "password", password_confirmation: "password", confirmed_at: DateTime.now)
   user.save!
   users << user
-end
-
-puts "Making Organizations"
-COUNT.times do
-  Organization.create(name: Faker::Hipster.word,
-                      subdomain: Faker::Hipster.word,
-                      active: true)
 end

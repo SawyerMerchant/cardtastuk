@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817195706) do
+ActiveRecord::Schema.define(version: 20170818151335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(version: 20170817195706) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "organization_id"
     t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -197,6 +200,17 @@ ActiveRecord::Schema.define(version: 20170817195706) do
     t.index ["list_id"], name: "index_recipients_on_list_id", using: :btree
   end
 
+  create_table "shortened_urls", force: :cascade do |t|
+    t.integer  "admin_user_id"
+    t.string   "short_url"
+    t.string   "code"
+    t.string   "full_path"
+    t.integer  "visits",        default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["admin_user_id"], name: "index_shortened_urls_on_admin_user_id", using: :btree
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -234,6 +248,7 @@ ActiveRecord::Schema.define(version: 20170817195706) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "admin_users", "organizations"
   add_foreign_key "cards", "categories"
   add_foreign_key "line_items", "cards"
   add_foreign_key "line_items", "lists"
@@ -243,6 +258,7 @@ ActiveRecord::Schema.define(version: 20170817195706) do
   add_foreign_key "orders", "users"
   add_foreign_key "proofs", "orders", column: "line_item_id"
   add_foreign_key "recipients", "lists"
+  add_foreign_key "shortened_urls", "admin_users"
   add_foreign_key "users", "admin_users"
   add_foreign_key "users", "organizations"
 end

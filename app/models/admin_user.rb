@@ -5,4 +5,6 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :users
+  has_many :shortened_urls
+  belongs_to :organization, required: false
 end
