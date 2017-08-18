@@ -1,4 +1,4 @@
-class ShortenedUrlsController < ApplicationController
+class ShortenedUrlsController < ApiController
   def index
     @shortened_url = ShortenedUrl.find_by(code: request.headers["code"])
     puts "@shortened_url"

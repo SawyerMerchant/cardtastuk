@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :tags, only: [:index, :show]
       resources :lists, only: [:create, :show]
       resources :orders, only: [:create]
-      resources :organizations, only: [:index]
+      resources :organizations, only: [:index, :create]
       resources :shortened_urls, only: [:index]
     end
   end
