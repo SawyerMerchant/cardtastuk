@@ -31,7 +31,7 @@ class ProofsController < ApplicationController
 
   def set_layout
     @proof = Proof.find(params[:id])
-    @proof.line_item.card.orientation
+    "#{@proof.line_item.card.orientation}Inside"
   end
 
 
