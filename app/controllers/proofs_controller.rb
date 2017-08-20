@@ -22,7 +22,7 @@ class ProofsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "proof_file_name", :page_height => '10.25in', :page_width => '7.25in'  # Excluding ".pdf" extension.
+        render pdf: "proof_file_name", :page_height => '10.25in', :page_width => '7.25in'#, :redirect-delay => 5000  # Excluding ".pdf" extension.
       end
     end
   end
@@ -31,6 +31,7 @@ class ProofsController < ApplicationController
 
   def set_layout
     @proof = Proof.find(params[:id])
+    puts "%%%%%%%%%%#{@proof.line_item.card.orientation}%%%%%%%%%%%%"
     "#{@proof.line_item.card.orientation}Inside"
   end
 

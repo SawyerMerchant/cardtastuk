@@ -1,11 +1,15 @@
-<div class="inside-bottom-landscape">
-  <%= wicked_pdf_image_tag @proof.line_item.autograph.url, id: "signature-image" %>
+<div class="inside-bottom-portrait">
+  Dear \<first_name\>
 
-  <%#= image_tag @proof.line_item.autograph.url %>
+  <div class="greeting">
+    <%= @proof.line_item.greeting %>
+  </div>
+
+  <%= wicked_pdf_image_tag @proof.line_item.autograph.url, id: "signature-image" %>
 </div>
 
 
-<div class="inside-top-landscape">
+<div class="inside-top-portrait">
 
   Inside Top
 
