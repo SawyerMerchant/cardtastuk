@@ -6,7 +6,7 @@ class ListsController < ApiController
   def create
     puts "@list.to_json"
     p @list.to_json
-    if @list.persisted?
+    if @list.persisted? && @list.recipients.count > 0
       render json: @list.to_json, status: :created, location: @list
     else
       render json: @list.errors, status: :unprocessable_entity
