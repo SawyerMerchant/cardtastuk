@@ -79,7 +79,10 @@ gem 'stripe'
 # wicked pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', group: :development
+# gem 'wkhtmltopdf-binary-edge', '~> 0.12.4.0', group: :development
 gem 'httparty'
+gem 'wkhtmltopdf-heroku', group: :production #https://github.com/rposborne/wkhtmltopdf-heroku
+gem 'combine_pdf'
 
 # mechanize
 gem 'mechanize'

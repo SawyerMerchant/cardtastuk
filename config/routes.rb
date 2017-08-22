@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :proofs, only: [:landscape, :portrait]
+  resources :proofs, only: [:show, :create]
 
 
   # namespace "*", :constraints => ::Subdomains::Organization do

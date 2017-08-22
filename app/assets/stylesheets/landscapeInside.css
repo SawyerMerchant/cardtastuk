@@ -54,17 +54,52 @@ table {
   padding: 5px;
   background-color: #F680C5;
 }
-img {
+#front_image {
   height: 434px;
   width: 585px; /*672*/
 }
 
-.back-cover-landscape {
+.variable-data {
+  color: #F680C5;
+  font-family: Arial;
+}
+
+#inside-bottom-landscape {
+  padding: 50px 20px;
+  background-color: white;
+  color: black;
+  -webkit-transform: rotate(180deg);
+  height: 434px;
+  box-sizing:border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#greeting {
+  /*font-size: 7.2vw;*/
+  /*padding: 50px 10px;
+  color: black;
+  text-align: left;
+  vertical-align: text-top;*/
+  font-family: 'Satisfy', cursive;
+  /*border: solid black;*/
+  height: 200px;
+  width: 550px;
+  /*box-sizing:border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;*/
+}
+
+#signature {
+  position: absolute;
+  bottom: 0;
+}
+
+#inside-top-landscape {
+  border-top: solid #F680C5;
   text-align: center;
   vertical-align: middle;
   line-height: 434px;
   background-color: white;
-  color: #F680C5;
-  -webkit-transform: rotate(180deg);
   height: 434px;
 }
