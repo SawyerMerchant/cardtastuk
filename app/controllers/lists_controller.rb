@@ -14,7 +14,6 @@ class ListsController < ApiController
   end
 
 
-
   private
 
   def list_params
