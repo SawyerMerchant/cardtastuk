@@ -9,6 +9,7 @@ import {
   Button
 } from "react-bootstrap";
 import serialize from "form-serialize";
+import { getParams } from "../../helpers";
 import { withRouter } from "react-router-dom";
 
 const handleSubmit = async (e, history) => {
@@ -22,14 +23,14 @@ const handleSubmit = async (e, history) => {
     body: JSON.stringify({
       first_name: data.first_name,
       last_name: data.last_name,
-      organization_name: data.organization_name,
+      organization_id: data.organization,
       email: data.email,
       password: data.password
     })
   };
 
   try {
-    let response = await fetch("/api/v1/organizations", config);
+    let response = await fetch("/api/v1/members", config);
 
     if (!response.ok) {
       throw new Error(`${response.status}: ${response.statusText}`);
@@ -41,37 +42,50 @@ const handleSubmit = async (e, history) => {
   }
 };
 
-const AdminRegister = ({ history }) => {
+const MemberRegister = ({ history, location }) => {
+  let query = getParams(location.search);
   return (
     <Grid>
       <Row>
         <Col md={12}>
-          <h1>Why should your organization fundraise with CardTastuk?</h1>
-          
+          <h1>Sign Up as a Member</h1>
           <form onSubmit={e => handleSubmit(e, history)}>
             <FormGroup controlId="first_name">
               <ControlLabel>First Name</ControlLabel>
-              <FormControl type="text" name="first_name" required />
+              <FormControl
+                defaultValue={query.first_name}
+                type="text"
+                name="first_name"
+                required
+              />
             </FormGroup>
             <FormGroup controlId="last_name">
               <ControlLabel>Last Name</ControlLabel>
-              <FormControl type="text" name="last_name" />
+              <FormControl
+                defaultValue={query.last_name}
+                type="text"
+                name="last_name"
+              />
             </FormGroup>
-            <FormGroup controlId="organization_name">
-              <ControlLabel>Organization Name</ControlLabel>
-              <FormControl type="text" name="organization_name" required />
-            </FormGroup>
+            <FormControl
+              value={query.organization}
+              type="hidden"
+              name="organization"
+            />
             <FormGroup controlId="email">
               <ControlLabel>Email</ControlLabel>
-              <FormControl type="email" name="email" required />
+              <FormControl
+                defaultValue={query.email}
+                type="email"
+                name="email"
+                required
+              />
             </FormGroup>
             <FormGroup controlId="password">
               <ControlLabel>Password</ControlLabel>
               <FormControl type="password" name="password" required />
             </FormGroup>
-            <Button type="submit" bsStyle="info">
-              Create an Admin Account
-            </Button>
+            <Button type="submit" bsStyle="info">Join as a Member</Button>
           </form>
         </Col>
       </Row>
@@ -79,4 +93,4 @@ const AdminRegister = ({ history }) => {
   );
 };
 
-export default withRouter(AdminRegister);
+export default withRouter(MemberRegister);
