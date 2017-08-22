@@ -40,11 +40,7 @@ const AdminRegister = ({history}) => {
       <Row>
         <Col md={12}>
           <h1>Why should your organization fundraise with CardTastuk?</h1>
-          <ul>
-            <li>Fun</li>
-            <li>Easy</li>
-            <li>Money</li>
-          </ul>
+          
           <form onSubmit={e => handleSubmit(e, history)}>
             <FormGroup controlId="first_name">
               <ControlLabel>First Name</ControlLabel>

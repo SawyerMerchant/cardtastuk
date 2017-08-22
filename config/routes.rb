@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'members/create'
+
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {registrations:  'registrations', confirmations: 'confirmations'}
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
       resources :orders, only: [:create]
       resources :organizations, only: [:index, :create]
       resources :shortened_urls, only: [:index]
+      resources :members, only: [:create]
     end
   end
 
