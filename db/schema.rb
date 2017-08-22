@@ -107,16 +107,16 @@ ActiveRecord::Schema.define(version: 20170822172020) do
   end
 
   create_table "invitations", force: :cascade do |t|
-    t.integer  "admin_users_id"
+    t.integer  "admin_user_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "cell_number"
-    t.integer  "shortened_urls_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["admin_users_id"], name: "index_invitations_on_admin_users_id", using: :btree
-    t.index ["shortened_urls_id"], name: "index_invitations_on_shortened_urls_id", using: :btree
+    t.integer  "shortened_url_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["admin_user_id"], name: "index_invitations_on_admin_user_id", using: :btree
+    t.index ["shortened_url_id"], name: "index_invitations_on_shortened_url_id", using: :btree
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -265,8 +265,8 @@ ActiveRecord::Schema.define(version: 20170822172020) do
 
   add_foreign_key "admin_users", "organizations"
   add_foreign_key "cards", "categories"
-  add_foreign_key "invitations", "admin_users", column: "admin_users_id"
-  add_foreign_key "invitations", "shortened_urls", column: "shortened_urls_id"
+  add_foreign_key "invitations", "admin_users"
+  add_foreign_key "invitations", "shortened_urls"
   add_foreign_key "line_items", "cards"
   add_foreign_key "line_items", "lists"
   add_foreign_key "line_items", "orders"

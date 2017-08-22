@@ -8,6 +8,7 @@ class Ability
       can :read, ActiveAdmin::Page, name: "Dashboard"
       can :read, Order
       can :read, User
+      can :manage, Invitation
     end
 
     if user.role? :leader

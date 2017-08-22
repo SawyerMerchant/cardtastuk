@@ -27,4 +27,5 @@ class AdminUser < ApplicationRecord
       full_path: "http://card.tastuk.com#{path_name}",
       path_name: path_name)
   end
+
 end
