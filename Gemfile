@@ -57,6 +57,10 @@ gem 'devise', '> 4.x'
 gem 'activeadmin', github: 'activeadmin'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 
+# CanCanCan auth and roles
+gem 'cancancan', '~> 2.0'
+
+
 # Demo
 gem 'faker'
 

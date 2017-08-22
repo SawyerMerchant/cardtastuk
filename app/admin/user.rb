@@ -1,4 +1,10 @@
 ActiveAdmin.register User do
+
+  # controller do
+  #   def scoped_collection
+  #     super.includes :organization
+  #   end
+  # end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

@@ -8,23 +8,27 @@ end
 
 COUNT = 10
 
-puts "Making Organizations"
+puts "Making Organizations and leaders"
 organizations = []
 COUNT.times do
-  Organization.create(name: Faker::Hipster.word,
+  org = Organization.create(name: Faker::Hipster.word,
                       subdomain: Faker::Hipster.word,
                       active: true)
+  AdminUser.create(email: Faker::Internet.email, password: "password", password_confirmation: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, organization_id: org.id)
 end
 
-puts "making admin users"
+puts "making members"
 adminUsers = []
 COUNT.times do
   adminUsers << au = AdminUser.create!(email: Faker::Internet.email, password: 'password', password_confirmation: 'password') #if Rails.env.development?
   au.organization_id = rand(Organization.first.id..Organization.last.id)
   au.first_name = Faker::Name.first_name
   au.last_name = Faker::Name.last_name
+  au.role = "member"
   au.save
 end
+
+AdminUser.create!(email: "sawyermerchant@gmail.com", password: "password", password_confirmation: "password", first_name: "John", last_name: "Sawyer", role: "owner")
 
 puts "making shortened_urls"
 adminUsers.each do |au|
@@ -99,7 +103,30 @@ end
 puts "Making Users"
 users = []
 COUNT.times do
-  user = User.new(email: Faker::Internet.email, password: "password", password_confirmation: "password", confirmed_at: DateTime.now)
+  user = User.new(email: Faker::Internet.email,
+                  password: "password",
+                  password_confirmation: "password",
+                  confirmed_at: DateTime.now)
   user.save!
   users << user
 end
+
+puts "Making lists and recipients"
+users.each do |user|
+  count = rand(25..100)
+  list = List.create(name: "contacts",
+                     user_id: user.id,
+                     count: count)
+  count.times do
+    recp = Recipient.create(list_id: list.id,
+                     first_name: Faker::Name.first_name,
+                     last_name: Faker::Name.last_name)
+    Address.create(address_line1: Faker::Address.street_address,
+                   address_line2: Faker::Address.secondary_address,
+                   city:          Faker::Address.city,
+                   state:         Faker::Address.state_abbr,
+                   zip:           Faker::Address.zip)
+  end
+end
+
+# puts "Making orders and line items"

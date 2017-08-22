@@ -7,19 +7,13 @@ class Order < ApplicationRecord
 
   after_create :save_billing_address, :save_return_address, :connectAPI
 
+
   def self.pending_card_count
     sql = "SELECT SUM(line_items.quantity)
             FROM line_items
             JOIN orders
             ON orders.id = line_items.order_id
             WHERE orders.status = 'pending'"
-    # sql = "SELECT COUNT(*)
-    #         FROM  recipients
-    #         JOIN  line_items
-    #         ON    line_items.list_id = recipients.list_id
-    #         JOIN  orders
-    #         ON    orders.id = line_items.order_id
-    #         WHERE orders.status = 'pending'"
     quantity = ActiveRecord::Base.connection.execute(sql)[0]["sum"]
     puts "#{quantity} Pending Cards"
     p quantity
