@@ -1,0 +1,18 @@
+<div id="inside-bottom-landscape">
+
+  <div id="greeting">
+    <p>Dear <span class="variable-data"> first_name </span>,</p>
+    <span id="greeting-text"><%= @proof.line_item.greeting %></span>
+  </div>
+
+  <div id="signature">
+    <%= wicked_pdf_image_tag @proof.line_item.autograph.url, id: "signature-image" %>
+  </div>
+</div>
+
+
+<div id="inside-top-landscape">
+
+  <span class="variable-data">Inside Top</span>
+
+</div>

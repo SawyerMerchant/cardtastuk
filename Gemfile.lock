@@ -97,6 +97,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    combine_pdf (1.0.6)
+      ruby-rc4 (>= 0.1.5)
     concurrent-ruby (1.0.5)
     devise (4.3.0)
       bcrypt (~> 3.0)
@@ -295,6 +297,7 @@ GEM
       activesupport (>= 3.0.0)
       mustache (~> 1.0, >= 0.99.4)
       rspec (~> 3.0)
+    ruby-rc4 (0.1.5)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -341,6 +344,7 @@ GEM
     websocket-extensions (0.1.2)
     wicked_pdf (1.1.0)
     wkhtmltopdf-binary (0.12.3.1)
+    wkhtmltopdf-heroku (2.12.4.0)
 
 PLATFORMS
   ruby
@@ -351,6 +355,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 2.0)
   coffee-rails
+  combine_pdf
   devise (> 4.x)
   devise_token_auth
   factory_girl_rails
@@ -378,6 +383,7 @@ DEPENDENCIES
   tzinfo-data
   wicked_pdf
   wkhtmltopdf-binary
+  wkhtmltopdf-heroku
 
 RUBY VERSION
    ruby 2.3.0p0
