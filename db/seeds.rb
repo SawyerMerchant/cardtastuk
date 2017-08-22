@@ -14,7 +14,13 @@ COUNT.times do
   org = Organization.create(name: Faker::Hipster.word,
                       subdomain: Faker::Hipster.word,
                       active: true)
-  AdminUser.create(email: Faker::Internet.email, password: "password", password_confirmation: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, organization_id: org.id)
+  AdminUser.create(email: Faker::Internet.email,
+              password: "password",
+              password_confirmation: "password",
+              first_name: Faker::Name.first_name,
+              last_name: Faker::Name.last_name,
+              organization_id: org.id,
+              role: "leader")
 end
 
 puts "making members"
@@ -103,10 +109,14 @@ end
 puts "Making Users"
 users = []
 COUNT.times do
+  admin_user_id = rand(AdminUser.first.id..AdminUser.last.id)
+  organization_id = AdminUser.find(admin_user_id).organization_id
   user = User.new(email: Faker::Internet.email,
                   password: "password",
                   password_confirmation: "password",
-                  confirmed_at: DateTime.now)
+                  confirmed_at: DateTime.now,
+                  admin_user_id: admin_user_id,
+                  organization_id: organization_id)
   user.save!
   users << user
 end
@@ -129,4 +139,13 @@ users.each do |user|
   end
 end
 
-# puts "Making orders and line items"
+puts "Making orders and line items"
+(10 * COUNT).times do
+  user_id = rand(User.first.id..User.last.id)
+  file = File.read("lib/test_order.json")
+  data_hash = JSON.parse(file)
+  order = Order.create(stripe: data_hash)
+  order.user_id = user_id
+  order.back_charge = rand(7500..100000)
+  order.save
+end

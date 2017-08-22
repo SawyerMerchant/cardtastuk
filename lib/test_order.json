@@ -33,7 +33,7 @@
 		"used": false
 	},
 	"user": {
-		"id": 11,
+		"id": 9,
 		"email": "foo@bar.com",
 		"provider": "email",
 		"uid": "foo@bar.com",

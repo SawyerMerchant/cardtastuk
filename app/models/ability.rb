@@ -7,6 +7,7 @@ class Ability
     if user.role? :member
       can :read, ActiveAdmin::Page, name: "Dashboard"
       can :read, Order
+      can :read, User
     end
 
     if user.role? :leader
