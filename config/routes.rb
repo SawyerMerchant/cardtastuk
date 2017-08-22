@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'shortened_urls/show'
 
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {registrations:  'registrations', confirmations: 'confirmations'}
 
