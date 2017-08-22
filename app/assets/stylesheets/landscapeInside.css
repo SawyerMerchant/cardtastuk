@@ -59,8 +59,9 @@ table {
   width: 585px; /*672*/
 }
 
-#variable-data {
+.variable-data {
   color: #F680C5;
+  font-family: Arial;
 }
 
 #inside-bottom-landscape {
@@ -80,7 +81,8 @@ table {
   color: black;
   text-align: left;
   vertical-align: text-top;*/
-  border: solid black;
+  font-family: 'Satisfy', cursive;
+  /*border: solid black;*/
   height: 200px;
   width: 550px;
   /*box-sizing:border-box;

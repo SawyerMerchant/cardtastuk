@@ -36,5 +36,5 @@ console.log ('%%%%%%%%%Hit JS%%%%%%%%%%%%%');
 })(jQuery);
 
 $(document).ready(function() {
-    $('#greeting').textfill({ maxFontPixels: 48 });
+  $('#greeting').textfill({ maxFontPixels: 38 });
 });
