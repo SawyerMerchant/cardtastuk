@@ -6,7 +6,7 @@ class OrganizationsController < ApiController
 
   def create
     @organization = Organization.new(name: params[:organization_name])
-    @admin_user = AdminUser.new(email: params[:email], password: params[:password], first_name: [:first_name], last_name: params[:last_name])
+    @admin_user = AdminUser.new(email: params[:email], password: params[:password], first_name: [:first_name], last_name: params[:last_name], role: "leader")
 
     if @organization.save && @admin_user.save
       render @organization.to_json

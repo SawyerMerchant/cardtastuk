@@ -85,6 +85,7 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.3)
     byebug (9.0.6)
+    cancancan (2.0.0)
     climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -352,6 +353,7 @@ DEPENDENCIES
   activeadmin!
   aws-sdk
   byebug
+  cancancan (~> 2.0)
   coffee-rails
   combine_pdf
   devise (> 4.x)
