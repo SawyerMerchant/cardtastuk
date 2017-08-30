@@ -1,8 +1,12 @@
+<% @proof = Proof.last %>
 <div id="inside-bottom-landscape">
 
+  <p>Dear <span class="variable-data"> first_name </span>,</p>
+
   <div id="greeting">
-    <p>Dear <span class="variable-data"> first_name </span>,</p>
-    <span id="greeting-text"><%= @proof.line_item.greeting %></span>
+    <span id="greeting-text">
+      <%= @proof.line_item.greeting %>
+    </span>
   </div>
 
   <div id="signature">

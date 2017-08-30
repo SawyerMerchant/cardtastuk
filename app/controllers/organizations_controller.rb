@@ -5,7 +5,8 @@ class OrganizationsController < ApiController
   end
 
   def create
-    @organization = Organization.create(name: params[:organization_name])
+    @organization = Organization.create(name: params[:organization_name],
+                                        active: true)
 
     @admin_user = AdminUser.new(email: params[:email],
                   password: params[:password],

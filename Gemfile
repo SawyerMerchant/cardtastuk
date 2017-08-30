@@ -88,8 +88,14 @@ gem 'httparty'
 gem 'wkhtmltopdf-heroku', group: :production #https://github.com/rposborne/wkhtmltopdf-heroku
 gem 'combine_pdf'
 
-# mechanize
+# mechanize to transmit orders
 gem 'mechanize'
+
+#capybara to access calculated font size
+gem 'capybara', '~> 2.7', '>= 2.7.1'
+gem 'poltergeist'
+gem 'phantomjs'
+
 
 # fix heroku
 gem 'coffee-rails'

@@ -1,7 +1,9 @@
 <h3>Hi, <%= current_admin_user.first_name %></h3>
-<p>
-  Post this link to people you know to help you raise money for <%= current_admin_user.organization.name %>:
-</p>
+<% unless current_admin_user.organization_id.nil? %>
+  <p>
+    Post this link to people you know to help you raise money for <%= current_admin_user.organization.name %>:
+  </p>
+<% end %>
 <h2><%= current_admin_user.shortened_urls.first.short_url %></h2>
 <p>
   Add a list of email addresses and names to send out personalized email invitations

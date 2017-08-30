@@ -1,6 +1,5 @@
 require 'wicked_pdf'
 
-
 task :pdf => :environment do
 
   newProof = Proof.create(line_item_id: LineItem.last.id)
@@ -14,17 +13,6 @@ task :pdf => :environment do
   File.open(save_path, 'wb') do |file|
     file << pdf
   end
-
-  # newProof.document = save_path
-  #
-  # newProof.save
-
-
-
-  # category_id = Category.last.id
-  # price_id = Price.last.id
-  #
-  # Card.new(name: "Four!", category_id: category_id,  price_id: price_id).save
 
 end
 task :pdf

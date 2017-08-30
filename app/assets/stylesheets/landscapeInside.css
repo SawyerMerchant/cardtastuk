@@ -81,10 +81,11 @@ table {
   color: black;
   text-align: left;
   vertical-align: text-top;*/
+  margin: auto;
   font-family: 'Satisfy', cursive;
-  /*border: solid black;*/
-  height: 200px;
-  width: 550px;
+  border: solid black;
+  height: 250px;
+  width: 625px;
   /*box-sizing:border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;*/

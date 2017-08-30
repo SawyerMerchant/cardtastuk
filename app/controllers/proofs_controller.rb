@@ -7,7 +7,10 @@ class ProofsController < ApplicationController
       respond_to do |format|
         format.html
         format.pdf do
-          render pdf: "proof_file_name", :page_height => '10.25in', :page_width => '7.25in'  # Excluding ".pdf" extension.
+          render pdf: "proof_file_name",
+                 page_height: '10.25in',
+                 page_width: '7.25in',
+                 window_status: ""
         end
       end
     end
