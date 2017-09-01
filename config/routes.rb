@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+
   scope '/api' do #, defaults: { format: :json } do
     scope '/v1' do
       resources :cards, only: [:index, :show]
@@ -15,11 +16,9 @@ Rails.application.routes.draw do
       resources :organizations, only: [:index, :create]
       resources :shortened_urls, only: [:index]
       resources :members, only: [:create]
+      resources :proofs, only: [:show]
     end
   end
-
-  resources :proofs, only: [:show, :create]
-
 
   # namespace "*", :constraints => ::Subdomains::Organization do
   #   #  resources :posts

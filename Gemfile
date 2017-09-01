@@ -96,6 +96,9 @@ gem 'capybara', '~> 2.7', '>= 2.7.1'
 gem 'poltergeist'
 gem 'phantomjs'
 
-
 # fix heroku
 gem 'coffee-rails'
+
+# redis job queing
+gem 'resque'
+gem 'resque-heroku-signals'

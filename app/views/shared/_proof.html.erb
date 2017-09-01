@@ -1,0 +1,48 @@
+<div class="outer">
+  <div class="inner">
+
+    <div id="back-cover-<%= @proof.line_item.card.orientation %>" >
+      Back Cover
+    </div>
+
+    <div id="front-cover-<%= @proof.line_item.card.orientation %>" >
+
+        <%= wicked_pdf_image_tag @proof.line_item.card.large_img_url, id: "front_image" %>
+
+    </div>
+  </div>
+</div>
+
+<div class="outer">
+  <div class="inner">
+    <%# @proof = Proof.last %>
+    <div id="inside-bottom-<%= @proof.line_item.card.orientation %>" >
+
+      <p style="font-size:<%= @proof.font_size unless @proof.font_size.nil?%>px;">Dear <span class="variable-data"> first_name</span>,</p>
+
+      <div id="greeting">
+        <% if @proof.font_size.nil? %>
+          <span id="greeting-text">
+            <%= @proof.line_item.greeting %>
+          </span>
+        <% else %>
+          <span style="font-size:<%= @proof.font_size %>px;">
+            <%= @proof.line_item.greeting %>
+          </span>
+        <% end %>
+
+      </div>
+
+      <div id="signature">
+        <%= wicked_pdf_image_tag @proof.line_item.autograph.url, id: "signature-image" %>
+      </div>
+    </div>
+
+
+    <div id="inside-top-<%= @proof.line_item.card.orientation %>" >
+
+      <span class="variable-data">Inside Top</span>
+
+    </div>
+  </div>
+</div>

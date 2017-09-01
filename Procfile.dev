@@ -1,2 +1,6 @@
 web: cd client && PORT=3000 npm start
 api: PORT=3001 && bundle exec rails s -b 127.0.0.1
+
+redis: redis-server
+
+worker: env QUEUE=* TERM_CHILD=1 INTERVAL=0.1 RESQUE_PRE_SHUTDOWN_TIMEOUT=20 PORT=3050 RESQUE_TERM_TIMEOUT=8 bundle exec rake resque:work

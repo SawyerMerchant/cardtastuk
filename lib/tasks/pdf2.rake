@@ -9,10 +9,11 @@ task :pdf2 => :environment do
   # @proof = LineItem.last.proofs.build().save
 
   session = Capybara::Session.new(:poltergeist)
-  session.visit "http://localhost:3001/proofs/10"
+  session.visit "http://localhost:3001/api/v1/proofs/22"
   page = Nokogiri::HTML.parse(session.source)
   greetingTextHtml = page.css('[id="greeting-text"]').to_html
   backHalf = greetingTextHtml.split("font-size: ")[1]
+  byebug
   p fontSize = backHalf[0..1]
 
 
