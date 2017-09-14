@@ -6,6 +6,8 @@ require 'capybara/poltergeist'
 
 class Proof < ApplicationRecord
   belongs_to :line_item
+  has_attached_file :document
+  validates_attachment_content_type :document, content_type: ['application/pdf']
   @queue = :proofs
 
 
@@ -28,18 +30,28 @@ class Proof < ApplicationRecord
 
     pdf = WickedPdf.new.pdf_from_url("#{base_url}/api/v1/proofs/#{proof.id}", page_height: '10.25in', page_width: '7.25in')
 
+    pdf = trim_last_page(pdf) if proof.line_item.card.orientation == "portrait"
 
     file_name = "#{Time.now.to_i}_#{line_item_id}.pdf"
     save_path = Rails.root.join('pdfs',"#{file_name}.pdf")
     File.open(save_path, 'wb') do |file|
       file << pdf
     end
+    proof.document_file_name = save_path
+    proof.save
 
     # temp = Tempfile.new("#{Time.now.to_i}_#{line_item_id}.pdf")
     # temp = File.new("#{Time.now.to_i}_#{line_item_id}.pdf")
     # temp.write(pdf)
     # temp.close
     # temp.path
+  end
+
+  def trim_last_page(fullPdf)
+    trimmer = CombinePDF.new
+    trimmer << CombinePDF.load(fullPdf)
+    trimmer.remove(-1)
+    trimmer
   end
 
 

@@ -47,20 +47,71 @@ table {
 }
 
 /* end reset */
+* {outline : 1px solid red; }
+
 
 .outer {
   background-color: #80D6F7;
   /*margin: 5px;*/
   /*padding-bottom: : 5px;*/
 }
+
 .inner {
   margin: 5px;
   padding: 5px;
   background-color:  #F680C5;
 }
-#front_image {
+
+#front-image-landscape {
   height: 434px;
   width: 585px; /*672*/
+}
+
+#front-image-portrait {
+  width: 100%;
+  height: 100%;
+/*
+  min-width: 100%;
+    min-height: 100%*/
+  /*height: 585px;*/
+
+}
+
+.rotate {
+  -webkit-transform: translateY(-100%) rotate(90deg); /* Safari */
+  -moz-transform: translateY(-100%) rotate(90deg); /* Firefox 3.6 Firefox 4 */
+  /*-moz-transform-origin: right top; */
+  -ms-transform: translateY(-100%) rotate(90deg); /* IE9 */
+  -o-transform: translateY(-100%) rotate(90deg); /* Opera */
+  transform: translateY(-100%) rotate(90deg); /* W3C */
+  -webkit-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+  -ms-transform-origin: left bottom;
+  -o-transform-origin: left bottom;
+  transform-origin: left bottom;
+
+}
+
+#front-cover-portrait {
+  width: 440px;
+  height: 585px;
+
+  -webkit-transform: translateY(-100%) rotate(90deg); /* Safari */
+  -moz-transform: translateY(-100%) rotate(90deg); /* Firefox 3.6 Firefox 4 */
+  /*-moz-transform-origin: right top; */
+  -ms-transform: translateY(-100%) rotate(90deg); /* IE9 */
+  -o-transform: translateY(-100%) rotate(90deg); /* Opera */
+  transform: translateY(-100%) rotate(90deg); /* W3C */
+  -webkit-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+  -ms-transform-origin: left bottom;
+  -o-transform-origin: left bottom;
+  transform-origin: left bottom;
+
+  position: relative;
+  top: -444px;
+  left: 0px;
+
 }
 
 #back-cover-landscape {
@@ -70,13 +121,23 @@ table {
   background-color: white;
   color: #F680C5;
   -webkit-transform: rotate(180deg);
-  height: 437px;
+  height: 440px;
 }
 
-#front-cover-landscape {
+#back-cover-portrait {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 434px;
+  background-color: white;
+  color: #F680C5;
+  -webkit-transform: rotate(180deg);
   height: 434px;
-  width: 585px; /*672*/
 }
+
+/*#front-cover-landscape {
+  height: 434px;
+  width: 585px;
+}*/
 
 .variable-data {
   color: #F680C5;
@@ -95,13 +156,46 @@ table {
 }
 
 #inside-bottom-portrait {
+  padding: 30px 20px;
+  background-color: white;
+  color: black;
+  /*-webkit-transform: rotate(90deg);*/
+  width: 434px;
+  height: 585px;
+  box-sizing:border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 
+
+  -webkit-transform: translateY(-100%) rotate(90deg); /* Safari */
+  -moz-transform: translateY(-100%) rotate(90deg); /* Firefox 3.6 Firefox 4 */
+  /*-moz-transform-origin: right top; */
+  -ms-transform: translateY(-100%) rotate(90deg); /* IE9 */
+  -o-transform: translateY(-100%) rotate(90deg); /* Opera */
+  transform: translateY(-100%) rotate(90deg); /* W3C */
+  -webkit-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+  -ms-transform-origin: left bottom;
+  -o-transform-origin: left bottom;
+  transform-origin: left bottom;
+
+  position: relative;
+  top: -595px;
 }
 
 #greeting {
   margin: auto;
   font-family: 'Satisfy', cursive;
-  border: solid black;
+  height: 400px;
+  width: 400px;
+}
+
+.greeting-portrait {
+  height: 550px;
+  width: 250px;
+}
+
+.greeting-landscape {
   height: 250px;
   width: 550px;
 }
@@ -109,6 +203,7 @@ table {
 #signature {
   position: absolute;
   bottom: 0;
+  right: 0;
 }
 
 #inside-top-landscape {
@@ -120,20 +215,13 @@ table {
   height: 434px;
 }
 
-}
-#front-cover-portrait {
-  height: 585px; /*672*/
-  width: 434px;
-  -webkit-transform: rotate(90deg);
-}
-
-
-#back-cover-portrait {
+#inside-top-portrait {
+  border-top: solid #F680C5;
   text-align: center;
   vertical-align: middle;
   line-height: 434px;
   background-color: white;
-  color: #F680C5;
-  -webkit-transform: rotate(180deg);
   height: 434px;
+  position: relative;
+  top: -745px;
 }

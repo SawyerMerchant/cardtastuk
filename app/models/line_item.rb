@@ -7,6 +7,8 @@ class LineItem < ApplicationRecord
   do_not_validate_attachment_file_type :autograph
   has_many :proofs
 
+  after_create :async_create_proof
+
   def async_create_proof
     Resque.enqueue(Proof, self.id)
   end
