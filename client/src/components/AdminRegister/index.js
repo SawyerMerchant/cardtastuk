@@ -6,7 +6,12 @@ import {
   FormGroup,
   FormControl,
   ControlLabel,
-  Button
+  Button,
+  Jumbotron,
+  Panel,
+  Image,
+  Thumbnail,
+  Accordion
 } from "react-bootstrap";
 import serialize from "form-serialize";
 import { withRouter } from "react-router-dom";
@@ -41,20 +46,79 @@ const handleSubmit = async (e, history) => {
   }
 };
 
+const howItWorks = (
+  <h3>How it Works</h3>
+);
+
+const whoShouldRegister = (
+  <h3>Who Should Register</h3>
+)
+
+const frequentlyAskedQuestions = (
+  <h3>Frequently Asked Questions</h3>
+)
+
 const AdminRegister = ({ history }) => {
   return (
     <Grid>
+      <Jumbotron>
+        <h2>Fundraising with CardTastuk</h2>
+          <p>A no hassle way to generate money for your school, club, or organization.</p>
+      </Jumbotron>
+
+      <Panel header={howItWorks}>
+        Register your organization by completing the form bellow, then login to invite each member of the organization. Members can then use their own link to invite people they know to use CardTastuk. When someone uses one of your organization's links to sign up and send holiday cards, your organization earns a commission.
+      </Panel>
+
+      <Panel header={whoShouldRegister}>
+        The organization's leader should use the form bellow to register the new organization. The leader must be someone with knowledge of the organization's official information (formation date, address, banking information) and have the authority to make decisions on behalf of the group.
+      </Panel>
+
+      <Panel header={frequentlyAskedQuestions}>
+        <Accordion>
+          <Panel header="How Much Can We Make" eventKey="1">
+            <p>CardTastuk will pay a commission for every card purchased through your referral links. Small sales are easy to rack up by sharing your link through social media. Big sales can be made if your members can sell to a small business such as a real estate agent, insurance agent, or car dealership. Bellow is a hypothetical example of how much can be made by a group with 20 members that each make 25 small sales and 2 large sales:</p>
+            <Image src="/howmuch.png" responsive rounded />
+          </Panel>
+          <Panel header="Are Big Sales Hard to Make" eventKey="2">
+            <p>Nope. Many small business already send cards at the end of the year and our prices are competitive. We'll also provide tips your members can use to make big sales.</p>
+          </Panel>
+          <Panel header="How do We Get Paid" eventKey="3">
+            <p>CardTastuk uses <a target="_blank" href="https://stripe.com/connect/use-cases">Stripe Connect</a> to transmit payments. Other platforms that use Stripe Connect include: Lyft, Shopify, Squarespace, WooCommerce, and Kickstarter. After an organization’s first sale, the Leader is prompted to provide the required information needed to transmit payment including the organization’s type, name, founding date, phone number and the bank account into which payment should be deposited. In the case of large payments, documentation of the organization’s founding may be required.</p>
+          </Panel>
+          <Panel header="When do We Get Paid" eventKey="4">
+            <p>CardTastuk is a seasonal fundraiser. It would not make sense to send or receive a holiday card in June or July. For that reason, most organizations choose to run their fundraiser sometime in the fall. Any orders place before October 31st will be processed the first week of November for delivery in the second week of November. Orders placed after the first of November take 10 days to process before being mailed. The last orders of the year must be placed by December 7th.</p>
+            <p>After your organization makes its first sale, your leader will be prompted to provide information necessary to transmit payment. Commission payments are processed and transmitted the first week of January.</p>
+          </Panel>
+          <Panel header="I Was Elected President of My Club, am I the Leader?" eventKey="5">
+            <p>It depends. Are you able to make any decision on behalf of your group or is there someone from whom you sometimes need to get permission? The person granting permission might be the leader that needs to sign up below if they are the keeper of the organization’s email address and banking information.</p>
+            <p>As an example, a high school club will often have a Chapter President (an elected student member) and a Chapter Advisor (a teacher who oversees the club). In most cases, the Chapter advisor is the Leader who should complete the form below.</p>
+          </Panel>
+          <Panel header="What Are We Selling" eventKey="6">
+            <p>Customers you refer to CardTastuk are able able to pick out holiday cards, customize the greeting, use a touch screen to add a signature, upload a list of recipients, then we’ll print the cards, put them in envelopes and send them to the list of recipients. For people or small business who have a lot of cards to send, it can be a big time and money saver.</p>
+          </Panel>
+          <Panel header="Can We Sell to Anyone" eventKey="7">
+            <p>Anyone in the United States.</p>
+          </Panel>
+          <Panel header="What Happens Next Year" eventKey="8">
+            <p>Any customers you sign up this year are your customers. If they come back next year and the year afterwards, your organization continues to earn commissions.</p>
+          </Panel>
+          <Panel header="Can I Track My My Sales" eventKey="9">
+            <p>An organization member can see their own sales and a Leader can see the sales of all members in their organization.</p>
+          </Panel>
+        </Accordion>
+      </Panel>
+
       <Row>
+        <h1>Sign Up an Organization</h1>
         <Col md={12}>
-          <h1>Why should your organization fundraise with CardTastuk?</h1>
-          
           <form onSubmit={e => handleSubmit(e, history)}>
             <FormGroup controlId="first_name">
-              <ControlLabel>First Name</ControlLabel>
+              <ControlLabel>Leader First Name</ControlLabel>
               <FormControl type="text" name="first_name" required />
             </FormGroup>
             <FormGroup controlId="last_name">
-              <ControlLabel>Last Name</ControlLabel>
+              <ControlLabel>Leader Last Name</ControlLabel>
               <FormControl type="text" name="last_name" />
             </FormGroup>
             <FormGroup controlId="organization_name">
@@ -62,7 +126,7 @@ const AdminRegister = ({ history }) => {
               <FormControl type="text" name="organization_name" required />
             </FormGroup>
             <FormGroup controlId="email">
-              <ControlLabel>Email</ControlLabel>
+              <ControlLabel>Leader Email</ControlLabel>
               <FormControl type="email" name="email" required />
             </FormGroup>
             <FormGroup controlId="password">
@@ -70,7 +134,7 @@ const AdminRegister = ({ history }) => {
               <FormControl type="password" name="password" required />
             </FormGroup>
             <Button type="submit" bsStyle="info">
-              Create an Admin Account
+              Create an Organization Account
             </Button>
           </form>
         </Col>
