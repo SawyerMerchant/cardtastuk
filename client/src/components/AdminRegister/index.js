@@ -10,7 +10,6 @@ import {
   Jumbotron,
   Panel,
   Image,
-  Thumbnail,
   Accordion
 } from "react-bootstrap";
 import serialize from "form-serialize";
@@ -84,7 +83,7 @@ const AdminRegister = ({ history }) => {
             <p>Nope. Many small business already send cards at the end of the year and our prices are competitive. We'll also provide tips your members can use to make big sales.</p>
           </Panel>
           <Panel header="How do We Get Paid" eventKey="3">
-            <p>CardTastuk uses <a target="_blank" href="https://stripe.com/connect/use-cases">Stripe Connect</a> to transmit payments. Other platforms that use Stripe Connect include: Lyft, Shopify, Squarespace, WooCommerce, and Kickstarter. After an organization’s first sale, the Leader is prompted to provide the required information needed to transmit payment including the organization’s type, name, founding date, phone number and the bank account into which payment should be deposited. In the case of large payments, documentation of the organization’s founding may be required.</p>
+            <p>CardTastuk uses <a target="_blank" rel="noopener noreferrer" href="https://stripe.com/connect/use-cases">Stripe Connect</a> to transmit payments. Other platforms that use Stripe Connect include: Lyft, Shopify, Squarespace, WooCommerce, and Kickstarter. After an organization’s first sale, the Leader is prompted to provide the required information needed to transmit payment including the organization’s type, name, founding date, phone number and the bank account into which payment should be deposited. In the case of large payments, documentation of the organization’s founding may be required.</p>
           </Panel>
           <Panel header="When do We Get Paid" eventKey="4">
             <p>CardTastuk is a seasonal fundraiser. It would not make sense to send or receive a holiday card in June or July. For that reason, most organizations choose to run their fundraiser sometime in the fall. Any orders place before October 31st will be processed the first week of November for delivery in the second week of November. Orders placed after the first of November take 10 days to process before being mailed. The last orders of the year must be placed by December 7th.</p>
