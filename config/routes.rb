@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :lists, only: [:create, :show]
       resources :orders, only: [:create]
       resources :organizations, only: [:index, :create]
+      resources :reps, only: [:create]
       resources :shortened_urls, only: [:index]
       resources :members, only: [:create]
       resources :proofs, only: [:show]
