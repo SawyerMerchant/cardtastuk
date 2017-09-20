@@ -77,7 +77,7 @@ const AdminRegister = ({ history }) => {
         <Accordion>
           <Panel header="How Much Can We Make?" eventKey="1">
             <p>CardTastuk will pay a commission for every card purchased through your referral links. Small sales are easy to rack up by sharing your link through social media. Big sales can be made if your members can sell to a small business such as a real estate agent, insurance agent, or car dealership. Below is a hypothetical example of how much can be made by a group with 20 members that each make 25 small sales and 2 large sales:</p>
-            <Image src="/howmuch.png" responsive rounded />
+            <Image src="/orghowmuch.png" responsive rounded />
           </Panel>
           <Panel header="Are Big Sales Hard to Make?" eventKey="2">
             <p>Nope. Many small business already send cards at the end of the year and our prices are competitive. We'll also provide tips your members can use to make big sales.</p>
