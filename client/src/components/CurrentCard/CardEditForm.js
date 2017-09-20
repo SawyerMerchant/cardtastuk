@@ -13,7 +13,6 @@ const CardEditForm = ({
     <Col md={6} xs={12}>
       <div className="card-edit-container">
         <div className={`card-edit-message ${cardFont}`}>
-          <p>Dear &lt;First Name&gt;,</p>
           <form>
             <FormControl
               componentClass="textarea"
@@ -25,7 +24,6 @@ const CardEditForm = ({
               onChange={onChangeMessage}
             />
           </form>
-          <p className="signature">Sincerely,</p>
           <p className="signature">
             {signature
               ? <img src={signature} alt="User's signature" />

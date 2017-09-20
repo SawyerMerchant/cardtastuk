@@ -19,9 +19,7 @@ const CardView = ({
     <Col md={6} xs={12}>
       <div className="card-edit-container">
         <div className={`card-edit-message ${cardFont}`}>
-          <p>Dear {firstName}</p>
           <p>{cardMessage}</p>
-          <p className="signature">Sincerely,</p>
           <p className="signature">
             {signature
               ? <img src={signature} alt="User's signature" />
