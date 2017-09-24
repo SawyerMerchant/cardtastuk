@@ -16,7 +16,7 @@ class OrganizationsController < ApiController
                   organization_id: @organization.id)
 
     if @organization.persisted? && @admin_user.save
-      render @organization.to_json
+      render json: @organization.to_json
     end
   end
 
