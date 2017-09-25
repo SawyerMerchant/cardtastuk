@@ -14,11 +14,14 @@ import {
 } from "react-bootstrap";
 import serialize from "form-serialize";
 import { withRouter } from "react-router-dom";
+import { getParams } from "../../helpers";
 
-const handleSubmit = async (e, history) => {
+
+const handleSubmit = async (e, history, location) => {
   e.preventDefault();
   const form = e.target;
   const data = serialize(form, { hash: true });
+  const query = getParams(location.search);
 
   let config = {
     method: "POST",
@@ -28,7 +31,8 @@ const handleSubmit = async (e, history) => {
       last_name: data.last_name,
       organization_name: data.organization_name,
       email: data.email,
-      password: data.password
+      password: data.password,
+      rep_id: query.rep
     })
   };
 
@@ -57,7 +61,7 @@ const frequentlyAskedQuestions = (
   <h3>Frequently Asked Questions</h3>
 )
 
-const AdminRegister = ({ history }) => {
+const AdminRegister = ({ history, location }) => {
   return (
     <Grid>
       <Jumbotron>
@@ -126,7 +130,7 @@ const AdminRegister = ({ history }) => {
       <Row>
         <h1>Sign Up an Organization</h1>
         <Col md={12}>
-          <form onSubmit={e => handleSubmit(e, history)}>
+          <form onSubmit={e => handleSubmit(e, history, location)}>
             <FormGroup controlId="first_name">
               <ControlLabel>Leader First Name</ControlLabel>
               <FormControl type="text" name="first_name" required />
