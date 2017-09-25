@@ -37,7 +37,6 @@ class App extends Component {
             <Route path="/memberRegister" component={MemberRegister} />
             <Route path="/repRegister" component={RepRegister} />
             <Route path="/fundraise" component={AdminRegister} />
-            <Route path="/rep" component={RepRegister} />
             <Route path="/welcome" component={WelcomeContainer} />
             <Route path="/success" component={SuccessfulTransaction} />
             <Route path="/checkout" component={CheckoutContainer} />

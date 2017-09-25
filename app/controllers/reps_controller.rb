@@ -1,4 +1,4 @@
-class RepsController < ApplicationController
+class RepsController < ApiController
   def create
     @admin_user = AdminUser.new(email: params[:email],
                   password: params[:password],

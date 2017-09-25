@@ -7,6 +7,7 @@ class AdminUser < ApplicationRecord
   has_many :users
   has_many :shortened_urls
   belongs_to :organization, required: false
+  has_many :accounts, foreign_key: "rep_id", class_name: "Organization"
 
   ROLES = %w[member leader rep owner]
   def role?(base_role)
@@ -14,18 +15,23 @@ class AdminUser < ApplicationRecord
   end
 
   after_create do |au|
-    path_name = "/welcome?referrer=#{au.first_name}&admin=#{au.id}&organization=#{au.organization_id}"
-
-    code = loop do
-      random_6_chars = (0...6).map { (65 + rand(26)).chr }.join
-      break random_6_chars unless ShortenedUrl.exists?(code: random_6_chars)
+    case au.role
+    when "member"
+      ShortenedUrl.create_sales_link(au)
+    when "leader"
+      ShortenedUrl.create_sales_link(au)
+      ShortenedUrl.create_members_link(au)
+    when "rep"
+      ShortenedUrl.create_orgs_link(au)
+    else
+      puts 'Not a recognized role'
     end
 
-    ShortenedUrl.create(admin_user_id: au.id,
-      short_url: "http://card.tastuk.com/u/#{code}",
-      code: code,
-      full_path: "http://card.tastuk.com#{path_name}",
-      path_name: path_name)
+
+
+
+
+
   end
 
 end

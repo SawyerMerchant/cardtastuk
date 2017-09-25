@@ -6,7 +6,8 @@ class OrganizationsController < ApiController
 
   def create
     @organization = Organization.create(name: params[:organization_name],
-                                        active: true)
+                                        active: true,
+                                        rep_id: params[:rep_id])
 
     @admin_user = AdminUser.new(email: params[:email],
                   password: params[:password],
@@ -16,7 +17,7 @@ class OrganizationsController < ApiController
                   organization_id: @organization.id)
 
     if @organization.persisted? && @admin_user.save
-      render @organization.to_json
+      render json: @organization.to_json
     end
   end
 
